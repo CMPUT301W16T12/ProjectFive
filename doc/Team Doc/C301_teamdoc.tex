@@ -1,0 +1,185 @@
+\documentclass[14pt]{report}
+\usepackage{amsmath, enumerate, graphicx, hyperref}
+
+\begin{document}
+	\title{CMPUT 301\\Team 12 Guidelines}
+	\author{Omar Almokdad \and Justin Daza \and Gemma Marcinkoski \and Jen Switzer \and Andrew Whittle}
+	\date{Winter 2016}
+	\maketitle
+	
+	\tableofcontents
+	
+	\chapter{Team Expectations}
+	
+	\section{Attitude}
+	Be positive! We can do this!
+	
+	\section{Communication}
+	
+	For methods of communication, Slack is the preferred way of talking to all the group.
+	That said, email is completely viable and preferred for larger pieces of information.
+	Please \textbf{``reply all"} to group emails.
+	
+	Emails:
+	
+	\begin{itemize}
+		\item
+		Omar: omokdad@yahoo.com
+		\item
+		Justin: justinjo@ualberta.ca
+		\item
+		Gemma: marcinko@ualberta.ca
+		\item
+		Jen: jenwswitzer@gmail.com
+		\item
+		Andrew: awhittle@ualberta.ca
+	\end{itemize}
+	
+	Contact information for the professor and TA:
+
+	\begin{itemize}
+		\item
+		Ken Wong: kenw@cs.ualberta.ca
+		\item
+		Kent Rasmussen: krasmuss@ualberta.ca
+	\end{itemize} 
+		
+	\chapter{Using Git}
+	
+	\section{Introduction}
+	
+	For this course we are using \url{https://github.com/CMPUT301W16T12} as the remote repository for our submission.
+	The tool to add things to this repository is \textbf{git}.
+	With git you can get the repo, add and commit changes, stay up to date, push your work and merge it into the project.
+	It is a bit complicated to use at times, especially working with many people, but it is a powerful and useful tool.
+	
+	Rule of thumb: commit often!
+	Make your commits easy to follow.
+	Big commits are bad because you lose a lot of work if you have to rollback, and reading the history log is difficult.
+	
+	\section{The Team}
+	
+	The team name is CMPUT301W16T12.
+	
+	The members of the team are:
+	\begin{itemize}
+		\item
+		Omar: omokdad
+		\item
+		Justin: jjda7a
+		\item
+		Gemma: gemmamarcinkoski
+		\item
+		Jen: waiyi
+		\item
+		Andrew: awhittle3
+	\end{itemize}
+	
+	\section{Set up}
+	To get the exiting remote repo onto your local machine, call
+	\begin{verbatim}
+	git clone exampleurl.git
+	\end{verbatim}
+	
+	You are ready to go!
+	
+	\section{Branches}
+	
+	The master branch is the primary branch of the project, and will be used for the submission.
+	To manage our work and keep the master branch healthy, we will be working on our own branches.
+	Please name your branches as following:
+	
+	\begin{verbatim}
+	awhittle/database
+	\end{verbatim}
+	
+	Where the first part is your user name and the second part is the name of the part of the project you are working on.
+	
+	To create a branch for the first time based off of your current workspace, call
+	
+	\begin{verbatim}
+	git checkout -b awhittle/mynewbranch
+	\end{verbatim}
+	
+	To switch to a branch, call
+	
+	\begin{verbatim}
+	git checkout awhittle/myexistingbranch
+	\end{verbatim}
+
+	
+	\section{Pulling}
+	\textbf{It is very important you pull before you start working on code, or before you push!}
+	This will give you the most up to date code for the project.
+	
+	\begin{verbatim}
+		git pull origin -a
+	\end{verbatim}
+	
+	\section{Adding and Committing}
+	
+	Git committing is a multi-step process. You add your changes to a staging area, then you commit your changes.
+	
+	To see the status of your changes at any time, call
+	
+	\begin{verbatim}
+	git status
+	\end{verbatim}
+	
+	To add all of your changes, you can call
+	\begin{verbatim}
+	git add .
+	\end{verbatim}
+	
+	However, if you have certain files you want to merge and not others (e.g. you don't want to commit doc changes and code changes in the same commit), you should call them by name:
+	
+	\begin{verbatim}
+	git add src/file1.java src/file2.java
+	\end{verbatim}
+	
+	To commit with a short message, call 
+	\begin{verbatim}
+	git commit -m "Add save method to display activity"
+	\end{verbatim}
+	
+	Please make your messages concise and clear.
+	It helps communicates to the team what you have done.
+		
+	\section{Pushing}
+	
+	\begin{verbatim}
+	git push origin -a
+	\end{verbatim}
+	
+	This will push all your committed work on all your branches.  If you want to push a specific branch call the following instead:
+	
+	\begin{verbatim}
+	git push origin awhittle/mybranch
+	\end{verbatim}
+	
+	\section{Merging}
+	
+	Merging can be a complex process.
+	We recommend the rebase strategy in order to keep the master branch healthy.
+	Please do not use merge until you have pulled and rebased your code.
+	
+	\section{Logs and Other Information}
+	
+	To see a log of everything on the branch, call
+	
+	\begin{verbatim}
+	git log --oneline
+	\end{verbatim}
+	
+	Omit the oneline option to get a fuller picture.
+	
+	To see the changes you have made to your code that you have not added or committed yet, call
+	
+	\begin{verbatim}
+	git diff
+	\end{verbatim}
+	
+	This is useful for seeing what you have done and what to put in your commit message.
+	
+	
+\end{document}
