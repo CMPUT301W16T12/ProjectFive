@@ -57,3 +57,7 @@ captures/
 
 # Mac users
 .DS_Store
+
+# Temp save files
+*~
+.Rhistory
