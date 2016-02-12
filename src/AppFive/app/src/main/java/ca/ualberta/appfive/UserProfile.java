@@ -29,6 +29,10 @@ public class UserProfile {
             throws IllegalArgumentException{
     }
 
+    public static void setUserName(String userName) {
+        UserProfile.userName = userName;
+    }
+
     public static String getUserName() {
         return userName;
     }

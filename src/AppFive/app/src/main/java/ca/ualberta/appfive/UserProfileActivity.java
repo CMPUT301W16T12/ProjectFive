@@ -35,7 +35,8 @@ public class UserProfileActivity extends AppCompatActivity {
      * @param newEmail Updated contact information
      * @throws DatabaseConnectException when device is offline
      */
-    private void changeContactInfo(String newEmail) throws DatabaseConnectException{
+    protected void changeContactInfo(String newEmail) throws DatabaseConnectException{
+        throw new DatabaseConnectException();
 
     }
 

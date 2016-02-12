@@ -34,8 +34,8 @@ public class LoginActivity extends AppCompatActivity {
      * @param userName the entered username
      * @throws DatabaseConnectException
      */
-    private void loginToApp(String userName) throws DatabaseConnectException {
-
+    protected void loginToApp(String userName) throws DatabaseConnectException {
+        throw new DatabaseConnectException();
     }
 
 }
