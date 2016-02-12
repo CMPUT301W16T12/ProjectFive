@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/**
+ * Starter activity. Leads to login if the user is not logged in.
+ */
 public class StarterActivity extends AppCompatActivity {
 
     @Override
