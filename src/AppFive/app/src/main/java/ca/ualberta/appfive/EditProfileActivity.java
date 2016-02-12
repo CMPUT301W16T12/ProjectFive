@@ -34,7 +34,7 @@ public class EditProfileActivity extends AppCompatActivity {
      * @param email New user email
      * @throws DatabaseConnectException
      */
-    private void commitProfileEdits(String email) throws DatabaseConnectException{
-
+    protected void commitProfileEdits(String email) throws DatabaseConnectException{
+        throw new DatabaseConnectException();
     }
 }

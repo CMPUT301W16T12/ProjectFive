@@ -36,9 +36,9 @@ public class RegisterActivity extends AppCompatActivity {
      * @param email User's email
      * @throws DatabaseConnectException
      */
-    private void registerNewUser(String userName, String password, String email)
+    protected void registerNewUser(String userName, String password, String email)
             throws DatabaseConnectException {
-
+        throw new DatabaseConnectException();
     }
 
 }
