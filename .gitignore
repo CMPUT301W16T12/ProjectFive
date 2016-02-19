@@ -54,3 +54,10 @@ captures/
 *.mtc1
 *.out
 *.synctex.gz
+
+# Mac users
+.DS_Store
+
+# Temp save files
+*~
+.Rhistory
