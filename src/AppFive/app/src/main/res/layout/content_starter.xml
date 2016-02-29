@@ -10,7 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="ca.ualberta.appfive.StarterActivity"
-    tools:showIn="@layout/activity_starter">
+    tools:showIn="@layout/activity_starter"
+    android:background="@drawable/display_template" >
 
     <TextView
         android:layout_width="wrap_content"

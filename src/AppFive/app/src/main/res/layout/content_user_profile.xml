@@ -10,6 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="ca.ualberta.appfive.UserProfileActivity"
-    tools:showIn="@layout/activity_user_profile">
+    tools:showIn="@layout/activity_user_profile"
+    android:background="@drawable/display_template" >
 
 </RelativeLayout>
