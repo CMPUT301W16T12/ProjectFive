@@ -12,6 +12,45 @@
     tools:context="ca.ualberta.appfive.HomeActivity"
     android:background="@drawable/display_template"
     tools:showIn="@layout/activity_home">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome"
+        android:textSize="20pt"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/myBook" />
+
+    <Button
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search"
+        android:layout_gravity="center_horizontal"
+        android:onClick="search"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/myProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/myProfile"
+        android:layout_gravity="center_horizontal"
+        android:onClick="myProfile"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/myBook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/myBook"
+        android:layout_gravity="center_horizontal"
+        android:onClick="myBook"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentEnd="true" />
 
     <ListView
         android:id="@+id/activityHistory"
@@ -21,59 +60,4 @@
         android:scrollbars="vertical"
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true" />
-
-    <TabHost
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/tabHost"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/welcome"
-                android:textSize="20pt"
-                android:id="@+id/textView"
-                android:layout_alignParentStart="true"
-                android:layout_alignEnd="@+id/myBook" />
-
-            <TabWidget
-                android:id="@android:id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="93dp"></TabWidget>
-
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:id="@+id/search"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"></LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/myProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"></LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/myBook"
-                    android:text="@string/myBook"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"></LinearLayout>
-            </FrameLayout>
-        </LinearLayout>
-    </TabHost>
-
-
 </RelativeLayout>
