@@ -13,7 +13,7 @@
     <string name="title_activity_edit_profile">EditProfileActivity</string>
     <string name="title_activity_edit_book">EditBookActivity</string>
 
-    # added users -- noun
+    // added users -- noun
 
     <string name="username"> Username</string>
     <string name="password">Password</string>
@@ -41,7 +41,8 @@
     <string name="myBook">My Book</string>
 
 
-    #added action --
+    // added action
+
     <string name="logIn">Log In</string>
     <string name="register">Register</string>
     <string name="save">Save</string>
