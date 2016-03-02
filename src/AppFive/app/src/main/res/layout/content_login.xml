@@ -30,7 +30,8 @@
         android:hint="@string/username"
         android:layout_marginTop="101dp"
         android:layout_alignTop="@+id/appName"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp" />
 
     <EditText
         android:id="@+id/password"
@@ -43,18 +44,17 @@
 
     <Button
         android:id="@+id/logIn"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/logIn"
         android:layout_gravity="center_horizontal"
         android:onClick="logIn"
         android:textSize="10pt"
         android:layout_below="@+id/register"
-        android:layout_alignStart="@+id/register"
-        android:layout_alignEnd="@+id/register" />
+        android:layout_alignStart="@+id/register" />
     <Button
         android:id="@+id/register"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/register"
         android:layout_gravity="center_horizontal"
