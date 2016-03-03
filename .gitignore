@@ -58,6 +58,10 @@ captures/
 .DS_Store
 *.idea
 
+
 # Temp save files
 *~
 .Rhistory
+
+# Ignore .idea files in Android
+src/AppFive/.idea/
