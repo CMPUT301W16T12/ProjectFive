@@ -62,6 +62,7 @@ captures/
 # Temp save files
 *~
 .Rhistory
+*#
 
 # Ignore .idea files in Android
 src/AppFive/.idea/
