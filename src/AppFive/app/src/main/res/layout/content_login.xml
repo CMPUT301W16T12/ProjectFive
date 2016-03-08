@@ -28,7 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:hint="@string/username"
-        android:layout_marginTop="101dp"
         android:layout_alignTop="@+id/appName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp" />
