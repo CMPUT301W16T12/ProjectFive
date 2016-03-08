@@ -1,0 +1,129 @@
+Contents
+XML – content	2
+content_book_display.xml	2
+content_edit_book.xml	2
+content_edit_profile.xml	2
+content_home.xml	2
+<TextView>	2
+<Button>	2
+<ListView>	2
+content_login.xml	2
+<TextView>	2
+<EditText>	2
+<Button>	2
+content_my_bidded.xml	2
+content_my_borrowing.xml	3
+content_register.xml	3
+content_search.xml	3
+content_search_results.xml	3
+content_starter.xml	3
+content_user_profile.xml	3
+
+XML – content
+content_book_display.xml
+android:id="@+id/owner"
+android:id="@+id/addBid"
+android:id="@+id/title"
+android:id="@+id/author"
+
+
+
+
+content_edit_book.xml
+
+
+
+content_edit_profile.xml
+
+
+content_home.xml
+<TextView>
+@+id/textView == @string/welcome!/>
+<Button>
+@+id/search == @string/search"
+@+id/myProfile == @string/myProfile"
+@+id/myBook" == @string/myBook"
+        
+<ListView>
+@+id/activityHistory"
+
+content_login.xml
+<TextView>
+        android:id="@+id/appName"
+        android:text="@string/app_name"
+
+<EditText>
+       @+id/userName"
+       @+id/password” 
+       
+<Button>
+        @+id/logIn" == @string/logIn” 
+        @+id/register == @string/register"
+        
+
+
+content_my_bidded.xml
+
+
+
+
+
+content_my_borrowing.xml
+
+content_owner_info.xml 
+android:id="@+id/ownerEmail"
+
+content_register.xml
+
+
+
+content_search.xml
+SearchView
+android:id="@+id/searchView"
+
+EditText
+android:id="@+id/searchText"
+android:id="@+id/popular
+android:id="@+id/recent
+android:id="@+id/A-Z
+
+
+
+content_search_results.xml
+
+
+
+
+content_starter.xml
+
+
+
+
+content_user_profile.xml
+
+
+
+
+
+
+
+
+
+
+
+
+
+XML - activity
+activity_book_display.xml
+activity_edit_book.xml
+activity_edit_profile.xml
+activity_home.xml
+activity_login.xml
+activity_my_bidded.xml
+activity_my_borrowing.xml
+activity_register.xml
+activity_search.xml
+activity_search_results.xml
+activity_starter.xml
+activity_user_profile.xml
+

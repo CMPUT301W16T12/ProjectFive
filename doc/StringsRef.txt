@@ -1,0 +1,62 @@
+Strings
+
+<resources>
+    <string name="app_name">App Five</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_search_results">SearchResultsActivity</string>
+    <string name="title_activity_book_display">BookDisplayActivity</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="title_activity_my_borrowing">MyBorrowingActivity</string>
+    <string name="title_activity_my_bidded">MyBiddedActivity</string>
+    <string name="title_activity_edit_profile">EditProfileActivity</string>
+    <string name="title_activity_edit_book">EditBookActivity</string>
+
+    // added users -- noun
+
+    <string name="username"> Username</string>
+    <string name="password">Password</string>
+    <string name="uNameEmail">Username/Email</string>
+    <string name="userBorrowed">User Borrowed</string>
+    <string name="userBids">User Bids</string>
+    <string name="owner">Owner</string>
+    <string name="newBid">New Bid</string>
+    <string name="amount">Amount</string>
+    <string name="bidList">Bid List</string>
+    <string name="title">Title</string>
+    <string name="genre">Genre</string>
+    <string name="author">Author</string>
+    <string name="description">Description</string>
+    <string name="mobile">Mobile</string>
+    <string name="personal">Personal</string>
+    <string name="birthday">Birthday</string>
+    <string name="bids">Bids</string>
+    <string name="exchangedBooks">Exchanged Books</string>
+    <string name="popular">POPULAR</string>
+    <string name="recent">Recent</string>
+    <string name="letter">A-Z</string>
+    <string name="min">min</string>
+    <string name="myProfile">My Profile</string>
+    <string name="myBook">My Book</string>
+
+
+    // added -- verb
+
+    <string name="logIn">Log In</string>
+    <string name="register">Register</string>
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="editProfile">Edit Profile</string>
+    <string name="search">Search</string>
+    <string name="Return">Return</string>
+    <string name="remove">Remove Bid</string>
+    <string name="addBid">Add Bid</string>
+    <string name="confirmPwd">Confirm Password</string>
+    <string name="owned">Owned</string>
+    <string name="searching">...</string>
+    <string name="welcome">Welcome!</string>
+
+</resources>
