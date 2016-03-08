@@ -13,5 +13,44 @@
     tools:showIn="@layout/activity_book_display"
     android:background="@drawable/display_template">
 
+    <Button
+        android:id="@+id/owner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/owner"
+        android:layout_gravity="center_horizontal"
+        android:onClick="logIn"
+        android:textSize="10pt"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:id="@+id/addBid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addBid"
+        android:layout_gravity="center_horizontal"
+        android:onClick="register"
+        android:textSize="10pt"
+        android:layout_alignTop="@+id/owner"
+        android:layout_alignParentEnd="true" />
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        android:textSize="20pt"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_below="@+id/owner"
+        android:layout_toStartOf="@+id/owner"
+        android:layout_marginTop="92dp" />
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/author"
+        android:textSize="20pt"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/title" />
 
 </RelativeLayout>

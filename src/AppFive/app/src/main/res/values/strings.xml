@@ -56,5 +56,8 @@
     <string name="owned">Owned</string>
     <string name="searching">...</string>
     <string name="welcome">Welcome!</string>
+    <string name="title_activity_owner_info">OwnerInfoActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>
