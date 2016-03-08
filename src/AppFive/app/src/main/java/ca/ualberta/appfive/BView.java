@@ -1,7 +1,12 @@
 package ca.ualberta.appfive;
 
 /**
- * Created by Omar on 3/1/2016.
+ * This is an interface all views should have
  */
 public interface BView<M> {
+    /**
+     * This update method takes in a model object and updates the view
+     * @param model A model object
+     */
+    public void update(M model);
 }
