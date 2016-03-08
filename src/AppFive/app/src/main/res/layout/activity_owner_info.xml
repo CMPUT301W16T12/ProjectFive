@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="ca.ualberta.appfive.BookDisplayActivity">
+    tools:context="ca.ualberta.appfive.OwnerInfoActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -16,12 +16,12 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#8d8253"
+            android:background="#8d5e32"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             android:backgroundTint="#8d8253" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_book_display" />
+    <include layout="@layout/content_owner_info" />
 
 </android.support.design.widget.CoordinatorLayout>
