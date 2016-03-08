@@ -47,7 +47,6 @@
         android:layout_height="wrap_content"
         android:text="@string/logIn"
         android:layout_gravity="center_horizontal"
-        android:onClick="logIn"
         android:textSize="10pt"
         android:layout_below="@+id/register"
         android:layout_alignStart="@+id/register" />
@@ -57,7 +56,6 @@
         android:layout_height="wrap_content"
         android:text="@string/register"
         android:layout_gravity="center_horizontal"
-        android:onClick="register"
         android:textSize="10pt"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
