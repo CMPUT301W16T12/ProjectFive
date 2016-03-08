@@ -11,7 +11,7 @@ import android.view.View;
  * Activity for displaying the user's data
  * Includes an option to update the profile
  */
-public class UserProfileActivity extends AppCompatActivity {
+public class UserProfileActivity extends AppCompatActivity implements BView<UserProfile>{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,14 +20,6 @@ public class UserProfileActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     /**
@@ -40,4 +32,12 @@ public class UserProfileActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * When the User's profile is updated, update the view
+     * @param userProfile The User's Profile data
+     */
+    @Override
+    public void update(UserProfile userProfile) {
+
+    }
 }

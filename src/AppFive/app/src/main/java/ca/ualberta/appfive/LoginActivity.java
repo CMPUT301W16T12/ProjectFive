@@ -19,7 +19,7 @@ import java.io.OutputStreamWriter;
 /**
  * This is the activity when the user logs in
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements BView<UserProfile>{
     // TODO: pls correct this username -- should check database profile
     private static final String USERNAMEDATA = "usernameData.sav";
     private EditText usernameInput;
@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         });
         Button registerButton = (Button) findViewById(R.id.register);
 
-        logInButton.setOnClickListener(new View.OnClickListener() {
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setResult(RESULT_OK);
@@ -77,5 +77,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void update(UserProfile model) {
 
+    }
 }

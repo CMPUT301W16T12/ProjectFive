@@ -1,8 +1,8 @@
 package ca.ualberta.appfive;
 
 /**
- * Controller class should inherit from this class.
- * 
+ * Controller class should implement this.
+ *
  */
 public interface BController {
 }

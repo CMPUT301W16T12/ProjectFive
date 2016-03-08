@@ -1,7 +1,14 @@
 package ca.ualberta.appfive;
 
 /**
- * Created by Omar on 3/1/2016.
+ *
  */
-public class UserProfileController {
+public class UserProfileController implements BController{
+    AppFive af = null;
+
+    public UserProfileController(AppFive appFive) {
+        this.af = appFive;
+    }
+
+
 }

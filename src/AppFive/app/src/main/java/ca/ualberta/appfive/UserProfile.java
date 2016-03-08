@@ -4,7 +4,7 @@ package ca.ualberta.appfive;
  * Singleton for User Profile information.
  * This class is only for the logged in user's profile data
  */
-public class UserProfile {
+public class UserProfile extends BModel<BView>{
     private static UserProfile ourInstance = new UserProfile();
     private static String userName;
     private static String userEmail;
@@ -15,6 +15,7 @@ public class UserProfile {
     }
 
     private UserProfile() {
+        super();
     }
 
     /**

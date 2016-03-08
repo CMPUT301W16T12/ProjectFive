@@ -9,4 +9,5 @@ public interface BView<M> {
      * @param model A model object
      */
     public void update(M model);
+
 }
