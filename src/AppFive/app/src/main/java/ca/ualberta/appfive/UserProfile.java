@@ -30,11 +30,11 @@ public class UserProfile extends BModel<BView>{
             throws IllegalArgumentException{
     }
 
-    public static void setUserName(String userName) {
+    public void setUserName(String userName) {
         UserProfile.userName = userName;
     }
 
-    public static String getUserName() {
+    public String getUserName() {
         return userName;
     }
 
@@ -42,11 +42,11 @@ public class UserProfile extends BModel<BView>{
      * Call when resetting the user's contact info
      * @param userEmail New email contact info for the user
      */
-    public static void setUserEmail(String userEmail) {
+    public void setUserEmail(String userEmail) {
         UserProfile.userEmail = userEmail;
     }
 
-    public static String getUserEmail() {
+    public String getUserEmail() {
         return userEmail;
     }
 }

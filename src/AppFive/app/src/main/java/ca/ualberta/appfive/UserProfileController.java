@@ -4,9 +4,9 @@ package ca.ualberta.appfive;
  *
  */
 public class UserProfileController implements BController{
-    AppFive af = null;
+    AppFiveApp af = null;
 
-    public UserProfileController(AppFive appFive) {
+    public UserProfileController(AppFiveApp appFive) {
         this.af = appFive;
     }
 
