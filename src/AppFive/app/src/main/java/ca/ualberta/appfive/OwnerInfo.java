@@ -7,20 +7,12 @@ public class OwnerInfo {
 
     private String name;
     private String email;
-    private String mobile;
-    private String work;
 
-    public String getOwnerWork() {
-        return work;
+    public String getName() {
+        return name;
     }
 
-    public String getOwnerMobile() {
-        return mobile;
-    }
-
-    public String getName() {return name; }
     public String getEmail() {
         return email;
     }
-
 }
