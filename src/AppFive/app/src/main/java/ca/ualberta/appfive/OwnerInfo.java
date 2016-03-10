@@ -5,21 +5,21 @@ package ca.ualberta.appfive;
  */
 public class OwnerInfo {
 
-    private static String name;
-    private static String email;
-    private static String mobile;
-    private static String work;
+    private String name;
+    private String email;
+    private String mobile;
+    private String work;
 
-    public static String getOwnerWork() {
+    public String getOwnerWork() {
         return work;
     }
 
-    public static String getOwnerMobile() {
+    public String getOwnerMobile() {
         return mobile;
     }
 
-    public static String getName() {return name; }
-    public static String getEmail() {
+    public String getName() {return name; }
+    public String getEmail() {
         return email;
     }
 
