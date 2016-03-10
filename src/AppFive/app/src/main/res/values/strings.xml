@@ -54,10 +54,10 @@
     <string name="addBid">Add Bid</string>
     <string name="confirmPwd">Confirm Password</string>
     <string name="owned">Owned</string>
-    <string name="searching">...</string>
+    <string name="searching">…</string>
     <string name="welcome">Welcome!</string>
     <string name="title_activity_owner_info">OwnerInfoActivity</string>
-
+    <string name="user_not_found">Username not found</string>
     <string name="hello_world">Hello world!</string>
 
 </resources>
