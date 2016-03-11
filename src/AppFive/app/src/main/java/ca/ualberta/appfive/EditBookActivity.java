@@ -34,8 +34,8 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         editGenre = (EditText) findViewById(R.id.editgenre);
         editDesc = (EditText) findViewById(R.id.editDescription);
 
-        Intent index = getIntent();
-        Book myBook = AppFive.getMyBook(index);
+        final Intent index = getIntent();
+        Book myBook = AppController.getMyBook(index);
         //Set text space with current values
         editTitle.setText(myBook.getTitle(), TextView.BufferType.EDITABLE);
         editGenre.setText(myBook.getGenre(), TextView.BufferType.EDITABLE);
@@ -48,8 +48,9 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
                 String titleEdit = editTitle.getText().toString();
                 String genreEdit = editGenre.getText().toString();
                 String descEdit = editDesc.getText().toString();
-                //TODO: Save new changes into book object - set method?
 
+                Book newBook = new Book(titleEdit, genreEdit, descEdit, "Thumbnail");
+                AppController.editBook(index, newBook);
             }
 
         });
