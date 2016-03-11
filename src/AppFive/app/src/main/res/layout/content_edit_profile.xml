@@ -13,4 +13,30 @@
     tools:showIn="@layout/activity_edit_profile"
     android:background="@drawable/display_template">
 
+    <TextView
+        android:text="@string/editProfile"
+        android:textSize="15pt"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/editProfile" />
+    <TextView
+        android:id="@+id/t1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email"
+        android:textSize="10pt"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_below="@+id/editProfile"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="26dp" />
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/t1" />
+
+
 </RelativeLayout>

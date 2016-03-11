@@ -12,5 +12,81 @@
     tools:context="ca.ualberta.appfive.RegisterActivity"
     tools:showIn="@layout/activity_register"
     android:background="@drawable/display_template">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register"
+        android:textSize="15pt"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_alignParentStart="true"
+        android:id="@+id/saveReg" />
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:layout_gravity="center_horizontal"
+        android:onClick="register"
+        android:textSize="10pt"
+        android:layout_alignTop="@+id/owner"
+        android:layout_alignParentEnd="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/name"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/save"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="27dp" />
+    <EditText
+        android:id="@+id/regName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_alignStart="@+id/register"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/uNameEmail"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/regName"
+        android:layout_alignStart="@+id/regName" />
+    <EditText
+        android:id="@+id/regEmail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView4"
+        android:layout_alignStart="@+id/register"/>
 
+    <TextView
+        android:text="@string/password"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regEmail"
+        android:layout_alignStart="@+id/register"
+        android:id="@+id/textView5" />
+
+    <EditText
+        android:id="@+id/regPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:text="@string/confirmPwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+    <EditText
+        android:id="@+id/matchPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

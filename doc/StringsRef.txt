@@ -18,6 +18,7 @@ Strings
     // added users -- noun
 
     <string name="username"> Username</string>
+    <string name="name"> Name</string>
     <string name="password">Password</string>
     <string name="uNameEmail">Username/Email</string>
     <string name="userBorrowed">User Borrowed</string>
@@ -41,14 +42,18 @@ Strings
     <string name="min">min</string>
     <string name="myProfile">My Profile</string>
     <string name="myBook">My Book</string>
-
-
-    // added -- verb
+    <string name="email">Email</string>
+    <string name="aboutMe">About Me</string>
+    <string name="myBid">My Bid</string>
+    <string name="myBorrow">My Borrowing</string>
+    // added action
 
     <string name="logIn">Log In</string>
     <string name="register">Register</string>
+    <string name="saveReg">Save</string>
     <string name="save">Save</string>
     <string name="edit">Edit</string>
+    <string name="editBook">Edit Book</string>
     <string name="editProfile">Edit Profile</string>
     <string name="search">Search</string>
     <string name="Return">Return</string>
@@ -56,7 +61,11 @@ Strings
     <string name="addBid">Add Bid</string>
     <string name="confirmPwd">Confirm Password</string>
     <string name="owned">Owned</string>
-    <string name="searching">...</string>
+    <string name="searching">…</string>
     <string name="welcome">Welcome!</string>
+    <string name="title_activity_owner_info">OwnerInfoActivity</string>
+    <string name="user_not_found">Username not found</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
+

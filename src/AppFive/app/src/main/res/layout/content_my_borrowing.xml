@@ -13,4 +13,19 @@
     tools:showIn="@layout/activity_my_borrowing"
     android:background="@drawable/display_template">
 
+    <TextView
+        android:text="@string/myBorrow"
+        android:textSize="15pt"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/myBorrow" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listMyBorrow"
+        android:layout_below="@+id/myBorrow"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
