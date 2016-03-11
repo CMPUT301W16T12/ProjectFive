@@ -10,10 +10,9 @@ import android.widget.TextView;
 // accessed 29 January 2016
 public class ViewEntryHolder {
     private View entry;
-    private RadioButton radio = null;
+    //private RadioButton radio = null;
     private TextView titleText = null;
     private TextView genreText = null;
-    private TextView descriptionText = null;
     //TODO: Add other views to book list entry
 
     public ViewEntryHolder(View entry) {
@@ -34,13 +33,7 @@ public class ViewEntryHolder {
         return genreText;
     }
 
-    public TextView getDescriptionText() {
-        if(descriptionText == null){
-            descriptionText = (TextView) entry.findViewById(R.id.entry_description);
-        }
-        return descriptionText;
-    }
-
+    /*
     public RadioButton getRadio(){
         if(this.radio == null){
             this.radio = (RadioButton) entry.findViewById(R.id.radioButton);
@@ -48,5 +41,5 @@ public class ViewEntryHolder {
         entry.findViewById(R.id.book_entry_layout);
 
         return this.radio;
-    }
+    }*/
 }

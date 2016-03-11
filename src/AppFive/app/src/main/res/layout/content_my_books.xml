@@ -4,4 +4,41 @@
     android:layout_height="match_parent"
     android:background="@drawable/display_template">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/myBook"
+        android:id="@+id/textView6" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/available"
+            android:id="@+id/checkBoxAvailable" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bidded"
+            android:id="@+id/checkBoxBidded" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/borrowed"
+            android:id="@+id/checkBoxBorrowed" />
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listViewBooks"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>
