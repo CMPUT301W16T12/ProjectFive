@@ -21,7 +21,7 @@ public class Book{
     private Status status;
     private OwnerInfo owner;
     private String thumbnail;
-    private ArrayList<String> bids;
+    private ArrayList<String> bids = new ArrayList<String>();
 
     public  Book() {}
 
@@ -80,4 +80,25 @@ public class Book{
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
     }
+
+    public ArrayList<String> getBids() {
+        return bids;
+    }
+
+    public String getBid(int index) {
+        return bids.get(index);
+    }
+
+    public void addBid(String bid){
+        this.bids.add(bid);
+    }
+
+    public void deleteBid (String bid){
+        this.bids.remove(bid);
+    }
+
+    public void deleteBids (){
+        this.bids.clear();
+    }
+
 }
