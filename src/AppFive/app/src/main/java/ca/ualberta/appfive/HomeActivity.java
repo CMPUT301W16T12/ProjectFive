@@ -2,16 +2,12 @@ package ca.ualberta.appfive;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 public class HomeActivity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setResult(RESULT_OK);
-                Intent intent = new Intent(HomeActivity.this, BookDisplayActivity.class);
+                Intent intent = new Intent(HomeActivity.this, MyBooksActivity.class);
                 startActivity(intent);
             }
         });
