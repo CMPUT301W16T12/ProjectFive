@@ -16,6 +16,7 @@
     // added users -- noun
 
     <string name="username"> Username</string>
+    <string name="name"> Name</string>
     <string name="password">Password</string>
     <string name="uNameEmail">Username/Email</string>
     <string name="userBorrowed">User Borrowed</string>
@@ -39,14 +40,18 @@
     <string name="min">min</string>
     <string name="myProfile">My Profile</string>
     <string name="myBook">My Book</string>
-
-
+    <string name="email">Email</string>
+    <string name="aboutMe">About Me</string>
+    <string name="myBid">My Bid</string>
+    <string name="myBorrow">My Borrowing</string>
     // added action
 
     <string name="logIn">Log In</string>
     <string name="register">Register</string>
+    <string name="saveReg">Save</string>
     <string name="save">Save</string>
     <string name="edit">Edit</string>
+    <string name="editBook">Edit Book</string>
     <string name="editProfile">Edit Profile</string>
     <string name="search">Search</string>
     <string name="Return">Return</string>

@@ -14,7 +14,7 @@
     android:background="@drawable/display_template">
 
   <TextView
-      android:text="Edit Book"
+      android:text="@string/editBook"
       android:textSize="15pt"
       android:layout_marginTop="@dimen/fab_margin"
       android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
 
     <EditText
         android:id="@+id/editTitle"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:hint="@string/title"
