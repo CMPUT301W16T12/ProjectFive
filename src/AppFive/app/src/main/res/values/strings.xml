@@ -62,5 +62,6 @@
     <string name="title_activity_owner_info">OwnerInfoActivity</string>
     <string name="user_not_found">Username not found</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_my_books">MyBooksActivity</string>
 
 </resources>

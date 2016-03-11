@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ca.ualberta.appfive" >
+    package="ca.ualberta.appfive">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
@@ -60,8 +60,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".OwnerInfoActivity"
-            android:label="@string/title_activity_owner_info" >
-        </activity>
+            android:label="@string/title_activity_owner_info"></activity>
+        <activity
+            android:name=".MyBooksActivity"
+            android:label="@string/title_activity_my_books"></activity>
     </application>
 
 </manifest>
