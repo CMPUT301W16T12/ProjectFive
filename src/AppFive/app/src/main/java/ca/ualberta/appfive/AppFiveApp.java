@@ -10,22 +10,22 @@ import android.app.Application;
  */
 public class AppFiveApp extends Application {
     // Singleton
-    transient private static AppFiveApp appFiveApp = null;
+    transient private static AppFive appFive = null;
 
-    static AppFiveApp getAppFive() {
-        if (appFiveApp == null) {
-            appFiveApp = new AppFiveApp();
+    static AppFive getAppFive() {
+        if (appFive == null) {
+            appFive = new AppFive();
         }
-        return appFiveApp;
+        return appFive;
     }
 
     // Singleton
-    transient private static UserProfileController userProfileController = null;
+    transient private static AppController appController = null;
 
-    public static UserProfileController getuserProfileController() {
-        if (userProfileController == null) {
-            userProfileController = new UserProfileController(getAppFive());
+    public static AppController getAppController() {
+        if (appController == null) {
+       appController = new AppController(getAppFive());
         }
-        return userProfileController;
+        return appController;
     }
 }

@@ -16,9 +16,7 @@
     // added users -- noun
 
     <string name="username"> Username</string>
-    <string name="name"> Name</string>
     <string name="password">Password</string>
-    <string name="uNameEmail">Username/Email</string>
     <string name="userBorrowed">User Borrowed</string>
     <string name="userBids">User Bids</string>
     <string name="owner">Owner</string>

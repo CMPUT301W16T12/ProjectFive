@@ -5,4 +5,5 @@ package ca.ualberta.appfive;
  *
  */
 public interface BController {
+
 }
