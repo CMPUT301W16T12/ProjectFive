@@ -15,8 +15,8 @@ import java.util.List;
 // accessed 29 January 2016
 public class BookListAdapter extends ArrayAdapter<Book> {
 
-    private int selectedRadioIndex = -1;
-    private RadioButton selectedRadio;
+    //private int selectedRadioIndex = -1;
+    //private RadioButton selectedRadio;
 
     public BookListAdapter(Context context, List<Book> objects) {
         super(context, R.layout.book_entry, objects);
@@ -36,6 +36,10 @@ public class BookListAdapter extends ArrayAdapter<Book> {
             holder = (ViewEntryHolder)convertView.getTag();
         }
 
+        holder.getTitleText().setText(getItem(position).getTitle());
+        holder.getGenreText().setText(getItem(position).getGenre());
+
+        /*
         // Strategy for radio button behaviour borrowed from
         // http://stackoverflow.com/questions/7329856/how-to-use-radiogroup-in-listview-custom-adapter
         // by Inon Stelman on 14 September 2011
@@ -64,6 +68,7 @@ public class BookListAdapter extends ArrayAdapter<Book> {
                 selectedRadio = holder.getRadio();
             }
         }
+        */
 
         return convertView;
     }
@@ -71,7 +76,7 @@ public class BookListAdapter extends ArrayAdapter<Book> {
     /**
      * Returns the index of the selected radio button
      */
-    public int getSelectedIndex() {
-        return selectedRadioIndex;
-    }
+    //public int getSelectedIndex() {
+    //    return selectedRadioIndex;
+    //}
 }

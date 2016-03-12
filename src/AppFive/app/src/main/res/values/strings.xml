@@ -37,7 +37,7 @@
     <string name="letter">A-Z</string>
     <string name="min">min</string>
     <string name="myProfile">My Profile</string>
-    <string name="myBook">My Book</string>
+    <string name="myBook">My Books</string>
     <string name="email">Email</string>
     <string name="aboutMe">About Me</string>
     <string name="myBid">My Bid</string>
@@ -64,5 +64,8 @@
     <string name="user_not_found">Username not found</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_my_books">MyBooksActivity</string>
+    <string name="available">Available</string>
+    <string name="bidded">Bidded</string>
+    <string name="borrowed">Borrowed</string>
 
 </resources>
