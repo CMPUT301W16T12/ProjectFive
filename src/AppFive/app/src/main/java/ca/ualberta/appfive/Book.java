@@ -29,9 +29,11 @@ public class Book extends BModel<BView>{
     // TODO: Make bids a Class
     private ArrayList<String> bids = new ArrayList<String>();
 
+    /*
     public Book() {
         super();
     }
+    */
 
     /**
      * Construct a book from scratch, without an id.
@@ -52,10 +54,6 @@ public class Book extends BModel<BView>{
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getTitle() {
