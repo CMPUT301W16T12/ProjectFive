@@ -16,7 +16,6 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
     /**
      * Book object to be edited
      */
-    private Book myBook;
 
     private EditText editTitle, editGenre, editDesc;
 
@@ -28,14 +27,19 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        AppFive af = AppFiveApp.getAppFive();
+        af.addView(this);
+        final AppController ac = AppFiveApp.getAppController();
+
         Button saveBookEdit = (Button) findViewById(R.id.editbookSave);
 
         editTitle = (EditText) findViewById(R.id.edittitle);
         editGenre = (EditText) findViewById(R.id.editgenre);
         editDesc = (EditText) findViewById(R.id.editDescription);
 
-        final Intent index = getIntent();
-        Book myBook = AppController.getMyBook(index);
+        final int index = getIntent().getIntExtra("INDEX", -1);
+        Book myBook = ac.getMyBook(index);
+
         //Set text space with current values
         editTitle.setText(myBook.getTitle(), TextView.BufferType.EDITABLE);
         editGenre.setText(myBook.getGenre(), TextView.BufferType.EDITABLE);
@@ -50,7 +54,7 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
                 String descEdit = editDesc.getText().toString();
 
                 Book newBook = new Book(titleEdit, genreEdit, descEdit, "Thumbnail");
-                AppController.editBook(index, newBook);
+                ac.editBook(index, newBook);
             }
 
         });
@@ -69,6 +73,13 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
 
         throw new DatabaseConnectException();
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        AppFive fc = AppFiveApp.getAppFive();
+        fc.deleteView(this);
     }
 
     @Override

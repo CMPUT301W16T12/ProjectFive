@@ -16,11 +16,14 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_books);
 
-        bla = new BookListAdapter(this, AppFive.getBooks());
+        AppFive af = AppFiveApp.getAppFive();
+        af.addView(this);
+        AppController ac = AppFiveApp.getAppController();
 
-        for(Book book : AppFive.getBooks()){
-            book.addView(this);
-        }
+        //ac.addBook(new Book("test", "this is a test", "testing","thumbnail"));
+
+        bla = new BookListAdapter(this, ac.getMyBooks());
+
 
         ListView booksListView = (ListView) findViewById(R.id.listViewBooks);
         booksListView.setAdapter(bla);
@@ -29,8 +32,8 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
         booksListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MyBooksActivity.this, EditBookActivity.class);
-                intent.putExtra("book_index", position);
+                Intent intent = new Intent(MyBooksActivity.this, BookDisplayActivity.class);
+                intent.putExtra("INDEX", position);
                 startActivity(intent);
             }
         }
@@ -38,7 +41,14 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        AppFive fc = AppFiveApp.getAppFive();
+        fc.deleteView(this);
+    }
+
+    @Override
     public void update(BModel model) {
-        bla.notifyDataSetChanged();
+        //bla.notifyDataSetChanged();
     }
 }

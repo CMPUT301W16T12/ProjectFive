@@ -13,7 +13,7 @@ import android.widget.Button;
  * This activity displays a book and all of it's data.
  * The mode will control the view the user has of the book and the options to edit it.
  */
-public class BookDisplayActivity extends AppCompatActivity {
+public class BookDisplayActivity extends AppCompatActivity implements BView<BModel> {
 
     /**
      * The book that is being displayed
@@ -47,6 +47,12 @@ public class BookDisplayActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        AppFive af = AppFiveApp.getAppFive();
+        af.addView(this);
+        final AppController ac = AppFiveApp.getAppController();
+
+        final int index = getIntent().getIntExtra("INDEX", -1);
+        Book myBook = ac.getMyBook(index);
 
         Button ownerButton = (Button) findViewById(R.id.owner);
 
@@ -70,4 +76,15 @@ public class BookDisplayActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        AppFive fc = AppFiveApp.getAppFive();
+        fc.deleteView(this);
+    }
+
+    @Override
+    public void update(BModel model) {
+
+    }
 }

@@ -21,11 +21,11 @@ public class AppController implements BController{
         return af.getBook(index);
     }
 
-    private void addBook(Book book) {
+    public void addBook(Book book) {
         af.addBook(book);
     }
 
-    private void deleteBook(int index) {
+    public void deleteBook(int index) {
         af.deleteBook(index);
     }
 
