@@ -42,6 +42,7 @@
     <string name="aboutMe">About Me</string>
     <string name="myBid">My Bid</string>
     <string name="myBorrow">My Borrowing</string>
+    <string name="thumbnail">*Thumbnail*</string>
     // added action
 
     <string name="logIn">Log In</string>
