@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class AppFive extends BModel<BView>{
 
     private UserProfile userProfile;
-    static private ArrayList<Book> books = new ArrayList<Book>();
-    static private ArrayList<Book> mybooks = new ArrayList<Book>();
+    private ArrayList<Book> books = new ArrayList<Book>();
+    private ArrayList<Book> myBooks = new ArrayList<Book>();
 
     AppFive() {
         super();
@@ -20,26 +20,31 @@ public class AppFive extends BModel<BView>{
         this.userProfile = UserProfile.getInstance();
     }
 
-    public static ArrayList<Book> getBooks(){
+    public ArrayList<Book> getBooks(){
        return books;
     }
 
-    public static Book getBook(int index){
+    public Book getBook(int index){
         return books.get(index);
     }
 
-    private static void addBook(Book book) {
+    public void addBook(Book book) {
         books.add(book);
-        book.notifyViews();
+        myBooks.add(book);
+        notifyViews();
         //TODO update database
+        // try catch block to sync, follow offline user story if fail
     }
 
-    private static void deleteBook(int index) {
+    public void deleteBook(int index) {
         books.remove(index);
-        //TODO update database
+        myBooks.remove(index);
+        notifyViews();
+        // TODO sync up with database
+        // try catch block to sync, follow offline user story if fail
     }
 
-    public static void editBook(int index, Book newBook) {
+    public void editBook(int index, Book newBook) {
         // to edit a book construct a new book with the new attributes
         // and call this function with the index of the old instance,
         // and the new book to replace it.
@@ -48,25 +53,17 @@ public class AppFive extends BModel<BView>{
         oldBook.setDescription(newBook.getDescription());
         oldBook.setGenre(newBook.getGenre());
         oldBook.setTitle(newBook.getTitle());
+        notifyViews();
 
-        //TODO update database
+        // TODO sync up with database
+        // try catch block to sync, follow offline user story if fail
     }
 
-
-
-
-    public static ArrayList<Book> getMybooks(){
-        return mybooks;
+    public ArrayList<Book> getMyBooks(){
+        return myBooks;
     }
 
-    public static Book getMybook(int index){
-        return mybooks.get(index);
+    public Book getMyBook(int index){
+        return myBooks.get(index);
     }
-
-    public static void addMybook(Book book) {}
-
-    public static void deleteMybook(int index) {}
-
-
-
 }
