@@ -9,10 +9,19 @@ public class AppController implements BController{
 
     AppFive af = null;
 
-    public AppController(AppFive appFive) {
-        this.af = appFive;
+    public AppController(AppFive appFive) {this.af = appFive;}
+
+    public String getUserName() {return af.getUserName();}
+
+    public void setUserName(String userName) {af.setUserName(userName);}
+
+    public String getUserEmail() {
+        return af.getUserEmail();
     }
 
+    public void setUserEmail(String email) {
+        af.setUserEmail(email);
+    }
     public ArrayList<Book> getBooks(){
         return af.getBooks();
     }
