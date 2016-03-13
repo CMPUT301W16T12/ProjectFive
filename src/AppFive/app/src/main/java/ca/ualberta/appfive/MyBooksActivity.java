@@ -21,7 +21,7 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
         af.addView(this);
         AppController ac = AppFiveApp.getAppController();
 
-        ac.addBook(new Book("test", "this is a test", "testing","thumbnail"));
+       // ac.addBook(new Book("test", "this is a test", "testing","thumbnail"));
 
         bla = new BookListAdapter(this, ac.getMyBooks());
 
@@ -58,6 +58,6 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
 
     @Override
     public void update(BModel model) {
-        //bla.notifyDataSetChanged();
+        bla.notifyDataSetChanged();
     }
 }
