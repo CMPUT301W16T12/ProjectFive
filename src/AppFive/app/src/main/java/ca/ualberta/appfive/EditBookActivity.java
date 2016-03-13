@@ -44,9 +44,10 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
             editTitle.setText(myBook.getTitle(), TextView.BufferType.EDITABLE);
             editGenre.setText(myBook.getGenre(), TextView.BufferType.EDITABLE);
             editDesc.setText(myBook.getDescription(), TextView.BufferType.EDITABLE);
+            
+        } else {
             title.setText("Add Book");
         }
-
         saveBookEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
