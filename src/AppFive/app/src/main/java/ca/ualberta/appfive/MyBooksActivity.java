@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
@@ -20,11 +21,11 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
         af.addView(this);
         AppController ac = AppFiveApp.getAppController();
 
-        //ac.addBook(new Book("test", "this is a test", "testing","thumbnail"));
+        ac.addBook(new Book("test", "this is a test", "testing","thumbnail"));
 
         bla = new BookListAdapter(this, ac.getMyBooks());
 
-
+        Button addBookButton = (Button) findViewById(R.id.addbookbutton);
         ListView booksListView = (ListView) findViewById(R.id.listViewBooks);
         booksListView.setAdapter(bla);
 
@@ -38,6 +39,14 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
             }
         }
         );
+        // Behaviour for clicking on add book button
+        addBookButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyBooksActivity.this, EditBookActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

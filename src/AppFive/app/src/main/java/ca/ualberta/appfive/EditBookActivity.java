@@ -37,13 +37,14 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         editGenre = (EditText) findViewById(R.id.editgenre);
         editDesc = (EditText) findViewById(R.id.editDescription);
 
-        final int index = getIntent().getIntExtra("INDEX", -1);
-        Book myBook = ac.getMyBook(index);
-
-        //Set text space with current values
-        editTitle.setText(myBook.getTitle(), TextView.BufferType.EDITABLE);
-        editGenre.setText(myBook.getGenre(), TextView.BufferType.EDITABLE);
-        editDesc.setText(myBook.getDescription(), TextView.BufferType.EDITABLE);
+        final int index = getIntent().getIntExtra("INDEX", -2);
+        if(index!=-2) {
+            Book myBook = ac.getMyBook(index);
+            //Set text space with current values
+            editTitle.setText(myBook.getTitle(), TextView.BufferType.EDITABLE);
+            editGenre.setText(myBook.getGenre(), TextView.BufferType.EDITABLE);
+            editDesc.setText(myBook.getDescription(), TextView.BufferType.EDITABLE);
+        }
 
         saveBookEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,12 +55,16 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
                 String descEdit = editDesc.getText().toString();
 
                 Book newBook = new Book(titleEdit, genreEdit, descEdit, "Thumbnail");
-                ac.editBook(index, newBook);
+                if(index != -2){
+                    ac.editBook(index, newBook);
+                } else {
+                    ac.addBook(newBook);
+                }
+
             }
 
         });
     }
-
 
     /**
      * Call to commit the changes made to the book
