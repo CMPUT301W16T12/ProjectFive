@@ -10,7 +10,7 @@ import android.view.View;
 /**
  * Activity for editing the user's profile
  */
-public class EditProfileActivity extends AppCompatActivity {
+public class EditProfileActivity extends AppCompatActivity implements BView<BModel>{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,5 +27,10 @@ public class EditProfileActivity extends AppCompatActivity {
      */
     protected void commitProfileEdits(String email) throws DatabaseConnectException{
         throw new DatabaseConnectException();
+    }
+
+    @Override
+    public void update(BModel model) {
+
     }
 }
