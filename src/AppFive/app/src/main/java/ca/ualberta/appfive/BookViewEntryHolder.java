@@ -9,7 +9,7 @@ import android.widget.TextView;
 // http://stackoverflow.com/questions/11281952/listview-with-customized-row-layout-android
 // by Sajmon on 1 July 2012
 // accessed 29 January 2016
-public class ViewEntryHolder {
+public class BookViewEntryHolder {
     private View entry;
     //private RadioButton radio = null;
     private TextView titleText = null;
@@ -17,7 +17,7 @@ public class ViewEntryHolder {
     private ImageView statusImage = null;
     //TODO: Add other views to book list entry
 
-    public ViewEntryHolder(View entry) {
+    public BookViewEntryHolder(View entry) {
         this.entry = entry;
     }
 

@@ -60,10 +60,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".OwnerInfoActivity"
-            android:label="@string/title_activity_owner_info"></activity>
+            android:label="@string/title_activity_owner_info" />
         <activity
             android:name=".MyBooksActivity"
-            android:label="@string/title_activity_my_books"></activity>
+            android:label="@string/title_activity_my_books" />
+        <activity android:name=".BidsDisplayActivity"></activity>
     </application>
 
 </manifest>

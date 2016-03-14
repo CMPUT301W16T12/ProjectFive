@@ -1,13 +1,10 @@
 package ca.ualberta.appfive;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.RadioButton;
 
 import java.util.List;
 
@@ -26,17 +23,17 @@ public class BookListAdapter extends ArrayAdapter<Book> {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        ViewEntryHolder holder = null;
+        BookViewEntryHolder holder = null;
         LayoutInflater inflater = LayoutInflater.from(getContext());
         int statusResource = -1;
 
         // Create the holder
         if(convertView == null){
             convertView = inflater.inflate(R.layout.book_entry, null, false);
-            holder = new ViewEntryHolder(convertView){};
+            holder = new BookViewEntryHolder(convertView){};
             convertView.setTag(holder);
         } else {
-            holder = (ViewEntryHolder)convertView.getTag();
+            holder = (BookViewEntryHolder)convertView.getTag();
         }
 
         if (getItem(position).getStatus() == Book.Status.AVAILABLE){

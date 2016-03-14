@@ -27,7 +27,7 @@ public class Book extends BModel<BView>{
     // TODO: Thumbnail is a picture
     private String thumbnail = "thumbnail";
     // TODO: Make bids a Class
-    private ArrayList<String> bids = new ArrayList<String>();
+    private ArrayList<Bid> bids = new ArrayList<Bid>();
 
     /*
     public Book() {
@@ -104,19 +104,19 @@ public class Book extends BModel<BView>{
         this.thumbnail = thumbnail;
     }
 
-    public ArrayList<String> getBids() {
+    public ArrayList<Bid> getBids() {
         return bids;
     }
 
-    public String getBid(int index) {
+    public Bid getBid(int index) {
         return bids.get(index);
     }
 
-    public void addBid(String bid){
+    public void addBid(Bid bid){
         this.bids.add(bid);
     }
 
-    public void deleteBid (String bid){
+    public void deleteBid (Bid bid){
         this.bids.remove(bid);
     }
 
