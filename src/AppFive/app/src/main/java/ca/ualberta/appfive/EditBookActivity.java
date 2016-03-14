@@ -36,7 +36,7 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         editTitle = (EditText) findViewById(R.id.edittitle);
         editGenre = (EditText) findViewById(R.id.editgenre);
         editDesc = (EditText) findViewById(R.id.editDescription);
-        TextView title = (TextView) findViewById(R.id.editBook);
+        TextView title = (TextView) findViewById(R.id.editBookTitle);
         final int index = getIntent().getIntExtra("INDEX", -2);
         if(index!=-2) {
             Book myBook = ac.getMyBook(index);

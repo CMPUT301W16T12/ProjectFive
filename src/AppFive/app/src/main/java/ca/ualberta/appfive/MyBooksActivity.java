@@ -40,6 +40,7 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MyBooksActivity.this, BookDisplayActivity.class);
+                intent.putExtra("INDEX",position);
                 intent.putExtra("MODE", BookDisplayActivity.DISPLAY_EDIT_MODE);
                 startActivity(intent);
             }

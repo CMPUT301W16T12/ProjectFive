@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * This activity displays a book and all of it's data.
@@ -61,7 +62,8 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
 
-        final int index = getIntent().getIntExtra("INDEX", -1);
+        final int index = getindex();
+
         final int mode = getIntent().getIntExtra("MODE", DISPLAY_AVAILABLE_MODE);
         myBook = ac.getMyBook(index);
 
@@ -72,6 +74,11 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         Button returnButton = (Button) findViewById(R.id.returnButton);
         Button bidInfoButton = (Button) findViewById(R.id.bidInfoButton);
         Button bidsButton = (Button) findViewById(R.id.bidsButton);
+        TextView bookTitle = (TextView) findViewById(R.id.bookTitle);
+        TextView bookdescription = (TextView) findViewById(R.id.description);
+
+        bookdescription.setText(myBook.getDescription());
+        bookTitle.setText(myBook.getTitle());
 
         ownerButton.setVisibility(View.INVISIBLE);
         ownerButton.setActivated(false);
@@ -177,6 +184,11 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
             }
         });
 
+    }
+
+    private int getindex (){
+        int index = getIntent().getIntExtra("INDEX", -1);
+        return index;
     }
 
     @Override
