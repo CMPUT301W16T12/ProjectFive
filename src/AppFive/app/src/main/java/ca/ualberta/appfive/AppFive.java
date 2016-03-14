@@ -20,6 +20,24 @@ public class AppFive extends BModel<BView>{
         this.userProfile = UserProfile.getInstance();
     }
 
+    public String getUserName() {
+        return UserProfile.getUserName();
+    }
+
+    public void setUserName(String userName) {
+        UserProfile.setUserName(userName);
+        notifyViews();
+    }
+
+    public String getUserEmail() {
+        return UserProfile.getUserEmail();
+    }
+
+    public void setUserEmail(String email) {
+        UserProfile.setUserEmail(email);
+        notifyViews();
+    }
+
     public ArrayList<Book> getBooks(){
        return books;
     }
