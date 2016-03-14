@@ -18,7 +18,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 /**
- * Created by Omar on 3/14/2016.
+ * This class saves and loads files with json objects
  */
 public class FileParser {
     public static String FILENAME = "books.json";
@@ -28,6 +28,9 @@ public class FileParser {
         this.context = context;
     }
 
+    /**
+     * This method saves book array to a file
+     */
     public void saveInFile() {
         try {
             FileOutputStream fos = context.openFileOutput(FILENAME, 0);
@@ -45,6 +48,9 @@ public class FileParser {
 
     }
 
+    /**
+     * This method loads a book array from a file
+     */
     public void loadFromFile() {
         try {
             FileInputStream fis = context.openFileInput(FILENAME);

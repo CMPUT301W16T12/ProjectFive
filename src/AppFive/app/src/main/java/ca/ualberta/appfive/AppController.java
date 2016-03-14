@@ -3,7 +3,9 @@ package ca.ualberta.appfive;
 import java.util.ArrayList;
 
 /**
- * Created by Omar on 3/10/2016.
+ * App Controller calls for methods of the AppFive model
+ * The methods includes getters and setters from various sub-models.
+ * Sub-models include User Profile and Book details.
  */
 public class AppController implements BController{
 

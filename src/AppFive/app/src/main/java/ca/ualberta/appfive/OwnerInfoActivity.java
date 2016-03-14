@@ -8,6 +8,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Activity for displays owner's information
+ */
 public class OwnerInfoActivity extends AppCompatActivity implements BView<BModel> {
 
     @Override
