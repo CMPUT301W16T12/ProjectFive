@@ -19,7 +19,7 @@
       android:layout_marginTop="@dimen/fab_margin"
       android:layout_height="wrap_content"
       android:layout_width="wrap_content"
-      android:id="@+id/editBook" />
+      android:id="@+id/editBookTitle" />
 
     <TextView
         android:id="@+id/title"
@@ -89,7 +89,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/thumbnail"
         android:id="@+id/textView6"
-        android:layout_below="@+id/editBook"
+        android:layout_below="@+id/editBookTitle"
         android:layout_alignParentStart="true" />
 
 </RelativeLayout>

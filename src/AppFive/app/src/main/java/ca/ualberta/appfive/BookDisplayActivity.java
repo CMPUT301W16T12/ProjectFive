@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * This activity displays a book and all of it's data.
@@ -26,19 +27,29 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
     public static final String BOOK_DISPLAY_MODE_KEY = "ca.ualberta.appfive.book_display_mode_key";
 
     /**
-     * The mode for allowing the user to view and possibly edit/delete the book
+     * The mode for allowing the user to view and possibly edit/delete the book if not borrowed
      */
     public static final int DISPLAY_EDIT_MODE = 1;
 
     /**
-     * The mode for showing a borrowed item
+     * The mode for showing a borrowed item to borrower
      */
     public static final int DISPLAY_BORROWED_MODE = 2;
 
     /**
      * The mode for showing a book that the user can bid on
      */
-    public static final int DISPLAY_BID_MODE = 3;
+    public static final int DISPLAY_AVAILABLE_MODE = 3;
+
+    /**
+     * The mode for showing a book that the user has bid on
+     */
+    public static final int DISPLAY_BIDED_MODE = 4;
+
+    /**
+     * The mode for allowing the user to view and possibly edit/delete the book if borrowed
+     */
+    public static final int DISPLAY_OWNER_BORROWED_MODE = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +62,74 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
 
-        final int index = getIntent().getIntExtra("INDEX", -1);
-        Book myBook = ac.getMyBook(index);
+        final int index = getindex();
+
+        final int mode = getIntent().getIntExtra("MODE", DISPLAY_AVAILABLE_MODE);
+        myBook = ac.getMyBook(index);
 
         Button ownerButton = (Button) findViewById(R.id.owner);
+        Button addBidButton = (Button) findViewById(R.id.addBid);
+        Button editBookButton = (Button) findViewById(R.id.editBook);
+        Button deleteBookButton = (Button) findViewById(R.id.deleteButton);
+        Button returnButton = (Button) findViewById(R.id.returnButton);
+        Button bidInfoButton = (Button) findViewById(R.id.bidInfoButton);
+        Button bidsButton = (Button) findViewById(R.id.bidsButton);
+        TextView bookTitle = (TextView) findViewById(R.id.bookTitle);
+        TextView bookdescription = (TextView) findViewById(R.id.description);
+
+        bookdescription.setText(myBook.getDescription());
+        bookTitle.setText(myBook.getTitle());
+
+        ownerButton.setVisibility(View.INVISIBLE);
+        ownerButton.setActivated(false);
+        addBidButton.setVisibility(View.INVISIBLE);
+        addBidButton.setActivated(false);
+        editBookButton.setVisibility(View.INVISIBLE);
+        editBookButton.setActivated(false);
+        deleteBookButton.setVisibility(View.INVISIBLE);
+        deleteBookButton.setActivated(false);
+        returnButton.setVisibility(View.INVISIBLE);
+        returnButton.setActivated(false);
+        bidInfoButton.setVisibility(View.INVISIBLE);
+        bidInfoButton.setActivated(false);
+        bidsButton.setVisibility(View.INVISIBLE);
+        bidsButton.setActivated(false);
+
+
+        switch (mode){
+            case 1:
+                bidsButton.setActivated(true);
+                bidsButton.setVisibility(View.VISIBLE);
+                editBookButton.setActivated(true);
+                editBookButton.setVisibility(View.VISIBLE);
+                deleteBookButton.setVisibility(View.VISIBLE);
+                deleteBookButton.setActivated(true);
+                break;
+            case 2:
+                ownerButton.setActivated(true);
+                ownerButton.setVisibility(View.VISIBLE);
+                bidInfoButton.setActivated(true);
+                bidInfoButton.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                ownerButton.setActivated(true);
+                ownerButton.setVisibility(View.VISIBLE);
+                addBidButton.setVisibility(View.VISIBLE);
+                addBidButton.setActivated(true);
+                break;
+            case 4:
+                bidInfoButton.setActivated(true);
+                bidInfoButton.setVisibility(View.VISIBLE);
+                ownerButton.setVisibility(View.VISIBLE);
+                ownerButton.setActivated(true);
+                break;
+            case 5:
+                returnButton.setActivated(true);
+                returnButton.setVisibility(View.VISIBLE);
+            default:
+                break;
+        }
+
 
         ownerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,17 +138,57 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
                 startActivity(intent);
             }
         });
-        Button addBidButton = (Button) findViewById(R.id.addBid);
 
         addBidButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-              //TODO: create NewBidActivity before uncommenting below
-              //  Intent intent = new Intent(BookDisplayActivity.this, NewBidActivity.class);
-              //  startActivity(intent);
+              //TODO: create NewBidPopup before uncommenting below
             }
         });
+
+        editBookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(BookDisplayActivity.this, EditBookActivity.class);
+                intent.putExtra("INDEX", index);
+                startActivity(intent);
+            }
+        });
+
+        deleteBookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ac.deleteBook(index);
+                finish();
+            }
+        });
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myBook.setStatus(Book.Status.AVAILABLE);
+                ac.editBook(index, myBook);
+                finish();
+            }
+        });
+        bidInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO SHOW POPUP WITH BID RATE
+            }
+        });
+        bidsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO SHOW NEW SCREEN WITH ALL BIDS AND OPTIONS TO ACCEPT OR DECLINE BIDS
+            }
+        });
+
+    }
+
+    private int getindex (){
+        int index = getIntent().getIntExtra("INDEX", -1);
+        return index;
     }
 
     @Override
