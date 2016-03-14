@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.google.gson.Gson;
+
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -16,7 +18,7 @@ import java.io.OutputStreamWriter;
 /**
  * Activity for making a new user account
  */
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity implements BView<BModel>{
 
 
     @Override
@@ -25,6 +27,10 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        AppFive af = AppFiveApp.getAppFive();
+        af.addView(this);
+        final AppController ac = AppFiveApp.getAppController();
 
 
        // saveInFile();
@@ -42,23 +48,18 @@ public class RegisterActivity extends AppCompatActivity {
             throws DatabaseConnectException {
         throw new DatabaseConnectException();
     }
-    //TODO: FIXME: need save new username to database
- /**   private void saveInFile() {
-        try {
-            FileOutputStream fos = openFileOutput(USERNAMEDATA, 0);
-            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
-            Gson gson = new Gson();
-            gson.toJson(usernameInput, out);
-            out.flush();
-            fos.close();
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            throw new RuntimeException();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            throw new RuntimeException();
-        }
+
+    @Override
+    public void update(BModel model) {
 
     }
-*/
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        AppFive fc = AppFiveApp.getAppFive();
+        fc.deleteView(this);
+        fc.notifyViews();
+    }
+
 }

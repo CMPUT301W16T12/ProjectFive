@@ -12,11 +12,7 @@ import java.util.List;
 /**
  * Shows a list of search results retrieved from the database
  */
-public class SearchResultsActivity extends AppCompatActivity {
-    /**
-     * Array of books according to the search criteria
-     */
-    private List<Book> searchResults;
+public class SearchResultsActivity extends AppCompatActivity implements BView<BModel>{
 
 
     @Override
@@ -26,6 +22,24 @@ public class SearchResultsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        AppFive af = AppFiveApp.getAppFive();
+        af.addView(this);
+        final AppController ac = AppFiveApp.getAppController();
     }
 
+    @Override
+    public void update(BModel model) {
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        AppFive fc = AppFiveApp.getAppFive();
+        fc.deleteView(this);
+        FileParser parser = new FileParser(this.getApplicationContext());
+        parser.saveInFile();
+        fc.notifyViews();
+    }
 }

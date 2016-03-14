@@ -1,6 +1,8 @@
 package ca.ualberta.appfive;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +28,7 @@ public class BookListAdapter extends ArrayAdapter<Book> {
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewEntryHolder holder = null;
         LayoutInflater inflater = LayoutInflater.from(getContext());
+        int statusResource = -1;
 
         // Create the holder
         if(convertView == null){
@@ -36,8 +39,17 @@ public class BookListAdapter extends ArrayAdapter<Book> {
             holder = (ViewEntryHolder)convertView.getTag();
         }
 
+        if (getItem(position).getStatus() == Book.Status.AVAILABLE){
+            statusResource = R.drawable.ic_status_available;
+        } else if(getItem(position).getStatus() == Book.Status.BIDDED){
+            statusResource = R.drawable.ic_status_bidded;
+        }else {
+            statusResource = R.drawable.ic_status_borrowed;
+        }
+
         holder.getTitleText().setText(getItem(position).getTitle());
         holder.getGenreText().setText(getItem(position).getGenre());
+        holder.getStatusImage().setImageResource(statusResource);
 
         /*
         // Strategy for radio button behaviour borrowed from

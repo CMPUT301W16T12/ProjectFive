@@ -58,6 +58,34 @@
         android:layout_height="263dp"
         android:layout_weight="1"
         android:scrollbars="vertical"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/notificationsTitle"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/myBorrowedButton"
+        android:id="@+id/borrowedButton"
+        android:layout_marginEnd="41dp"
+        android:layout_below="@+id/search"
+        android:layout_toStartOf="@+id/biddedButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/myBidsButton"
+        android:id="@+id/biddedButton"
+        android:layout_marginEnd="65dp"
+        android:layout_below="@+id/myProfile"
+        android:layout_alignEnd="@+id/myBook" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/notifications"
+        android:id="@+id/notificationsTitle"
+        android:layout_below="@+id/borrowedButton"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

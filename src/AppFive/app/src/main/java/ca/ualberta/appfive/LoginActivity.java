@@ -20,14 +20,13 @@ import java.io.OutputStreamWriter;
 /**
  * This is the activity when the user logs in
  */
-public class LoginActivity extends AppCompatActivity implements BView<UserProfile>{
+public class LoginActivity extends AppCompatActivity implements BView<BModel>{
     /**
      * This string is the location of saved userdata.
      * This should be referenced when device is offline.
      * This might be referenced for skipping login
      * This should be updated when user logs in, or when user updates data
      */
-    private static final String USERNAMEDATA = "usernameData.sav";
     private EditText usernameInput;
 
     private String username;
@@ -40,6 +39,9 @@ public class LoginActivity extends AppCompatActivity implements BView<UserProfil
         setContentView(R.layout.activity_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        AppFive af = AppFiveApp.getAppFive();
+        af.addView(this);
 
         usernameInput = (EditText) findViewById(R.id.userName);
 
@@ -96,7 +98,8 @@ public class LoginActivity extends AppCompatActivity implements BView<UserProfil
         //TODO: Connect to database and verify user, get user data
 
         //Update our model
-        update(UserProfile.getInstance());
+        final AppController ac = AppFiveApp.getAppController();
+        ac.setUserName(userName);
 
     }
 
@@ -105,8 +108,15 @@ public class LoginActivity extends AppCompatActivity implements BView<UserProfil
      * @param model A model object
      */
     @Override
-    public void update(UserProfile model) {
-        model.setUserName(username);
-        model.setUserEmail(userEmail);
+    public void update(BModel model ) {
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        AppFive fc = AppFiveApp.getAppFive();
+        fc.deleteView(this);
+        fc.notifyViews();
     }
 }

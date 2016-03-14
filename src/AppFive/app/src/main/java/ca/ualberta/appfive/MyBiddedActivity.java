@@ -10,7 +10,7 @@ import android.view.View;
 /**
  * This activity shows the books that the user has bidded on
  */
-public class MyBiddedActivity extends AppCompatActivity {
+public class MyBiddedActivity extends AppCompatActivity implements BView<BModel> {
 
 
     @Override
@@ -20,6 +20,25 @@ public class MyBiddedActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        AppFive af = AppFiveApp.getAppFive();
+        af.addView(this);
+        final AppController ac = AppFiveApp.getAppController();
+
+    }
+
+    @Override
+    public void update(BModel model) {
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        AppFive fc = AppFiveApp.getAppFive();
+        fc.deleteView(this);
+        FileParser parser = new FileParser(this.getApplicationContext());
+        parser.saveInFile();
+        fc.notifyViews();
     }
 
 }

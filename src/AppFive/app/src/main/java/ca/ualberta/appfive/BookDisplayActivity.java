@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -74,11 +76,15 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         Button returnButton = (Button) findViewById(R.id.returnButton);
         Button bidInfoButton = (Button) findViewById(R.id.bidInfoButton);
         Button bidsButton = (Button) findViewById(R.id.bidsButton);
+        ImageView thumbnail = (ImageView) findViewById(R.id.thumbnail);
         TextView bookTitle = (TextView) findViewById(R.id.bookTitle);
         TextView bookdescription = (TextView) findViewById(R.id.description);
+        TextView bookGenre = (TextView) findViewById(R.id.genreView);
 
+        bookGenre.setText(myBook.getGenre());
         bookdescription.setText(myBook.getDescription());
         bookTitle.setText(myBook.getTitle());
+        thumbnail.setImageResource(R.drawable.not_available);
 
         ownerButton.setVisibility(View.INVISIBLE);
         ownerButton.setActivated(false);
@@ -196,10 +202,21 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         super.onDestroy();
         AppFive fc = AppFiveApp.getAppFive();
         fc.deleteView(this);
+        FileParser parser = new FileParser(this.getApplicationContext());
+        parser.saveInFile();
+        fc.notifyViews();
     }
 
     @Override
     public void update(BModel model) {
+        ImageView thumbnail = (ImageView) findViewById(R.id.thumbnail);
+        TextView bookTitle = (TextView) findViewById(R.id.bookTitle);
+        TextView bookdescription = (TextView) findViewById(R.id.description);
+        TextView bookGenre = (TextView) findViewById(R.id.genreView);
 
+        bookGenre.setText(myBook.getGenre());
+        bookdescription.setText(myBook.getDescription());
+        bookTitle.setText(myBook.getTitle());
+        thumbnail.setImageResource(R.drawable.not_available);
     }
 }
