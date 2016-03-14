@@ -1,7 +1,7 @@
 package ca.ualberta.appfive;
 
 /**
- * This is an interface all views should have
+ * This is an interface all views need to have
  */
 public interface BView<M> {
     /**

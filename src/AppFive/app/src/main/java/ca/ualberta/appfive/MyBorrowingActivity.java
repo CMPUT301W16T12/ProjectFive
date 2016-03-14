@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+/**
+ * My Borrwing Activity gets a list of the books user borrowed.
+ */
 public class MyBorrowingActivity extends AppCompatActivity implements BView<BModel>{
 
     @Override

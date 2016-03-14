@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 /**
- * This activity shows the books that the user has bidded on
+ * This activity shows the books that the user has bidded on.
  */
 public class MyBiddedActivity extends AppCompatActivity implements BView<BModel> {
 

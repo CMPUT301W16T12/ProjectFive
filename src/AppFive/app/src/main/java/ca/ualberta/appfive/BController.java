@@ -1,7 +1,7 @@
 package ca.ualberta.appfive;
 
 /**
- * Controller class should implement this.
+ * Controller class is implemented in this.
  *
  */
 public interface BController {

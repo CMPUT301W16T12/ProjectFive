@@ -10,6 +10,9 @@ import android.widget.TextView;
 // by Sajmon on 1 July 2012
 // accessed 29 January 2016
 
+/**
+ * This book view class gets title, genre, and status of a book
+ */
 public class BookViewEntryHolder {
 
     private View entry;

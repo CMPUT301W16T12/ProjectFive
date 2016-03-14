@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /**
- * Activity for editing the user's profile
+ * Activity for editing the user's profile.
  */
 public class EditProfileActivity extends AppCompatActivity implements BView<BModel>{
 

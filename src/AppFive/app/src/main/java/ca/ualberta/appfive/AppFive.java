@@ -32,6 +32,7 @@ public class AppFive extends BModel<BView>{
         return UserProfile.getUserName();
     }
 
+
     public void setUserName(String userName) {
         UserProfile.setUserName(userName);
         notifyViews();

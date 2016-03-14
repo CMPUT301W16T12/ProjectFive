@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import java.util.List;
 
 /**
- * Created by Omar on 3/14/2016.
+ * This BidsList Adapter displays items from array list to view
  */
 public class BidsListAdapter extends ArrayAdapter<Bid> {
 

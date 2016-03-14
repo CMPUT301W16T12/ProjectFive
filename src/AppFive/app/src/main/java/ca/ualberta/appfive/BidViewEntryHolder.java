@@ -5,7 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * Created by Omar on 3/14/2016.
+ * This class gets bidder text and rate text
  */
 public class BidViewEntryHolder {
     private View entry;

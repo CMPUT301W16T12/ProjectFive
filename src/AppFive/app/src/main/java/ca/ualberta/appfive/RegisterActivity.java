@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 
 /**
- * Activity for making a new user account
+ * Activity for making a new user account.
  */
 public class RegisterActivity extends AppCompatActivity implements BView<BModel>{
 

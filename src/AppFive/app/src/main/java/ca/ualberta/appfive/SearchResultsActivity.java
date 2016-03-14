@@ -10,7 +10,7 @@ import android.view.View;
 import java.util.List;
 
 /**
- * Shows a list of search results retrieved from the database
+ * This shows a list of search results retrieved from the database.
  */
 public class SearchResultsActivity extends AppCompatActivity implements BView<BModel>{
 

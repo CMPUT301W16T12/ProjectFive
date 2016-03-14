@@ -3,7 +3,7 @@ package ca.ualberta.appfive;
 import java.util.Currency;
 
 /**
- * Created by Omar on 3/14/2016.
+ * This Bid class gets bidder and bid rate
  */
 public class Bid {
     private String bidder;

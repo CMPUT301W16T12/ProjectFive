@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.ListView;
 
+/**
+ * This Activity has BidsListAdapter to get to view bidList
+ */
 public class BidsDisplayActivity extends AppCompatActivity implements BView<BModel> {
 
     BidsListAdapter bla;

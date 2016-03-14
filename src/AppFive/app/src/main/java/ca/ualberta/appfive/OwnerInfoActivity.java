@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * Activity for displays owner's information
+ * Activity for displays owner's information.
  */
 public class OwnerInfoActivity extends AppCompatActivity implements BView<BModel> {
 
