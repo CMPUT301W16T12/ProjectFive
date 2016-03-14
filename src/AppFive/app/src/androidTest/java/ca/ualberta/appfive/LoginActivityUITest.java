@@ -35,7 +35,7 @@ public class LoginActivityUITest extends ActivityInstrumentationTestCase2 {
     public void testtoHomeActivity() {
         ((Button) activity.findViewById(R.id.register)).performClick();
         HomeActivity ha = (HomeActivity) getActivity();
-        ViewAsserts.assertOnScreen(ha.getWindow().getDecorView(), activity.findViewById(R.id.textView));
+        ViewAsserts.assertOnScreen(ha.getWindow().getDecorView(), activity.findViewById(R.id.homeTitle));
     }
 
     public void testtoMyBooksActivity() {
