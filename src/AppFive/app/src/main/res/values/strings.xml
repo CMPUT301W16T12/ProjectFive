@@ -68,4 +68,6 @@
     <string name="bidded">Bidded</string>
     <string name="borrowed">Borrowed</string>
 
+    <string name="delete">Delete</string>
+    <string name="bidInfo">Bid Info</string>
 </resources>
