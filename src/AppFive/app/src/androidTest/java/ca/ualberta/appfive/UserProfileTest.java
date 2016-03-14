@@ -15,7 +15,6 @@ public class UserProfileTest extends ActivityInstrumentationTestCase2 {
 
     }
 
-
     public void testUpdateUserData(){
         UserProfile up = UserProfile.getInstance();
         up.updateUserData("abc", "1234");
