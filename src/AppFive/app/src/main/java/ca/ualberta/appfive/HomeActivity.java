@@ -15,6 +15,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
+/**
+ * This activity displays the home page of app
+ */
 public class HomeActivity extends AppCompatActivity implements BView<BModel>{
 
     @Override

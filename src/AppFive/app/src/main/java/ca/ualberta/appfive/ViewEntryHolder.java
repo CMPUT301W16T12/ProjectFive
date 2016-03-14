@@ -9,6 +9,7 @@ import android.widget.TextView;
 // http://stackoverflow.com/questions/11281952/listview-with-customized-row-layout-android
 // by Sajmon on 1 July 2012
 // accessed 29 January 2016
+
 public class ViewEntryHolder {
     private View entry;
     //private RadioButton radio = null;

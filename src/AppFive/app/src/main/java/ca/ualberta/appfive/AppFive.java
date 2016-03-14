@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 /**
  * This is the master model class for the books
+ * It includes methods for handling user profile and books.
  */
 public class AppFive extends BModel<BView>{
 
@@ -57,6 +58,10 @@ public class AppFive extends BModel<BView>{
         return books.get(index);
     }
 
+    /**
+     * This method adds a book to the local list of books and to the database
+     * @param book to be added
+     */
     public void addBook(Book book) {
         //books.add(book);
         myBooks.add(book);
@@ -65,6 +70,10 @@ public class AppFive extends BModel<BView>{
         // try catch block to sync, follow offline user story if fail
     }
 
+    /**
+     * This method deletes a book locally by index and deletes from the database
+     * @param index from the booklist to delete
+     */
     public void deleteBook(int index) {
         //books.remove(index);
         myBooks.remove(index);
@@ -73,6 +82,13 @@ public class AppFive extends BModel<BView>{
         // try catch block to sync, follow offline user story if fail
     }
 
+    /**
+     * This method edits a book by first contructing a new book
+     * then edit the original book by call its index and replace by the new book
+     * to the local and database
+     * @param index
+     * @param newBook
+     */
     public void editBook(int index, Book newBook) {
         // to edit a book construct a new book with the new attributes
         // and call this function with the index of the old instance,

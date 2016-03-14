@@ -14,10 +14,6 @@ import android.widget.TextView;
 
 public class EditBookActivity extends AppCompatActivity implements BView<BModel> {
 
-    /**
-     * Book object to be edited
-     */
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
     }
 
     /**
-     *
+     * This method registers new user.
      * @param userName Unique user name
      * @param password User's password
      * @param email User's email

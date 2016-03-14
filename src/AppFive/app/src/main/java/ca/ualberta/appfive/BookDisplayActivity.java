@@ -192,6 +192,10 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
 
     }
 
+    /**
+     * Get index from intent
+     * @return index of the book from the booklist
+     */
     private int getindex (){
         int index = getIntent().getIntExtra("INDEX", -1);
         return index;
@@ -207,6 +211,10 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         fc.notifyViews();
     }
 
+    /**
+     * Updates the book's attributes in the View
+     * @param model A model object
+     */
     @Override
     public void update(BModel model) {
         ImageView thumbnail = (ImageView) findViewById(R.id.thumbnail);

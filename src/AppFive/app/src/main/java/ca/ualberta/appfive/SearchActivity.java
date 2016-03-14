@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+/**
+ * This activity allows user to search all existing books.
+ */
 public class SearchActivity extends AppCompatActivity implements BView<BModel>{
 
     @Override

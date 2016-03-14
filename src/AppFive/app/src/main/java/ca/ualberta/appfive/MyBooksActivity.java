@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 
+/**
+ * My books activity shows the user's books in a list
+ */
 public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
 
     BookListAdapter bla;
