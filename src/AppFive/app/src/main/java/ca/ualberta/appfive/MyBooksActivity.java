@@ -27,7 +27,7 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
 
        // ac.addBook(new Book("test", "this is a test", "testing","thumbnail"));
 
-        bla = new BookListAdapter(this, ac.getMyBooks());
+        bla = new BookListAdapter(this, ac.getMyBookArray());
 
         Button addBookButton = (Button) findViewById(R.id.addbookbutton);
         ListView booksListView = (ListView) findViewById(R.id.listViewBooks);
@@ -87,10 +87,13 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
         super.onDestroy();
         AppFive fc = AppFiveApp.getAppFive();
         fc.deleteView(this);
+        fc.notifyViews();
     }
 
     @Override
     public void update(BModel model) {
         bla.notifyDataSetChanged();
+        FileParser parser = new FileParser(this.getApplicationContext());
+        parser.saveInFile();
     }
 }

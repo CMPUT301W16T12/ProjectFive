@@ -2,8 +2,6 @@ package ca.ualberta.appfive;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import junit.framework.TestCase;
-
 import java.util.ArrayList;
 
 /**
@@ -55,7 +53,7 @@ public class AppControllerTest extends ActivityInstrumentationTestCase2 {
         arrayList.add(testbook2);
         arrayList.add(testbook3);
 
-        assertEquals(ac.getMyBooks().size(), arrayList.size());
+        assertEquals(ac.getMyBookArray().size(), arrayList.size());
 
         ac.deleteBook(0);
         ac.deleteBook(0);
@@ -76,7 +74,7 @@ public class AppControllerTest extends ActivityInstrumentationTestCase2 {
         Book testbook1 = new Book("aa","bb","cc","dd");
         AppController ac = AppFiveApp.getAppController();
         ac.addBook(testbook1);
-        assertEquals(ac.getMyBooks().size(), 1);
+        assertEquals(ac.getMyBookArray().size(), 1);
 
         ac.deleteBook(0);
     }
@@ -86,7 +84,7 @@ public class AppControllerTest extends ActivityInstrumentationTestCase2 {
         AppController ac = AppFiveApp.getAppController();
         ac.addBook(testbook1);
         ac.deleteBook(0);
-        assertEquals(ac.getMyBooks().size(), 0);
+        assertEquals(ac.getMyBookArray().size(), 0);
 
     }
 
@@ -116,7 +114,7 @@ public class AppControllerTest extends ActivityInstrumentationTestCase2 {
         arrayList.add(testbook2);
         arrayList.add(testbook3);
 
-        assertEquals(ac.getMyBooks().size(), arrayList.size());
+        assertEquals(ac.getMyBookArray().size(), arrayList.size());
 
         ac.deleteBook(0);
         ac.deleteBook(0);

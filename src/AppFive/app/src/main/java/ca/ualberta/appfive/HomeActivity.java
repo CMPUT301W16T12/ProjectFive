@@ -7,7 +7,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
-public class HomeActivity extends AppCompatActivity {
+import com.google.gson.Gson;
+
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
+public class HomeActivity extends AppCompatActivity implements BView<BModel>{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +23,10 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        AppFive af = AppFiveApp.getAppFive();
+        af.addView(this);
+        final AppController ac = AppFiveApp.getAppController();
 
 
         // bodyText = (EditText) findViewById(R.id.body);
@@ -52,5 +64,28 @@ public class HomeActivity extends AppCompatActivity {
         //TODO: ListView of Event Histroy
 
     };
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FileParser parser = new FileParser(this.getApplicationContext());
+        parser.loadFromFile();
+    }
+
+    @Override
+    public void update(BModel model) {
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        AppFive fc = AppFiveApp.getAppFive();
+        fc.deleteView(this);
+        FileParser parser = new FileParser(this.getApplicationContext());
+        parser.saveInFile();
+        fc.notifyViews();
+    }
+
 
 }

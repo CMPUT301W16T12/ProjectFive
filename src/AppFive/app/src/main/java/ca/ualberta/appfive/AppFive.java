@@ -1,5 +1,12 @@
 package ca.ualberta.appfive;
 
+import com.google.gson.Gson;
+
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 /**
@@ -38,8 +45,12 @@ public class AppFive extends BModel<BView>{
         notifyViews();
     }
 
-    public ArrayList<Book> getBooks(){
+    public ArrayList<Book> getBookArray(){
        return books;
+    }
+
+    public void setBookArray(ArrayList<Book> newBooks){
+        books = newBooks;
     }
 
     public Book getBook(int index){
@@ -47,7 +58,7 @@ public class AppFive extends BModel<BView>{
     }
 
     public void addBook(Book book) {
-        books.add(book);
+        //books.add(book);
         myBooks.add(book);
         notifyViews();
         //TODO update database
@@ -55,7 +66,7 @@ public class AppFive extends BModel<BView>{
     }
 
     public void deleteBook(int index) {
-        books.remove(index);
+        //books.remove(index);
         myBooks.remove(index);
         notifyViews();
         // TODO sync up with database
@@ -67,7 +78,7 @@ public class AppFive extends BModel<BView>{
         // and call this function with the index of the old instance,
         // and the new book to replace it.
 
-        Book oldBook = getBook(index);
+        Book oldBook = getMyBook(index);
         oldBook.setDescription(newBook.getDescription());
         oldBook.setGenre(newBook.getGenre());
         oldBook.setTitle(newBook.getTitle());
@@ -77,11 +88,17 @@ public class AppFive extends BModel<BView>{
         // try catch block to sync, follow offline user story if fail
     }
 
-    public ArrayList<Book> getMyBooks(){
+    public ArrayList<Book> getMyBookArray(){
         return myBooks;
+    }
+
+    public void setMyBookArray(ArrayList<Book> myNewBooks){
+        myBooks = myNewBooks;
     }
 
     public Book getMyBook(int index){
         return myBooks.get(index);
     }
+
+
 }

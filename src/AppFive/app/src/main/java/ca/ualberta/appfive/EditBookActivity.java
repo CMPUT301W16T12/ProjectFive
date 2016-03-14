@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class EditBookActivity extends AppCompatActivity implements BView<BModel> {
@@ -16,8 +17,6 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
     /**
      * Book object to be edited
      */
-
-    private EditText editTitle, editGenre, editDesc;
 
 
     @Override
@@ -33,9 +32,13 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
 
         Button saveBookEdit = (Button) findViewById(R.id.editbookSave);
 
-        editTitle = (EditText) findViewById(R.id.edittitle);
-        editGenre = (EditText) findViewById(R.id.editgenre);
-        editDesc = (EditText) findViewById(R.id.editDescription);
+        final EditText editTitle = (EditText) findViewById(R.id.edittitle);
+        final EditText editGenre = (EditText) findViewById(R.id.editgenre);
+        final EditText editDesc = (EditText) findViewById(R.id.editDescription);
+        final ImageButton editImage = (ImageButton) findViewById(R.id.editThumbnail);
+
+        editImage.setImageResource(R.drawable.not_available);
+
         TextView title = (TextView) findViewById(R.id.editBookTitle);
         final int index = getIntent().getIntExtra("INDEX", -2);
         if(index!=-2) {
@@ -56,7 +59,7 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
                 String genreEdit = editGenre.getText().toString();
                 String descEdit = editDesc.getText().toString();
 
-                Book newBook = new Book(titleEdit, genreEdit, descEdit, "Thumbnail");
+                Book newBook = new Book(titleEdit, descEdit, genreEdit, "Thumbnail");
                 if(index != -2){
                     ac.editBook(index, newBook);
                 } else {
@@ -88,6 +91,9 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         super.onDestroy();
         AppFive fc = AppFiveApp.getAppFive();
         fc.deleteView(this);
+        FileParser parser = new FileParser(this.getApplicationContext());
+        parser.saveInFile();
+        fc.notifyViews();
     }
 
     @Override

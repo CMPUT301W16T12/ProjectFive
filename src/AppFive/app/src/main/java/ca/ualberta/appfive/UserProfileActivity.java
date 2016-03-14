@@ -25,7 +25,7 @@ public class UserProfileActivity extends AppCompatActivity implements BView<BMod
 
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);
-        AppController ac = AppFiveApp.getAppController();
+        final AppController ac = AppFiveApp.getAppController();
 
         TextView userName = (TextView) findViewById(R.id.username);
         TextView userEmail = (TextView) findViewById(R.id.useremail);
@@ -72,6 +72,9 @@ public class UserProfileActivity extends AppCompatActivity implements BView<BMod
         super.onDestroy();
         AppFive fc = AppFiveApp.getAppFive();
         fc.deleteView(this);
+        FileParser parser = new FileParser(this.getApplicationContext());
+        parser.saveInFile();
+        fc.notifyViews();
     }
 
 }

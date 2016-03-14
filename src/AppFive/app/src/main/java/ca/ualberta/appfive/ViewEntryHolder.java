@@ -1,6 +1,7 @@
 package ca.ualberta.appfive;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ public class ViewEntryHolder {
     //private RadioButton radio = null;
     private TextView titleText = null;
     private TextView genreText = null;
+    private ImageView statusImage = null;
     //TODO: Add other views to book list entry
 
     public ViewEntryHolder(View entry) {
@@ -31,6 +33,13 @@ public class ViewEntryHolder {
             genreText = (TextView) entry.findViewById(R.id.entry_genre);
         }
         return genreText;
+    }
+
+    public ImageView getStatusImage(){
+        if(statusImage == null){
+            statusImage = (ImageView) entry.findViewById(R.id.status);
+        }
+        return statusImage;
     }
 
     /*

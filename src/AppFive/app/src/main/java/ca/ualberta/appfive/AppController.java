@@ -22,8 +22,13 @@ public class AppController implements BController{
     public void setUserEmail(String email) {
         af.setUserEmail(email);
     }
-    public ArrayList<Book> getBooks(){
-        return af.getBooks();
+
+    public ArrayList<Book> getBookArray(){
+        return af.getBookArray();
+    }
+
+    public void setBookArray(ArrayList<Book> newBooks) {
+        af.setBookArray(newBooks);
     }
 
     public Book getBook(int index){
@@ -42,8 +47,12 @@ public class AppController implements BController{
         af.editBook(index, newBook);
     }
 
-    public ArrayList<Book> getMyBooks(){
-        return af.getMyBooks();
+    public ArrayList<Book> getMyBookArray(){
+        return af.getMyBookArray();
+    }
+
+    public void setMyBookArray(ArrayList<Book> myNewBooks) {
+        af.setMyBookArray(myNewBooks);
     }
 
     public Book getMyBook(int index){

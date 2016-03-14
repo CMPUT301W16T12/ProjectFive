@@ -50,6 +50,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/email"
+
         android:id="@+id/textView4"
         android:layout_below="@+id/regName"
         android:layout_alignStart="@+id/regName" />
@@ -58,6 +59,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView4"
+        android:inputType="textEmailAddress"
         android:layout_alignStart="@+id/register"/>
 
     <TextView
@@ -74,6 +76,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView5"
+        android:inputType="textPassword"
         android:layout_alignParentStart="true" />
     <TextView
         android:text="@string/confirmPwd"
@@ -86,6 +89,7 @@
         android:id="@+id/matchPassword"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:inputType="textPassword"
         android:layout_below="@+id/textView2"
         android:layout_alignParentStart="true" />
 </RelativeLayout>
