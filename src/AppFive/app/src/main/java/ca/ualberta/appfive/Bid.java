@@ -1,7 +1,5 @@
 package ca.ualberta.appfive;
 
-import java.util.Currency;
-
 /**
  * This Bid class gets bidder and bid rate
  */

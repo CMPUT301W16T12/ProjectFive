@@ -48,7 +48,7 @@ public class Book extends BModel<BView>{
         this.description = description;
         this.genre = genre;
         this.status = Status.AVAILABLE;
-        this.owner = new OwnerInfo(UserProfile.getInstance());
+        this.owner = new OwnerInfo();
         this.thumbnail = thumbnail;
     }
 

@@ -19,6 +19,6 @@ public class UserProfileActivityTest extends ActivityInstrumentationTestCase2 {
 
         }catch (DatabaseConnectException e){
             fail();
-        };
+        }
     }
 }

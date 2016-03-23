@@ -19,6 +19,6 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2 {
 
         }catch (DatabaseConnectException e){
             fail();
-        };
+        }
     }
 }

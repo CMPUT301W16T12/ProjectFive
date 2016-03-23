@@ -10,12 +10,11 @@ public class OwnerInfo extends BModel<BView>{
 
     /**
      * This constructor is called when creating the Owner Info for the current user of the app.
-     * @param userProfile The current user's profile data
      */
-    public OwnerInfo(UserProfile userProfile) {
+    public OwnerInfo() {
         super();
-        this.name = userProfile.getUserName();
-        this.email = userProfile.getUserEmail();
+        this.name = UserProfile.getUserName();
+        this.email = UserProfile.getUserEmail();
     }
 
     /**
