@@ -73,4 +73,6 @@
     <string name="notifications">Notifications</string>
     <string name="delete">Delete</string>
     <string name="bidInfo">Bid Info</string>
+    <string name="tvFirstName">First Name</string>
+    <string name="tvLastName">Last Name</string>
 </resources>
