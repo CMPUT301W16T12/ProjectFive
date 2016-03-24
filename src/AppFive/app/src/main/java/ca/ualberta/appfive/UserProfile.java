@@ -8,6 +8,7 @@ public class UserProfile extends BModel<BView>{
     private static UserProfile ourInstance = new UserProfile();
     private static String userName;
     private static String userEmail;
+    private static String userPassword;
 
 
     public static UserProfile getInstance() {
@@ -48,5 +49,13 @@ public class UserProfile extends BModel<BView>{
 
     public static String getUserEmail() {
         return userEmail;
+    }
+
+    public static void setUserPassword(String userEmail) {
+        UserProfile.userPassword = userEmail;
+    }
+
+    public static String getUserPassword() {
+        return userPassword ;
     }
 }
