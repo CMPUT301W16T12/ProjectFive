@@ -1,7 +1,9 @@
 package ca.ualberta.appfive;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +19,8 @@ import android.widget.TextView;
  */
 public class EditBookActivity extends AppCompatActivity implements BView<BModel> {
 
+    private Bitmap thumbnail;
+    static final int REQUEST_IMAGE_CAPTURE = 1234;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,7 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         final EditText editGenre = (EditText) findViewById(R.id.editgenre);
         final EditText editDesc = (EditText) findViewById(R.id.editDescription);
         final ImageButton editImage = (ImageButton) findViewById(R.id.editThumbnail);
+
 
         editImage.setImageResource(R.drawable.not_available);
 
@@ -57,6 +62,8 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
                 String titleEdit = editTitle.getText().toString();
                 String genreEdit = editGenre.getText().toString();
                 String descEdit = editDesc.getText().toString();
+                editImage.setImageResource(android.R.color.transparent);
+                thumbnail = null;
 
                 Book newBook = new Book(titleEdit, descEdit, genreEdit, "Thumbnail");
                 if(index != -2){
@@ -69,7 +76,19 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
             }
 
         });
+        //Implement image Button
+        editImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if(intent.resolveActivity(getPackageManager()) != null){
+                    startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+                }
+
+            }
+        });
     }
+
 
     /**
      * Call to commit the changes made to the book
@@ -99,4 +118,5 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
     public void update(BModel model) {
 
     }
+
 }
