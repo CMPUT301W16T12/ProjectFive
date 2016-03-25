@@ -2,6 +2,9 @@ package ca.ualberta.appfive;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
@@ -35,25 +38,27 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
 
         Button saveBookEdit = (Button) findViewById(R.id.editbookSave);
 
+        final ImageButton editImage = (ImageButton) findViewById(R.id.editThumbnail);
         final EditText editTitle = (EditText) findViewById(R.id.edittitle);
         final EditText editGenre = (EditText) findViewById(R.id.editgenre);
         final EditText editDesc = (EditText) findViewById(R.id.editDescription);
-        final ImageButton editImage = (ImageButton) findViewById(R.id.editThumbnail);
 
-
-        editImage.setImageResource(R.drawable.not_available);
+        //editImage.setImageResource(R.drawable.not_available);
 
         TextView title = (TextView) findViewById(R.id.editBookTitle);
         final int index = getIntent().getIntExtra("INDEX", -2);
-        if(index!=-2) {
+        if (index != -2) {
             Book myBook = ac.getMyBook(index);
             //Set text space with current values
             editTitle.setText(myBook.getTitle(), TextView.BufferType.EDITABLE);
             editGenre.setText(myBook.getGenre(), TextView.BufferType.EDITABLE);
             editDesc.setText(myBook.getDescription(), TextView.BufferType.EDITABLE);
+            thumbnail = myBook.getThumbnail();
+            editImage.setImageBitmap(thumbnail);
 
         } else {
             title.setText("Add Book");
+
         }
         saveBookEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,11 +67,13 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
                 String titleEdit = editTitle.getText().toString();
                 String genreEdit = editGenre.getText().toString();
                 String descEdit = editDesc.getText().toString();
-                editImage.setImageResource(android.R.color.transparent);
-                thumbnail = null;
 
-                Book newBook = new Book(titleEdit, descEdit, genreEdit, "Thumbnail");
-                if(index != -2){
+                //editImage.setImageResource(android.R.color.transparent);
+
+                Book newBook = new Book(titleEdit, descEdit, genreEdit, thumbnail);
+                newBook.addThumbnail(thumbnail);
+
+                if (index != -2) {
                     ac.editBook(index, newBook);
                 } else {
                     ac.addBook(newBook);
@@ -80,15 +87,13 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         editImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if(intent.resolveActivity(getPackageManager()) != null){
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
                 }
-
             }
         });
     }
-
 
     /**
      * Call to commit the changes made to the book
@@ -116,6 +121,21 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
 
     @Override
     public void update(BModel model) {
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        final ImageButton editImage = (ImageButton) findViewById(R.id.editThumbnail);
+        //final AppController ac = AppFiveApp.getAppController();
+        //final int index = getIntent().getIntExtra("INDEX", -2);
+
+       // Book myBook = ac.getMyBook(index);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            thumbnail =(Bitmap) extras.get("data");
+            editImage.setImageBitmap(thumbnail);
+        }
 
     }
 
