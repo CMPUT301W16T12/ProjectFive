@@ -73,4 +73,7 @@
     <string name="notifications">Notifications</string>
     <string name="delete">Delete</string>
     <string name="bidInfo">Bid Info</string>
+    <string name="acceptBid">Accept</string>
+    <string name="declineBid">Decline</string>
+
 </resources>

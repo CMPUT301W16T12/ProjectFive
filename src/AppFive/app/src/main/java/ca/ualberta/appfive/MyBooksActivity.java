@@ -60,13 +60,7 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        if (item.getItemId() == R.id.editBook) {
-                            Intent intent = new Intent(MyBooksActivity.this, EditBookActivity.class);
-                            intent.putExtra("INDEX", position);
-                            startActivity(intent);
-                        } else {
-                            ac.deleteBook(position);
-                        }
+                        ac.deleteBook(position);
                         return true;
                     }
                 });
