@@ -115,16 +115,16 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myBook.setStatus(Book.Status.AVAILABLE);
+                myBook.deleteBids();
+                myBook.updateStatus();
                 ac.editBook(index, myBook);
-                finish();
+                update(AppFiveApp.getAppFive());
             }
         });
         bidInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showBid(myBook);
-                //TODO SHOW POPUP WITH BID RATE
             }
         });
         bidsButton.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +133,6 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
                 Intent intent = new Intent(BookDisplayActivity.this, BidsDisplayActivity.class);
                 intent.putExtra("INDEX", index);
                 startActivity(intent);
-                //TODO SHOW NEW SCREEN WITH ALL BIDS AND OPTIONS TO ACCEPT OR DECLINE BIDS
             }
         });
 
@@ -286,7 +285,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
                 String rate = input.getText().toString();
                 if (!rate.trim().contentEquals("")) {
                     myBook.addBid(new Bid(ac.getUserName(), Float.parseFloat(rate)));
-                    myBook.setStatus(Book.Status.BIDDED);
+                    myBook.updateStatus();
                     update(AppFiveApp.getAppFive());
                 }
             }

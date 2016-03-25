@@ -124,4 +124,12 @@ public class Book extends BModel<BView>{
         this.bids.clear();
     }
 
+    public void updateStatus(){
+        if (this.getBids().isEmpty()){
+            this.setStatus(Status.AVAILABLE);
+        }else{
+            this.setStatus(Status.BIDDED);
+        }
+    }
+
 }
