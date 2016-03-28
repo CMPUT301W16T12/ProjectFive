@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * The methods includes getters and setters from various sub-models.
  * Sub-models include User Profile and Book details.
  */
-public class AppController implements BController{
+public class AppController {
 
     private AppFive af = null;
 
