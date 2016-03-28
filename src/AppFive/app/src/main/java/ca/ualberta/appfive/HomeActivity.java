@@ -66,7 +66,7 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
 
         //TODO: ListView of Event Histroy
 
-    };
+    }
 
     @Override
     protected void onStart() {

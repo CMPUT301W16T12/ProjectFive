@@ -22,9 +22,9 @@ public class BidsListAdapter extends ArrayAdapter<Bid> {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        BidViewEntryHolder holder = null;
+        BidViewEntryHolder holder;
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        int statusResource = -1;
+
 
         // Create the holder
         if (convertView == null) {

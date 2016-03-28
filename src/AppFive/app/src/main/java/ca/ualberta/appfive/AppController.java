@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class AppController implements BController{
 
-    AppFive af = null;
+    private AppFive af = null;
 
     public AppController(AppFive appFive) {this.af = appFive;}
 

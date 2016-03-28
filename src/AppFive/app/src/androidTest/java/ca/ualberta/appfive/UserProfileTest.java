@@ -16,15 +16,13 @@ public class UserProfileTest extends ActivityInstrumentationTestCase2 {
     }
 
     public void testUpdateUserData(){
-        UserProfile up = UserProfile.getInstance();
-        up.updateUserData("abc", "1234");
-        assertEquals(up.getUserName(), "abc");
+        UserProfile.updateUserData("abc", "1234");
+        assertEquals(UserProfile.getUserName(), "abc");
     }
 
 
     public void testSetUserEmail() throws Exception {
-        UserProfile up = UserProfile.getInstance();
-        up.setUserEmail("test@mail.com");
-        assertEquals(up.getUserEmail(), "test@mail.com");
+        UserProfile.setUserEmail("test@mail.com");
+        assertEquals(UserProfile.getUserEmail(), "test@mail.com");
     }
 }

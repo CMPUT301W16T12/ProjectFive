@@ -20,6 +20,6 @@ public class EditBookActivityTest extends ActivityInstrumentationTestCase2 {
 
         }catch (DatabaseConnectException e){
             fail();
-        };
+        }
     }
 }
