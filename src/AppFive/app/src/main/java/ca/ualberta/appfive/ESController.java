@@ -62,7 +62,7 @@ public class ESController {
         }
     }
 
-    public static class GetTweetsTask extends AsyncTask<String, Void, ArrayList<Book>>{
+    public static class GetBookTask extends AsyncTask<String, Void, ArrayList<Book>>{
         @Override
         protected ArrayList<Book> doInBackground(String... searchStrings){
             verifyClient();
