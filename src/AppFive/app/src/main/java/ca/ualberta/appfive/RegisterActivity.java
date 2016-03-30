@@ -55,9 +55,11 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
 
 
         // when user clicks register button
-        bRegister.setOnClickListener(new View.OnClickListener()){
+        bRegister.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                // should be checking connectivity here?
+                // is user in database task; null = no connection, true = user is in database, false = user is not in database, free to register
+                // if is null, means theres no connection, can't register, cant check if theres user
+                // not null and returns false, user is free to register with username
 
                 if ((etUserName.getText().toString().equals(""))){
                     // when username field is empty
@@ -66,6 +68,10 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
                 }
 
                 // saving registration as JSON in rest api elastic search database
+                // need to be first chekcing that their username doesnt exist yet
+                // if it doesnt just re loop, dont submit info, change name
+
+
 
                 // app controller set
                 ac.setUserName(userName);
@@ -76,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
                 ac.setPhoneNumber(phoneNumber);
 
             }
-        }
+        });
 
 
 
