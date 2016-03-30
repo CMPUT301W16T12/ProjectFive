@@ -25,7 +25,6 @@ public class AppFive extends BModel<BView>{
         return UserProfile.getUserName();
     }
 
-
     public void setUserName(String userName) {
         UserProfile.setUserName(userName);
         notifyViews();
@@ -37,6 +36,42 @@ public class AppFive extends BModel<BView>{
 
     public void setUserEmail(String email) {
         UserProfile.setUserEmail(email);
+        notifyViews();
+    }
+
+    public String getUserPassword() {
+        return UserProfile.getUserPassword();
+    }
+
+    public void setUserPassword(String password){
+        UserProfile.setUserPassword(password);
+        notifyViews();
+    }
+
+    public String getFirstName() {
+        return UserProfile.getFirstName();
+    }
+
+    public void setFirstName(String firstName){
+        UserProfile.setFirstName(firstName);
+        notifyViews();
+    }
+
+    public String getLastName() {
+        return UserProfile.getLastName();
+    }
+
+    public void setLastName(String lastName){
+        UserProfile.setLastName(lastName);
+        notifyViews();
+    }
+
+    public String getPhoneNumber() {
+        return UserProfile.getPhoneNumber();
+    }
+
+    public void setPhoneNumber(String PhoneNumber){
+        UserProfile.setPhoneNumber(PhoneNumber);
         notifyViews();
     }
 

@@ -8,7 +8,10 @@ public class UserProfile extends BModel<BView>{
     private static UserProfile ourInstance = new UserProfile();
     private static String userName;
     private static String userEmail;
-
+    private static String userPassword;
+    private static String firstName;
+    private static String lastName;
+    private static String phoneNumber;
 
     public static UserProfile getInstance() {
         return ourInstance;
@@ -21,8 +24,12 @@ public class UserProfile extends BModel<BView>{
     /**
      * Call this update method when a user logs in
      * Polls database for username, checks password, gets contact info
-     * @param userName The user's unique username
-     * @param userPassword The user's password
+     * @param userName Unique user name
+     * @param firstName User's first Name
+     * @param lastName User's last Name
+     * @param userPassword User's password
+     * @param userEmail User's email
+     * @param phoneNumber User's phone number
      * @throws IllegalArgumentException if the user's name is not in database, or if password
      * isn't right
      */
@@ -48,5 +55,37 @@ public class UserProfile extends BModel<BView>{
 
     public static String getUserEmail() {
         return userEmail;
+    }
+
+    public static void setUserPassword(String userEmail) {
+        UserProfile.userPassword = userEmail;
+    }
+
+    public static String getUserPassword() {
+        return userPassword ;
+    }
+
+    public static String getLastName() {
+        return lastName;
+    }
+
+    public static void setLastName(String lastName) {
+        UserProfile.lastName = lastName;
+    }
+
+    public static String getFirstName() {
+        return firstName;
+    }
+
+    public static void setFirstName(String firstName) {
+        UserProfile.firstName = firstName;
+    }
+
+    public static String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public static void setPhoneNumber(String phoneNumber) {
+        UserProfile.phoneNumber = phoneNumber;
     }
 }
