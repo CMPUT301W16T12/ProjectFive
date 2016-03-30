@@ -24,6 +24,8 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
 
     private Bitmap thumbnail;
     static final int REQUEST_IMAGE_CAPTURE = 1234;
+    Book myBook;
+    static int index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +48,9 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         //editImage.setImageResource(R.drawable.not_available);
 
         TextView title = (TextView) findViewById(R.id.editBookTitle);
-        final int index = getIntent().getIntExtra("INDEX", -2);
+        index = getIntent().getIntExtra("INDEX", -2);
         if (index != -2) {
-            Book myBook = ac.getMyBook(index);
+            myBook = ac.getMyBook(index);
             //Set text space with current values
             editTitle.setText(myBook.getTitle(), TextView.BufferType.EDITABLE);
             editGenre.setText(myBook.getGenre(), TextView.BufferType.EDITABLE);
@@ -69,14 +71,12 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
                 String descEdit = editDesc.getText().toString();
                 String authorEdit = "null";
 
-                //editImage.setImageResource(android.R.color.transparent);
-
-                Book newBook = new Book(titleEdit,authorEdit, descEdit, genreEdit, thumbnail);
-                newBook.addThumbnail(thumbnail);
 
                 if (index != -2) {
+                    Book newBook = new Book(titleEdit, authorEdit, descEdit, genreEdit, myBook.getThumbnail());
                     ac.editBook(index, newBook);
                 } else {
+                    Book newBook = new Book(titleEdit, authorEdit, descEdit, genreEdit, thumbnail);
                     ac.addBook(newBook);
                 }
 
@@ -135,6 +135,9 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             thumbnail =(Bitmap) extras.get("data");
+            if(index != -2) {
+                myBook.addThumbnail(thumbnail);
+            }
             editImage.setImageBitmap(thumbnail);
         }
 
