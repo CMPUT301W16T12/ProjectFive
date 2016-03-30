@@ -76,6 +76,9 @@
         android:textSize="10pt"
         android:layout_alignTop="@+id/owner"
         android:layout_alignParentStart="true" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></LinearLayout>
     <TextView
         android:id="@+id/bookTitle"
         android:layout_width="wrap_content"
@@ -86,13 +89,22 @@
         android:layout_toEndOf="@id/thumbnail"
         android:layout_marginStart="5dp"/>
     <TextView
+        android:id="@+id/authorView"
+        android:text="@string/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/thumbnail"
+        android:layout_alignStart="@+id/thumbnail"/>
+    <TextView
         android:id="@+id/genreView"
         android:text="@string/genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="8pt"
+        android:textSize="10pt"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/thumbnail"
+        android:layout_below="@+id/authorView"
         android:layout_alignStart="@+id/thumbnail"/>
 
     <TextView

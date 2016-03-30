@@ -42,6 +42,7 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
         final AppController ac = AppFiveApp.getAppController();
 		
         final Button bRegister = (Button) findViewById(R.id.save);
+
 		
         etUserName = (EditText) findViewById(R.id.regName);
         etFirstName = (EditText) findViewById(R.id.regFirstName);

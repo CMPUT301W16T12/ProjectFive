@@ -29,6 +29,7 @@ public class Book extends BModel<BView>{
     private String genre;
     private Status status;
     private OwnerInfo owner;
+    private String author;
     // TODO: Thumbnail is a picture
     private transient Bitmap thumbnail;
     private String thumbnailBase64;
@@ -41,6 +42,8 @@ public class Book extends BModel<BView>{
     }
     */
 
+
+
     /**
      * Construct a book from scratch, without an id.
      * @param title Book title
@@ -48,9 +51,11 @@ public class Book extends BModel<BView>{
      * @param genre Book genre type
      * @param thumbnail A picture of the cover
      */
-    public Book(String title, String description, String genre, Bitmap thumbnail) {
+    public Book(String title,String author, String description, String genre, Bitmap thumbnail) {
         super();
+
         this.title = title;
+        this.author = author;
         this.description = description;
         this.genre = genre;
         this.status = Status.AVAILABLE;
@@ -70,8 +75,16 @@ public class Book extends BModel<BView>{
         return title;
     }
 
+
     public void setTitle(String title) {
         this.title = title;
+    }
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getDescription() {
