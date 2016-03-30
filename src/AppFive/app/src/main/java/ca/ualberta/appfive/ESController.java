@@ -23,6 +23,7 @@ public class ESController {
 
     private static String teamdir = "team12";
     private static String booktype = "book";
+    private static String usertype = "user";
 
     public static void verifyClient(){
         // Verify client exists
@@ -70,7 +71,7 @@ public class ESController {
             ArrayList<Book> books = new ArrayList<>();
 
             // NOTE: Only first search term will be used
-            Search search = new Search.Builder(searchStrings[0]).addIndex("testing").addType("tweet").build();
+            Search search = new Search.Builder(searchStrings[0]).addIndex(teamdir).addType(booktype).build();
 
             try {
                 SearchResult execute = client.execute(search);
@@ -87,5 +88,80 @@ public class ESController {
             return books;
         }
     }
+    public static class AddUserTask extends AsyncTask<UserProfile, Void, Void> {
+        @Override
+        protected Void doInBackground(UserProfile... userProfile){
+            verifyClient();
 
+                Index index = new Index.Builder(userProfile[0]).index(teamdir).type(usertype).build();
+                try {
+                    DocumentResult result = client.execute(index);
+                    if(result.isSucceeded()){
+                        // Set ID
+                       //TODO: what to do with userProfile database,  userProfile.setId(result.getId());
+                    } else {
+                        Log.i("TODO", "doInBackground: Add user did not succeed");
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            return null;
+        }
+    }
+
+    public static class GetUserTask extends AsyncTask<String, Void, Void>{
+        @Override
+        protected Void doInBackground(String... usernames){
+            verifyClient();
+
+            //TODO: look up exact matching query
+            String search_string = "{\"from\":0,\"size\":10000,\"query\":{\"match\":{\"message\":\"" + usernames[0] + "\"}}, \"sort\": {\"date\": {\"order\": \"desc\"}}}";
+
+
+            // NOTE: Only first search term will be used
+            Search search = new Search.Builder(search_string).addIndex(teamdir).addType(usertype).build();
+
+            //searchStrings = "{\"from\":0,\"size\":10000, \"sort\": {\"date\": {\"order\": \"desc\"}}}";
+
+            try {
+                SearchResult execute = client.execute(search);
+                if(execute.isSucceeded()){
+                    UserProfile retUser = execute.getSourceAsObject(UserProfile.class);
+                } else {
+                    Log.i("TODO", "doInBackground: Failed in searching tweets");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+    }
+    public static class IsUserInDatabaseTask extends AsyncTask<String, Void, Boolean> {
+        @Override
+        protected Boolean doInBackground(String... usernames) {
+            verifyClient();
+            //TODO: look up exact matching query
+            String search_string = "{\"from\":0,\"size\":10000,\"query\":{\"match\":{\"message\":\"" + usernames[0] + "\"}}, \"sort\": {\"date\": {\"order\": \"desc\"}}}";
+
+
+            // NOTE: Only first search term will be used
+            Search search = new Search.Builder(search_string).addIndex(teamdir).addType(usertype).build();
+
+            //searchStrings = "{\"from\":0,\"size\":10000, \"sort\": {\"date\": {\"order\": \"desc\"}}}";
+
+            try {
+                SearchResult execute = client.execute(search);
+                if (execute.isSucceeded()) {
+                    return Boolean.TRUE;
+                } else {
+                    return Boolean.FALSE;
+                }
+            } catch (IOException e) {
+                return null;
+            }
+
+        }
+    }
 }
