@@ -25,6 +25,39 @@ public class AppController implements BController{
         af.setUserEmail(email);
     }
 
+    public String getFirstName() {
+        return af.getFirstName();
+    }
+
+    public void setFirstName(String firstName) {
+        af.setFirstName(firstName);
+    }
+
+    public String getLastName() {
+        return af.getLastName();
+    }
+
+    public void setLastName(String lastName) {
+        af.setLastName(lastName);
+    }
+
+    public String getUserPassword() {
+        return af.getUserPassword();
+    }
+
+    public void setUserPassword(String UserPassword) {
+        af.setUserPassword(UserPassword);
+    }
+
+    public String getPhoneNumber() {
+        return af.getPhoneNumber();
+    }
+
+    public void setPhoneNumber(String PhoneNumber) {
+        af.setPhoneNumber(PhoneNumber);
+    }
+
+
     public ArrayList<Book> getBookArray(){
         return af.getBookArray();
     }

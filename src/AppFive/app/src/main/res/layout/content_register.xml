@@ -112,6 +112,20 @@
         android:inputType="textPassword"
         android:layout_below="@+id/textView2"/>
 
+    <TextView
+        android:text="@string/tvPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/phone_number"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/matchPassword"
+        android:layout_marginTop="27dp"/>
+    <EditText
+        android:id="@+id/regPhoneNumber"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"/>
+
 
     <Button
         android:id="@+id/save"
