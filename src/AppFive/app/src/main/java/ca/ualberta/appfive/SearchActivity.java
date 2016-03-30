@@ -6,6 +6,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
+
+import java.util.concurrent.ExecutionException;
 
 /**
  * This activity allows user to search all existing books.
@@ -22,6 +25,32 @@ public class SearchActivity extends AppCompatActivity implements BView<BModel>{
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
+
+        EditText search = (EditText) findViewById(R.id.searchView);
+
+        //TODO: we need to add a search button in content search to link this
+        /*searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ESController.GetBookTask getBookTask = new ESController.GetBookTask();
+
+                // uProfile = new ArrayList<>();
+                //uProfile.add(UserProfile.getInstance());
+
+                getBookTask.execute(search.getText().toString());
+
+                try {
+                    ArrayList<BookBoolean> result = isUserInDatabaseTask.get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                //TODO: if result is true, send toast and do not submit
+                // TODO: else, add user
+
+            }
+        });*/
 
     }
 

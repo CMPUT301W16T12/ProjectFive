@@ -139,6 +139,7 @@ public class ESController {
         }
     }
     public static class IsUserInDatabaseTask extends AsyncTask<String, Void, Boolean> {
+
         @Override
         protected Boolean doInBackground(String... usernames) {
             verifyClient();
