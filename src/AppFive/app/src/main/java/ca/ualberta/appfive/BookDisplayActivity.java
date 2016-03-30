@@ -179,7 +179,11 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         bookGenre.setText(myBook.getGenre());
         bookdescription.setText(myBook.getDescription());
         bookTitle.setText(myBook.getTitle());
-        thumbnail.setImageResource(R.drawable.not_available);
+        if(index == -1){
+            thumbnail.setImageResource(R.drawable.not_available);
+        } else {
+            thumbnail.setImageBitmap(myBook.getThumbnail());
+        }
 
         ownerButton.setVisibility(View.INVISIBLE);
         ownerButton.setActivated(false);

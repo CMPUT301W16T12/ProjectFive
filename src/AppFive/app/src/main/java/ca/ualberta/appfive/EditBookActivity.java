@@ -67,10 +67,11 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
                 String titleEdit = editTitle.getText().toString();
                 String genreEdit = editGenre.getText().toString();
                 String descEdit = editDesc.getText().toString();
+                String authorEdit = "null";
 
                 //editImage.setImageResource(android.R.color.transparent);
 
-                Book newBook = new Book(titleEdit, descEdit, genreEdit, thumbnail);
+                Book newBook = new Book(titleEdit,authorEdit, descEdit, genreEdit, thumbnail);
                 newBook.addThumbnail(thumbnail);
 
                 if (index != -2) {
