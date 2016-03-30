@@ -44,6 +44,7 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         final EditText editTitle = (EditText) findViewById(R.id.edittitle);
         final EditText editGenre = (EditText) findViewById(R.id.editgenre);
         final EditText editDesc = (EditText) findViewById(R.id.editDescription);
+        final EditText editAuthor = (EditText)findViewById(R.id.editauthor);
 
         //editImage.setImageResource(R.drawable.not_available);
 
@@ -55,6 +56,7 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
             editTitle.setText(myBook.getTitle(), TextView.BufferType.EDITABLE);
             editGenre.setText(myBook.getGenre(), TextView.BufferType.EDITABLE);
             editDesc.setText(myBook.getDescription(), TextView.BufferType.EDITABLE);
+            editAuthor.setText(myBook.getAuthor(), TextView.BufferType.EDITABLE);
             thumbnail = myBook.getThumbnail();
             editImage.setImageBitmap(thumbnail);
 
@@ -69,7 +71,7 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
                 String titleEdit = editTitle.getText().toString();
                 String genreEdit = editGenre.getText().toString();
                 String descEdit = editDesc.getText().toString();
-                String authorEdit = "null";
+                String authorEdit = editAuthor.getText().toString();
 
 
                 if (index != -2) {
