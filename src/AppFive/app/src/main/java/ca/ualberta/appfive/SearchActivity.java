@@ -6,8 +6,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -26,31 +29,37 @@ public class SearchActivity extends AppCompatActivity implements BView<BModel>{
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
 
-        EditText search = (EditText) findViewById(R.id.searchView);
+        final EditText search = (EditText) findViewById(R.id.searchView);
 
-        //TODO: we need to add a search button in content search to link this
-        /*searchButton.setOnClickListener(new View.OnClickListener() {
+        final Button searchButton = (Button) findViewById(R.id.search);
+        final String result;
+        final ArrayList<Book> books;
+        final List<Book> bookList;
+
+
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ESController.GetBookTask getBookTask = new ESController.GetBookTask();
 
-                // uProfile = new ArrayList<>();
-                //uProfile.add(UserProfile.getInstance());
 
+                // get the books by keywords search from Elasticsearch
                 getBookTask.execute(search.getText().toString());
 
-                try {
-                    ArrayList<BookBoolean> result = isUserInDatabaseTask.get();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
-                //TODO: if result is true, send toast and do not submit
-                // TODO: else, add user
-
+//                // try adding result to book list
+//                try {
+//                    bookList = new ArrayList<Book>();
+//                    bookList.addAll(getBookTask.get());
+//                    myBooks = new List<Book>();
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                } catch (ExecutionException e) {
+//                    e.printStackTrace();
+//                }
+                    //TODO: display the search result for the list of books
             }
-        });*/
+        });
 
     }
 

@@ -48,6 +48,12 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         //editImage.setImageResource(R.drawable.not_available);
 
         TextView title = (TextView) findViewById(R.id.editBookTitle);
+        // TODO: correct or not if I pull the book by its title from database
+        // TODO: need to save the edit to database
+        // getting the book by title from database
+        ESController.GetBookTask getBookTask = new ESController.GetBookTask();
+        getBookTask.execute(title.toString());
+
         index = getIntent().getIntExtra("INDEX", -2);
         if (index != -2) {
             myBook = ac.getMyBook(index);

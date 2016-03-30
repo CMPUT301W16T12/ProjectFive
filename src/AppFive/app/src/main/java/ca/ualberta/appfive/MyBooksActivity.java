@@ -27,11 +27,19 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
+        final String userName = UserProfile.getUserName();
 
-       // ac.addBook(new Book("test", "this is a test", "testing","thumbnail"));
+
+        // ac.addBook(new Book("test", "this is a test", "testing","thumbnail"));
 
         bla = new BookListAdapter(this, ac.getMyBookArray());
 
+        //TODO: correct or not if I added this ES getbooktask, but not deleting adapter?
+        // get the books by username from Elasticsearch
+        ESController.GetBookTask getBookTask = new ESController.GetBookTask();
+        getBookTask.execute(userName);
+
+        //TODO: after getting booklist, still need to do something with the display the list??
         Button addBookButton = (Button) findViewById(R.id.addbookbutton);
         ListView booksListView = (ListView) findViewById(R.id.listViewBooks);
         booksListView.setAdapter(bla);

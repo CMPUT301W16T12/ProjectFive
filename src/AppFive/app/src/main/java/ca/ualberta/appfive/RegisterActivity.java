@@ -41,13 +41,14 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
 
         final EditText regName = (EditText) findViewById(R.id.regName);
 
+        // for clicking register button, check the register name whether it is in the database
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ESController.IsUserInDatabaseTask isUserInDatabaseTask = new ESController.IsUserInDatabaseTask();
 
-                // uProfile = new ArrayList<>();
-                //uProfile.add(UserProfile.getInstance());
+                //TODO: if result is true, send toast and do not submit
+                // TODO: else, add user
 
                 isUserInDatabaseTask.execute(regName.getText().toString());
                 try {
@@ -57,8 +58,6 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
-            //TODO: if result is true, send toast and do not submit
-                // TODO: else, add user
 
             }
         });
