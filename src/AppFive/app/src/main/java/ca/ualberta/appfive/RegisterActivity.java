@@ -12,7 +12,7 @@ import android.widget.Toast;
  * Activity for making a new user account.
  */
 public class RegisterActivity extends AppCompatActivity implements BView<BModel>{
-    EditText etUserName, etFirstName, etLastName, etEmail, etPassword, etPhoneNumber;
+    EditText etUserName, etFirstName, etLastName, etEmail, etPassword,etConfirmPassword, etPhoneNumber;
     String userName, firstName, lastName, email, password, phoneNumber;
     Button bRegister;
 
@@ -35,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
         etLastName = (EditText) findViewById(R.id.ETLastNameRegistration);
         etEmail = (EditText) findViewById(R.id.ETEmailRegistration);
         etPassword = (EditText) findViewById(R.id.ETPasswordRegistration);
+        etConfirmPassword = (EditText) findViewById(R.id.ETMatchPasswordRegistration);
         etPhoneNumber = (EditText) findViewById(R.id.ETPhoneNumberRegistration);
 
         // converting to string for saving as JSON object
@@ -52,6 +53,9 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
                 // is user in database task; null = no connection, true = user is in database, false = user is not in database, free to register
                 // if is null, means theres no connection, can't register, cant check if theres user
                 // not null and returns false, user is free to register with username
+
+
+
 
                 if ((etUserName.getText().toString().equals(""))){
                     // when username field is empty

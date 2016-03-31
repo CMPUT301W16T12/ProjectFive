@@ -25,12 +25,12 @@ public class UserProfileActivity extends AppCompatActivity implements BView<BMod
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
 
+        TextView userEmail = (TextView) findViewById(R.id.TVEmail);
+        TextView firstName = (TextView) findViewById(R.id.TVFirstName);
+        TextView lastName = (TextView) findViewById(R.id.TVLastName);
+        TextView password = (TextView) findViewById(R.id.TVPassword);
+        TextView phoneNumber = (TextView) findViewById(R.id.TVPhoneNumber);
         TextView userName = (TextView) findViewById(R.id.TVUsername);
-        TextView userEmail = (TextView) findViewById(R.id.us);
-        TextView firstName = (TextView) findViewById(R.id.ETFirstNameRegistration);
-        TextView lastName = (TextView) findViewById(R.id.);
-        TextView password = (TextView) findViewById(R.id.ETPasswordRegistration);
-        TextView phoneNumber = (TextView) findViewById(R.id.ETPhoneNumberRegistration);
 
         userName.setText(ac.getUserName());
         userEmail.setText(ac.getUserEmail());
@@ -70,11 +70,11 @@ public class UserProfileActivity extends AppCompatActivity implements BView<BMod
     @Override
     public void update(BModel model) {
         AppController ac = AppFiveApp.getAppController();
-        TextView userEmail = (TextView) findViewById(R.id.useremail);
-        TextView firstName = (TextView) findViewById(R.id.ETFirstNameRegistration);
-        TextView lastName = (TextView) findViewById(R.id.ETLastNameRegistration);
-        TextView password = (TextView) findViewById(R.id.ETPasswordRegistration);
-        TextView phoneNumber = (TextView) findViewById(R.id.ETPhoneNumberRegistration);
+        TextView userEmail = (TextView) findViewById(R.id.TVEmail);
+        TextView firstName = (TextView) findViewById(R.id.TVFirstName);
+        TextView lastName = (TextView) findViewById(R.id.TVLastName);
+        TextView password = (TextView) findViewById(R.id.TVPassword);
+        TextView phoneNumber = (TextView) findViewById(R.id.TVPhoneNumber);
         TextView userName = (TextView) findViewById(R.id.TVUsername);
 
         userName.setText(ac.getUserName());
