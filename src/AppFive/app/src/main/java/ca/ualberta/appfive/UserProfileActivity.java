@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 /**
  * Activity for displaying the user's data
  * Includes an option to update the profile
@@ -29,9 +31,18 @@ public class UserProfileActivity extends AppCompatActivity implements BView<BMod
 
         TextView userName = (TextView) findViewById(R.id.username);
         TextView userEmail = (TextView) findViewById(R.id.useremail);
+        TextView firstName = (TextView) findViewById(R.id.regFirstName);
+        TextView lastName = (TextView) findViewById(R.id.regLastName);
+        TextView password = (TextView) findViewById(R.id.regPassword);
+        TextView phoneNumber = (TextView) findViewById(R.id.regPhoneNumber);
 
         userName.setText(ac.getUserName());
         userEmail.setText(ac.getUserEmail());
+        firstName.setText(ac.getFirstName());
+        lastName.setText(ac.getLastName());
+        password.setText(ac.getUserPassword());
+        phoneNumber.setText(ac.getPhoneNumber());
+
 
         /**
          * Button for opening edit profile activity.
@@ -64,7 +75,19 @@ public class UserProfileActivity extends AppCompatActivity implements BView<BMod
     public void update(BModel model) {
         AppController ac = AppFiveApp.getAppController();
         TextView userEmail = (TextView) findViewById(R.id.useremail);
+        TextView firstName = (TextView) findViewById(R.id.regFirstName);
+        TextView lastName = (TextView) findViewById(R.id.regLastName);
+        TextView password = (TextView) findViewById(R.id.regPassword);
+        TextView phoneNumber = (TextView) findViewById(R.id.regPhoneNumber);
+        TextView userName = (TextView) findViewById(R.id.username);
+
+        userName.setText(ac.getUserName());
         userEmail.setText(ac.getUserEmail());
+        firstName.setText(ac.getFirstName());
+        lastName.setText(ac.getLastName());
+        password.setText(ac.getUserPassword());
+        phoneNumber.setText(ac.getPhoneNumber());
+
     }
 
     @Override

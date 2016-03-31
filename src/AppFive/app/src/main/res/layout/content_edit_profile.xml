@@ -22,23 +22,90 @@
         android:layout_marginTop="57dp"
         android:layout_alignParentTop="true" />
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/tvFirstName"
+        android:id="@+id/FirstNametv"
+        android:layout_below="@+id/usernameedit"
+        android:layout_alignStart="@+id/regName"
+        android:layout_marginTop="27dp" />
     <EditText
-        android:id="@+id/useremailedit"
-        android:text="@string/email"
+        android:id="@+id/editFirstName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/usernameedit"
-        android:inputType="textEmailAddress"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="51dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:layout_below="@+id/FirstNametv"
+        android:layout_alignStart="@+id/FirstNametv"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/tvLastName"
+        android:id="@+id/LastNametv"
+        android:layout_below="@+id/editFirstName"
+        android:layout_marginTop="27dp" />
+    <EditText
+        android:id="@+id/editLastName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LastNametv" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/email"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/editLastName"
+        android:layout_marginTop="27dp"/>
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView4"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:text="@string/password"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editEmail"
+        android:id="@+id/textView5"
+        android:layout_marginTop="27dp"/>
+    <EditText
+        android:id="@+id/editPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView5"
+        android:inputType="textPassword" />
+
+
+    <TextView
+        android:text="@string/tvPhoneNumber"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/phone_number"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/editPassword"
+        android:layout_marginTop="27dp"/>
+    <EditText
+        android:id="@+id/editPhoneNumber"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/phone_number"/>
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save"
         android:id="@+id/saveprofinfo"
-        android:layout_below="@+id/useremailedit"
-        android:layout_alignEnd="@+id/useremailedit" />
+        android:layout_below="@+id/editPhoneNumber"
+        android:layout_alignEnd="@+id/editPhoneNumber" />
 
 </RelativeLayout>
