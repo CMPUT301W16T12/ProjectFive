@@ -2,6 +2,7 @@ package ca.ualberta.appfive;
 
 
 import android.os.AsyncTask;
+import android.provider.DocumentsContract;
 import android.util.Log;
 
 import com.searchly.jestdroid.DroidClientConfig;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.searchbox.client.JestResult;
 import io.searchbox.core.DocumentResult;
 import io.searchbox.core.Index;
 import io.searchbox.core.Search;
@@ -20,14 +22,15 @@ import io.searchbox.core.SearchResult;
 
 public class ESController {
     private static JestDroidClient client;
+    private static AppController ac = AppFiveApp.getAppController();
 
     private static String teamdir = "team12";
     private static String booktype = "book";
     private static String usertype = "user";
 
-    public static void verifyClient(){
+    public static void verifyClient() {
         // Verify client exists
-        if(client == null){
+        if (client == null) {
             DroidClientConfig.Builder builder = new DroidClientConfig.Builder("http://cmput301.softwareprocess.es:8080");
             DroidClientConfig config = builder.build();
 
@@ -40,14 +43,14 @@ public class ESController {
 
     public static class AddBookTask extends AsyncTask<Book, Void, Void> {
         @Override
-        protected Void doInBackground(Book... books){
+        protected Void doInBackground(Book... books) {
             verifyClient();
 
-            for(Book book : books){
+            for (Book book : books) {
                 Index index = new Index.Builder(book).index(teamdir).type(booktype).build();
                 try {
                     DocumentResult result = client.execute(index);
-                    if(result.isSucceeded()){
+                    if (result.isSucceeded()) {
                         // Set ID
                         book.setId(result.getId());
                     } else {
@@ -63,9 +66,12 @@ public class ESController {
         }
     }
 
-    public static class GetBookTask extends AsyncTask<String, Void, ArrayList<Book>>{
+    /*
+    Might not need, since books are always opened from lists, the book can be gotten from that list
+    */
+    public static class GetBookTask extends AsyncTask<String, Void, ArrayList<Book>> {
         @Override
-        protected ArrayList<Book> doInBackground(String... searchStrings){
+        protected ArrayList<Book> doInBackground(String... searchStrings) {
             verifyClient();
 
             ArrayList<Book> books = new ArrayList<>();
@@ -75,7 +81,7 @@ public class ESController {
 
             try {
                 SearchResult execute = client.execute(search);
-                if(execute.isSucceeded()){
+                if (execute.isSucceeded()) {
                     List<Book> retBooks = execute.getSourceAsObjectList(Book.class);
                     books.addAll(retBooks);
                 } else {
@@ -88,31 +94,56 @@ public class ESController {
             return books;
         }
     }
-    public static class AddUserTask extends AsyncTask<UserProfile, Void, Void> {
+
+    public static class EditBookTask extends AsyncTask<Book, Void, Boolean> {
         @Override
-        protected Void doInBackground(UserProfile... userProfile){
+        protected Boolean doInBackground(Book... books) {
             verifyClient();
 
-                Index index = new Index.Builder(userProfile[0]).index(teamdir).type(usertype).build();
-                try {
-                    DocumentResult result = client.execute(index);
-                    if(result.isSucceeded()){
-                        // Set ID
-                       //TODO: what to do with userProfile database,  userProfile.setId(result.getId());
-                    } else {
-                        Log.i("TODO", "doInBackground: Add user did not succeed");
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+            Index index = new Index.Builder(books[0])
+                    .index(teamdir)
+                    .type(booktype)
+                    .id(books[0].getId())
+                    .build();
+
+            try {
+                DocumentResult execute = client.execute(index);
+                if (execute.isSucceeded()) {
+                    return true;
+                } else {
+                    return false;
                 }
+            } catch (IOException e) {
+                return false;
+            }
+        }
+    }
+
+    public static class AddUserTask extends AsyncTask<UserProfile, Void, Void> {
+        @Override
+        protected Void doInBackground(UserProfile... userProfile) {
+            verifyClient();
+
+            Index index = new Index.Builder(userProfile[0]).index(teamdir).type(usertype).build();
+            try {
+                DocumentResult result = client.execute(index);
+                if (result.isSucceeded()) {
+                    // Set ID
+                    //TODO: what to do with userProfile database,  userProfile.setId(result.getId());
+                } else {
+                    Log.i("TODO", "doInBackground: Add user did not succeed");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             return null;
         }
     }
 
-    public static class GetUserTask extends AsyncTask<String, Void, Void>{
+    public static class GetUserTask extends AsyncTask<String, Void, Void> {
         @Override
-        protected Void doInBackground(String... usernames){
+        protected Void doInBackground(String... usernames) {
             verifyClient();
 
             //TODO: look up exact matching query
@@ -126,7 +157,8 @@ public class ESController {
 
             try {
                 SearchResult execute = client.execute(search);
-                if(execute.isSucceeded()){
+                if (execute.isSucceeded()) {
+
                     UserProfile retUser = execute.getSourceAsObject(UserProfile.class);
                 } else {
                     Log.i("TODO", "doInBackground: Failed in searching tweets");
@@ -138,6 +170,31 @@ public class ESController {
             return null;
         }
     }
+
+    public static class EditUserTask extends AsyncTask<UserProfile, Void, Boolean> {
+        @Override
+        protected Boolean doInBackground(UserProfile... userProfiles) {
+            verifyClient();
+
+            Index index = new Index.Builder(userProfiles[0])
+                    .index(teamdir)
+                    .type(booktype)
+                    .id(UserProfile.getUserId())
+                    .build();
+
+            try {
+                DocumentResult execute = client.execute(index);
+                if (execute.isSucceeded()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (IOException e) {
+                return false;
+            }
+        }
+    }
+
     public static class IsUserInDatabaseTask extends AsyncTask<String, Void, Boolean> {
 
         @Override
@@ -165,4 +222,31 @@ public class ESController {
 
         }
     }
+
+    public static class GetBooksbyUser extends AsyncTask<Book.Status, Void, ArrayList<Book>> {
+        ArrayList<Book> myBookList = new ArrayList<Book>();
+
+        @Override
+        protected ArrayList<Book> doInBackground(Book.Status... params) {
+            verifyClient();
+
+
+            String search_string = "{\"from\":0,\"size\":10000,\"query\":{\"match\":{\"owner.name\":\"" + UserProfile.getUserName() + "\"}}}";
+            Search search = new Search.Builder(search_string).addIndex(teamdir).addType(booktype).build();
+
+            try {
+                SearchResult execute = client.execute(search);
+                if (execute.isSucceeded()) {
+                    List<Book> bookList = execute.getSourceAsObjectList(Book.class);
+                    myBookList.addAll(bookList);
+                    return myBookList;
+                } else {
+                    return myBookList;
+                }
+            } catch (IOException e) {
+                return null;
+            }
+        }
+    }
+
 }

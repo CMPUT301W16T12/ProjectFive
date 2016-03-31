@@ -8,6 +8,7 @@ public class UserProfile extends BModel<BView>{
     private static UserProfile ourInstance = new UserProfile();
     private static String userName;
     private static String userEmail;
+    private static String userId = null;
 
 
     public static UserProfile getInstance() {
@@ -36,6 +37,14 @@ public class UserProfile extends BModel<BView>{
 
     public static String getUserName() {
         return userName;
+    }
+
+    public static void setUserId(String userId){
+        UserProfile.userId = userId;
+    }
+
+    public static String getUserId() {
+        return userId;
     }
 
     /**

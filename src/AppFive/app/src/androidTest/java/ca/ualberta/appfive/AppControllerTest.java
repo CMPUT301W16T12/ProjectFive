@@ -38,7 +38,7 @@ public class AppControllerTest extends ActivityInstrumentationTestCase2 {
         AppController ac = AppFiveApp.getAppController();
         assertNotNull(ac.getUserEmail());
     }
-
+    /*
     public void testGetBooks() throws Exception {
         Book testbook1 = new Book("aa","bb","cc","dd");
         Book testbook2 = new Book("Aa","Bb","Cc","Dd");
@@ -129,4 +129,5 @@ public class AppControllerTest extends ActivityInstrumentationTestCase2 {
 
         ac.deleteBook(0);
     }
+    */
 }
