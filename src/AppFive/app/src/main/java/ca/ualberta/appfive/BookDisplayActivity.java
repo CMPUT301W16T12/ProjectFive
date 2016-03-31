@@ -175,10 +175,12 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         TextView bookTitle = (TextView) findViewById(R.id.bookTitle);
         TextView bookdescription = (TextView) findViewById(R.id.description);
         TextView bookGenre = (TextView) findViewById(R.id.genreView);
+        TextView bookAuthor = (TextView) findViewById(R.id.authorView);
 
         bookGenre.setText(myBook.getGenre());
         bookdescription.setText(myBook.getDescription());
         bookTitle.setText(myBook.getTitle());
+        bookAuthor.setText(myBook.getAuthor());
 
         if(index == -1){
             thumbnail.setImageResource(R.drawable.not_available);
