@@ -2,7 +2,6 @@ package ca.ualberta.appfive;
 
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 // Strategy for displaying list items borrowed from
@@ -28,21 +27,21 @@ public class BookViewEntryHolder {
 
     public TextView getTitleText() {
         if(titleText == null){
-            titleText = (TextView) entry.findViewById(R.id.entry_title);
+            titleText = (TextView) entry.findViewById(R.id.TVTitleEntry);
         }
         return titleText;
     }
 
     public TextView getGenreText() {
         if(genreText == null){
-            genreText = (TextView) entry.findViewById(R.id.entry_genre);
+            genreText = (TextView) entry.findViewById(R.id.TVGenreEntry);
         }
         return genreText;
     }
 
     public ImageView getStatusImage(){
         if(statusImage == null){
-            statusImage = (ImageView) entry.findViewById(R.id.status);
+            statusImage = (ImageView) entry.findViewById(R.id.IVStatus);
         }
         return statusImage;
     }

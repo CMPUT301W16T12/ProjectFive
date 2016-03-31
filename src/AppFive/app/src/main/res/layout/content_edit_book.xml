@@ -27,15 +27,15 @@
               android:layout_marginTop="@dimen/fab_margin"
               android:layout_height="wrap_content"
               android:layout_width="wrap_content"
-              android:id="@+id/editBookTitle" />
+              android:id="@+id/TVEditBookTitle" />
 
             <ImageButton
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:id="@+id/editThumbnail"/>
+                android:id="@+id/editThumbnailButton"/>
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/TVTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title"
@@ -43,14 +43,13 @@
                 android:layout_gravity="start" />
 
             <EditText
-                android:id="@+id/edittitle"
+                android:id="@+id/ETTitle"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/title"
          />
 
             <TextView
-                android:id="@+id/author"
+                android:id="@+id/TVAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/author"
@@ -59,16 +58,15 @@
           />
 
             <EditText
-                android:id="@+id/editauthor"
+                android:id="@+id/ETAuthor"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/author"
               />
 
 
 
             <TextView
-                android:id="@+id/genre"
+                android:id="@+id/TVGenre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/genre"
@@ -77,13 +75,12 @@
           />
 
             <EditText
-                android:id="@+id/editgenre"
+                android:id="@+id/ETGenre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/genre"
           />
             <TextView
-                android:id="@+id/description"
+                android:id="@+id/TVDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/description"
@@ -91,10 +88,9 @@
                 android:layout_gravity="start"
          />
             <EditText
-                android:id="@+id/editDescription"
+                android:id="@+id/ETDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/description"
             />
 
             <Button
@@ -102,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/save"
                 android:layout_gravity="center"
-                android:id="@+id/editbookSave"
+                android:id="@+id/editbookSaveButton"
 
 
            />

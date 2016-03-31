@@ -1,22 +1,12 @@
 package ca.ualberta.appfive;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.google.gson.Gson;
-
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 
 /**
  * Activity for making a new user account.
@@ -38,14 +28,14 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
 
-		Button bRegister = (Button) findViewById(R.id.save);
+		Button bRegister = (Button) findViewById(R.id.saveRegistrationButton);
 		
-        etUserName = (EditText) findViewById(R.id.regName);
-        etFirstName = (EditText) findViewById(R.id.regFirstName);
-        etLastName = (EditText) findViewById(R.id. regLastName);
-        etEmail = (EditText) findViewById(R.id.regEmail);
-        etPassword = (EditText) findViewById(R.id.regPassword);
-        etPhoneNumber = (EditText) findViewById(R.id.regPhoneNumber);
+        etUserName = (EditText) findViewById(R.id.ETUsernameRegistration);
+        etFirstName = (EditText) findViewById(R.id.ETFirstNameRegistration);
+        etLastName = (EditText) findViewById(R.id.ETLastNameRegistration);
+        etEmail = (EditText) findViewById(R.id.ETEmailRegistration);
+        etPassword = (EditText) findViewById(R.id.ETPasswordRegistration);
+        etPhoneNumber = (EditText) findViewById(R.id.ETPhoneNumberRegistration);
 
         // converting to string for saving as JSON object
         userName = etUserName.getText().toString();

@@ -18,17 +18,48 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/username"
-        android:id="@+id/ownerName"
+        android:id="@+id/TVOwnerName"
         android:layout_marginTop="57dp"
         android:layout_alignParentTop="true" />
 
     <TextView
-        android:id="@+id/ownerEmail"
-        android:text="@string/email"
+        android:id="@+id/TVOwnerFirstName"
+        android:text="@string/tvFirstName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ownerName"
+        android:layout_below="@+id/TVOwnerName"
         android:layout_alignParentStart="true"
         android:layout_marginTop="51dp"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+        android:id="@+id/TVOwnerLastName"
+        android:text="@string/tvLastName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TVOwnerFirstName"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="51dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+        android:id="@+id/TVOwnerEmail"
+        android:text="@string/email"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TVOwnerLastName"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="51dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+        android:id="@+id/TVOwnerPhoneNumber"
+        android:text="@string/tvPhoneNumber"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TVOwnerEmail"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="51dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
 </RelativeLayout>

@@ -2,20 +2,12 @@ package ca.ualberta.appfive;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 
 /**
  * This is the activity when the user logs in
@@ -43,10 +35,10 @@ public class LoginActivity extends AppCompatActivity implements BView<BModel>{
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);
 
-        usernameInput = (EditText) findViewById(R.id.userName);
+        usernameInput = (EditText) findViewById(R.id.ETUserNameLogin);
 
 
-        Button logInButton = (Button) findViewById(R.id.logIn);
+        Button logInButton = (Button) findViewById(R.id.logInButton);
 
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements BView<BModel>{
             }
         });
 
-        Button registerButton = (Button) findViewById(R.id.register);
+        Button registerButton = (Button) findViewById(R.id.registerButton);
 
         // If the register button is clicked, head straight to the RegisterActivity
         registerButton.setOnClickListener(new View.OnClickListener() {

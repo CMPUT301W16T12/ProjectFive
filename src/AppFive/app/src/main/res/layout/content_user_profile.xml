@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/username"
-        android:id="@+id/username"
+        android:id="@+id/TVUsername"
         android:layout_marginTop="57dp"
         android:layout_alignParentTop="true" />
 
@@ -29,9 +29,9 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/tvFirstName"
-        android:id="@+id/FirstNametv"
-        android:layout_below="@+id/username"
-        android:layout_alignStart="@+id/username"
+        android:id="@+id/TVFirstName"
+        android:layout_below="@+id/TVUsername"
+        android:layout_alignStart="@+id/TVUsername"
         android:layout_marginTop="27dp" />
 
     <TextView
@@ -39,8 +39,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/tvLastName"
-        android:id="@+id/LastNametv"
-        android:layout_below="@+id/FirstNametv"
+        android:id="@+id/TVLastName"
+        android:layout_below="@+id/TVFirstName"
         android:layout_marginTop="27dp" />
 
     <TextView
@@ -48,8 +48,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/email"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/LastNametv"
+        android:id="@+id/TVEmail"
+        android:layout_below="@+id/TVLastName"
         android:layout_marginTop="27dp"/>
 
     <TextView
@@ -57,9 +57,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/phone_number"
+        android:id="@+id/TVPhoneNumber"
         android:layout_centerVertical="true"
-        android:layout_below="@id/textView4"
+        android:layout_below="@id/TVEmail"
         android:layout_marginTop="27dp"/>
 
     <Button
@@ -67,8 +67,8 @@
         android:layout_height="wrap_content"
         android:text="@string/edit"
         android:id="@+id/editbutton"
-        android:layout_below="@+id/phone_number"
-        android:layout_alignEnd="@+id/phone_number" />
+        android:layout_below="@+id/TVPhoneNumber"
+        android:layout_alignEnd="@+id/TVPhoneNumber" />
 
 
 </RelativeLayout>

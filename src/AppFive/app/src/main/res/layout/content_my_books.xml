@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/myBook"
-        android:id="@+id/textView6" />
+        android:id="@+id/TVMyBooksTitle" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -38,14 +38,14 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listViewBooks"
+        android:id="@+id/LVMyBooks"
         android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Add Book"
-        android:id="@+id/addbookbutton"
+        android:id="@+id/addBookButton"
         android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

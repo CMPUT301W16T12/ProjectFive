@@ -2,15 +2,11 @@ package ca.ualberta.appfive;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 /**
  * Activity for displaying the user's data
@@ -29,12 +25,12 @@ public class UserProfileActivity extends AppCompatActivity implements BView<BMod
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
 
-        TextView userName = (TextView) findViewById(R.id.username);
-        TextView userEmail = (TextView) findViewById(R.id.useremail);
-        TextView firstName = (TextView) findViewById(R.id.regFirstName);
-        TextView lastName = (TextView) findViewById(R.id.regLastName);
-        TextView password = (TextView) findViewById(R.id.regPassword);
-        TextView phoneNumber = (TextView) findViewById(R.id.regPhoneNumber);
+        TextView userName = (TextView) findViewById(R.id.TVUsername);
+        TextView userEmail = (TextView) findViewById(R.id.us);
+        TextView firstName = (TextView) findViewById(R.id.ETFirstNameRegistration);
+        TextView lastName = (TextView) findViewById(R.id.);
+        TextView password = (TextView) findViewById(R.id.ETPasswordRegistration);
+        TextView phoneNumber = (TextView) findViewById(R.id.ETPhoneNumberRegistration);
 
         userName.setText(ac.getUserName());
         userEmail.setText(ac.getUserEmail());
@@ -75,11 +71,11 @@ public class UserProfileActivity extends AppCompatActivity implements BView<BMod
     public void update(BModel model) {
         AppController ac = AppFiveApp.getAppController();
         TextView userEmail = (TextView) findViewById(R.id.useremail);
-        TextView firstName = (TextView) findViewById(R.id.regFirstName);
-        TextView lastName = (TextView) findViewById(R.id.regLastName);
-        TextView password = (TextView) findViewById(R.id.regPassword);
-        TextView phoneNumber = (TextView) findViewById(R.id.regPhoneNumber);
-        TextView userName = (TextView) findViewById(R.id.username);
+        TextView firstName = (TextView) findViewById(R.id.ETFirstNameRegistration);
+        TextView lastName = (TextView) findViewById(R.id.ETLastNameRegistration);
+        TextView password = (TextView) findViewById(R.id.ETPasswordRegistration);
+        TextView phoneNumber = (TextView) findViewById(R.id.ETPhoneNumberRegistration);
+        TextView userName = (TextView) findViewById(R.id.TVUsername);
 
         userName.setText(ac.getUserName());
         userEmail.setText(ac.getUserEmail());

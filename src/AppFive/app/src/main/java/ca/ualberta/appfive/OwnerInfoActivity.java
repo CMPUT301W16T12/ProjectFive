@@ -1,12 +1,7 @@
 package ca.ualberta.appfive;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -26,8 +21,8 @@ public class OwnerInfoActivity extends AppCompatActivity implements BView<BModel
         String name = getIntent().getStringExtra("OWNER");
         String email = getIntent().getStringExtra("EMAIL");
 
-        TextView userName = (TextView) findViewById(R.id.ownerName);
-        TextView userEmail = (TextView) findViewById(R.id.ownerEmail);
+        TextView userName = (TextView) findViewById(R.id.TVOwnerName);
+        TextView userEmail = (TextView) findViewById(R.id.TVOwnerEmail);
 
         userName.setText(name);
         userEmail.setText(email);

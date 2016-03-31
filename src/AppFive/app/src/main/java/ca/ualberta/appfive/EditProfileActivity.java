@@ -1,8 +1,6 @@
 package ca.ualberta.appfive;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -27,14 +25,14 @@ public class EditProfileActivity extends AppCompatActivity implements BView<BMod
         final AppController ac = AppFiveApp.getAppController();
 
         // Because Username is only non editable user info
-        TextView userName = (TextView) findViewById(R.id.usernameedit);
+        TextView userName = (TextView) findViewById(R.id.TVUsername);
         userName.setText(ac.getUserName());
 
-        final EditText editUserEmail = (EditText) findViewById(R.id.editEmail);
-        final EditText editFirstName = (EditText) findViewById(R.id.editFirstName);
-        final EditText editLastName = (EditText) findViewById(R.id.editLastName);
-        final EditText editPassword = (EditText) findViewById(R.id.editPassword);
-        final EditText editPhoneNumber = (EditText) findViewById(R.id.editPhoneNumber);
+        final EditText editUserEmail = (EditText) findViewById(R.id.ETEmail);
+        final EditText editFirstName = (EditText) findViewById(R.id.ETFirstName);
+        final EditText editLastName = (EditText) findViewById(R.id.ETLastName);
+        final EditText editPassword = (EditText) findViewById(R.id.ETPassword);
+        final EditText editPhoneNumber = (EditText) findViewById(R.id.ETPhoneNumber);
 
         editUserEmail.setText(ac.getUserEmail(), TextView.BufferType.EDITABLE);
         editFirstName.setText(ac.getFirstName(), TextView.BufferType.EDITABLE);
@@ -43,7 +41,7 @@ public class EditProfileActivity extends AppCompatActivity implements BView<BMod
         editPhoneNumber.setText(ac.getPhoneNumber(), TextView.BufferType.EDITABLE);
 
 
-        Button saveProfInfo = (Button) findViewById(R.id.saveprofinfo);
+        Button saveProfInfo = (Button) findViewById(R.id.saveProfileEditButton);
         saveProfInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

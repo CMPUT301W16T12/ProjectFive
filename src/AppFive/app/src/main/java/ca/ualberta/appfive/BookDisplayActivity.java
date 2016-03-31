@@ -4,15 +4,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -164,17 +161,17 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
             }
         }
 
-        ownerButton = (Button) findViewById(R.id.owner);
-        addBidButton = (Button) findViewById(R.id.addBid);
-        editBookButton = (Button) findViewById(R.id.editBook);
+        ownerButton = (Button) findViewById(R.id.ownerButton);
+        addBidButton = (Button) findViewById(R.id.addBidButton);
+        editBookButton = (Button) findViewById(R.id.editBookButton);
         deleteBookButton = (Button) findViewById(R.id.deleteButton);
         returnButton = (Button) findViewById(R.id.returnButton);
         bidInfoButton = (Button) findViewById(R.id.bidInfoButton);
         bidsButton = (Button) findViewById(R.id.bidsButton);
-        ImageView thumbnail = (ImageView) findViewById(R.id.thumbnail);
-        TextView bookTitle = (TextView) findViewById(R.id.bookTitle);
-        TextView bookdescription = (TextView) findViewById(R.id.description);
-        TextView bookGenre = (TextView) findViewById(R.id.genreView);
+        ImageView thumbnail = (ImageView) findViewById(R.id.thumbnailBookDisplay);
+        TextView bookTitle = (TextView) findViewById(R.id.TVBookTitle);
+        TextView bookdescription = (TextView) findViewById(R.id.TVDescription);
+        TextView bookGenre = (TextView) findViewById(R.id.TVGenre);
 
         bookGenre.setText(myBook.getGenre());
         bookdescription.setText(myBook.getDescription());

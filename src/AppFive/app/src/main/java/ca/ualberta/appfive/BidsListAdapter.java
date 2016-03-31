@@ -36,7 +36,7 @@ public class BidsListAdapter extends ArrayAdapter<Bid> {
         }
 
         holder.getBidderText().setText(getItem(position).getBidder());
-        holder.getRateText().setText(Float.toString(getItem(position).getRate()));
+        holder.getRateText().setText(String.format("%s$/hr",Float.toString(getItem(position).getRate())));
         return convertView;
     }
 }

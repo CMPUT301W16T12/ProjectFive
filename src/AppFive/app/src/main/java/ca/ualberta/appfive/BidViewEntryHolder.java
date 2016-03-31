@@ -1,7 +1,6 @@
 package ca.ualberta.appfive;
 
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -19,14 +18,14 @@ public class BidViewEntryHolder {
 
     public TextView getBidderText() {
         if(bidderText == null){
-            bidderText = (TextView) entry.findViewById(R.id.entry_bidder);
+            bidderText = (TextView) entry.findViewById(R.id.TVBidderEntry);
         }
         return bidderText;
     }
 
     public TextView getRateText() {
         if(rateText == null){
-            rateText = (TextView) entry.findViewById(R.id.entry_rate);
+            rateText = (TextView) entry.findViewById(R.id.TVRateEntry);
         }
         return rateText;
     }

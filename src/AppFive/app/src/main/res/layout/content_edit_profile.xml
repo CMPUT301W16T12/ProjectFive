@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/username"
-        android:id="@+id/usernameedit"
+        android:id="@+id/TVUsername"
         android:layout_marginTop="57dp"
         android:layout_alignParentTop="true" />
 
@@ -28,44 +28,44 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/tvFirstName"
-        android:id="@+id/FirstNametv"
-        android:layout_below="@+id/usernameedit"
-        android:layout_alignStart="@+id/regName"
+        android:id="@+id/TVFirstName"
+        android:layout_below="@+id/TVUsername"
+        android:layout_alignStart="@+id/ETUsernameRegistration"
         android:layout_marginTop="27dp" />
     <EditText
-        android:id="@+id/editFirstName"
+        android:id="@+id/ETFirstName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/FirstNametv"
-        android:layout_alignStart="@+id/FirstNametv"/>
+        android:layout_below="@+id/TVFirstName"
+        android:layout_alignStart="@+id/TVFirstName"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/tvLastName"
-        android:id="@+id/LastNametv"
-        android:layout_below="@+id/editFirstName"
+        android:id="@+id/TVLastName"
+        android:layout_below="@+id/ETFirstName"
         android:layout_marginTop="27dp" />
     <EditText
-        android:id="@+id/editLastName"
+        android:id="@+id/ETLastName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/LastNametv" />
+        android:layout_below="@+id/TVLastName" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/email"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/editLastName"
+        android:id="@+id/TVEmail"
+        android:layout_below="@+id/ETLastName"
         android:layout_marginTop="27dp"/>
     <EditText
-        android:id="@+id/editEmail"
+        android:id="@+id/ETEmail"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView4"
+        android:layout_below="@+id/TVEmail"
         android:inputType="textEmailAddress" />
 
     <TextView
@@ -73,14 +73,14 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editEmail"
-        android:id="@+id/textView5"
+        android:layout_below="@+id/ETEmail"
+        android:id="@+id/TVPassword"
         android:layout_marginTop="27dp"/>
     <EditText
-        android:id="@+id/editPassword"
+        android:id="@+id/ETPassword"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView5"
+        android:layout_below="@+id/TVPassword"
         android:inputType="textPassword" />
 
 
@@ -89,23 +89,23 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/phone_number"
+        android:id="@+id/TVPhoneNumber"
         android:layout_centerVertical="true"
-        android:layout_below="@id/editPassword"
+        android:layout_below="@id/ETPassword"
         android:layout_marginTop="27dp"/>
     <EditText
-        android:id="@+id/editPhoneNumber"
+        android:id="@+id/ETPhoneNumber"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/phone_number"/>
+        android:layout_below="@+id/TVPhoneNumber"/>
 
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save"
-        android:id="@+id/saveprofinfo"
-        android:layout_below="@+id/editPhoneNumber"
-        android:layout_alignEnd="@+id/editPhoneNumber" />
+        android:id="@+id/saveProfileEditButton"
+        android:layout_below="@+id/ETPhoneNumber"
+        android:layout_alignEnd="@+id/ETPhoneNumber" />
 
 </RelativeLayout>
