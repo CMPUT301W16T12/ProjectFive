@@ -1,5 +1,6 @@
 package ca.ualberta.appfive;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -17,6 +19,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Activity for making a new user account.
@@ -24,7 +28,7 @@ import java.io.OutputStreamWriter;
 public class RegisterActivity extends AppCompatActivity implements BView<BModel>{
     EditText etUserName, etFirstName, etLastName, etEmail, etPassword, etPhoneNumber;
     String userName, firstName, lastName, email, password, phoneNumber;
-    Button bRegister;
+
 
 
     @Override
@@ -37,8 +41,9 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
+		
+        final Button bRegister = (Button) findViewById(R.id.save);
 
-		Button bRegister = (Button) findViewById(R.id.save);
 		
         etUserName = (EditText) findViewById(R.id.regName);
         etFirstName = (EditText) findViewById(R.id.regFirstName);
@@ -48,63 +53,64 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
         etPhoneNumber = (EditText) findViewById(R.id.regPhoneNumber);
 
         // converting to string for saving as JSON object
-        userName = etUserName.getText().toString();
-        firstName = etFirstName.getText().toString();
-        lastName = etLastName.getText().toString();
-        email = etEmail.getText().toString();
-        password = etPassword.getText().toString();
-        phoneNumber = etPhoneNumber.getText().toString();
 
 
-        // when user clicks register button
+        // for clicking register button, check the register name whether it is in the database
         bRegister.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
+
+                userName = etUserName.getText().toString();
+                firstName = etFirstName.getText().toString();
+                lastName = etLastName.getText().toString();
+                email = etEmail.getText().toString();
+                password = etPassword.getText().toString();
+                phoneNumber = etPhoneNumber.getText().toString();
                 // is user in database task; null = no connection, true = user is in database, false = user is not in database, free to register
-                // if is null, means theres no connection, can't register, cant check if theres user
+                // if is null, means there is no connection, can't register, cant check if there is user
                 // not null and returns false, user is free to register with username
 
-                if ((etUserName.getText().toString().equals(""))){
+                if (userName.length() < 5 || userName.trim().equals("")){
                     // when username field is empty
                     Toast.makeText(getApplicationContext(),
                             "Username should be minimum 5 characters", Toast.LENGTH_SHORT).show();
                 }
 
                 // saving registration as JSON in rest api elastic search database
-                // need to be first chekcing that their username doesnt exist yet
-                // if it doesnt just re loop, dont submit info, change name
+                // need to be first checking that their username doesn't exist yet
+                // if it doesn't just re loop, don't submit info, change name
+				ESController.IsUserInDatabaseTask isUserInDatabaseTask = new ESController.IsUserInDatabaseTask();
 
+                //TODO: if result is true, send toast and do not submit
+                // TODO: else, add user
 
+                isUserInDatabaseTask.execute(userName);
+                try {
+                    Boolean result = isUserInDatabaseTask.get();
 
-                // app controller set
-                ac.setUserName(userName);
-                ac.setFirstName(firstName);
-                ac.setLastName(lastName);
-                ac.setUserEmail(email);
-                ac.setUserPassword(password);
-                ac.setPhoneNumber(phoneNumber);
+                    if (result){
+                        Toast.makeText(getApplicationContext(), "Username not available, try again", Toast.LENGTH_SHORT).show();
+                    }else {
+                        ac.setUserName(userName);
+                        ac.setFirstName(firstName);
+                        ac.setLastName(lastName);
+                        ac.setUserEmail(email);
+                        ac.setUserPassword(password);
+                        ac.setPhoneNumber(phoneNumber);
+                        ac.editUserInDB();
+                        ac.resetUserProfile();
+                        finish();
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
 
-
-
-       // saveInFile();
-
     }
 
-    /**
-     * This method registers new user.
-     * @param userName Unique user name
-     * @param firstName User's first Name
-     * @param lastName User's last Name
-     * @param password User's password
-     * @param email User's email
-     * @throws DatabaseConnectException
-     */
-    protected void registerNewUser(String userName, String firstName, String lastName, String password, String email)
-            throws DatabaseConnectException {
-        throw new DatabaseConnectException();
-    }
 
     @Override
     public void update(BModel model) {

@@ -50,6 +50,10 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         //editImage.setImageResource(R.drawable.not_available);
 
         TextView title = (TextView) findViewById(R.id.editBookTitle);
+        // TODO: correct or not if I pull the book by its title from database
+        // TODO: need to save the edit to database
+        // getting the book by title from database
+
         index = getIntent().getIntExtra("INDEX", -2);
         if (index != -2) {
             myBook = ac.getMyBook(index);
@@ -127,8 +131,8 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         super.onDestroy();
         AppFive fc = AppFiveApp.getAppFive();
         fc.deleteView(this);
-        FileParser parser = new FileParser(this.getApplicationContext());
-        parser.saveInFile();
+        //FileParser parser = new FileParser(this.getApplicationContext());
+        //parser.saveInFile();
         fc.notifyViews();
     }
 

@@ -4,21 +4,26 @@ package ca.ualberta.appfive;
  * Singleton for User Profile information.
  * This class is only for the logged in user's profile data
  */
-public class UserProfile extends BModel<BView>{
+public class UserProfile{
     private static UserProfile ourInstance = new UserProfile();
-    private static String userName;
-    private static String userEmail;
-    private static String userPassword;
-    private static String firstName;
-    private static String lastName;
-    private static String phoneNumber;
+    private String userName;
+    private String userEmail;
+    private String userId = null;
+    private String userPassword;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+
 
     public static UserProfile getInstance() {
         return ourInstance;
     }
 
     private UserProfile() {
-        super();
+    }
+
+    public static void resetUserProfile(){
+        ourInstance = new UserProfile();
     }
 
     /**
@@ -33,59 +38,67 @@ public class UserProfile extends BModel<BView>{
      * @throws IllegalArgumentException if the user's name is not in database, or if password
      * isn't right
      */
-    public static void updateUserData(String userName, String userPassword)
+    public void updateUserData(String userName, String userPassword)
             throws IllegalArgumentException{
     }
 
-    public static void setUserName(String userName) {
-        UserProfile.userName = userName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public static String getUserName() {
+    public String getUserName() {
         return userName;
+    }
+
+    public void setUserId(String userId){
+        this.userId = userId;
+    }
+
+    public String getUserId() {
+        return userId;
     }
 
     /**
      * Call when resetting the user's contact info
      * @param userEmail New email contact info for the user
      */
-    public static void setUserEmail(String userEmail) {
-        UserProfile.userEmail = userEmail;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
-    public static String getUserEmail() {
+    public String getUserEmail() {
         return userEmail;
     }
 
-    public static void setUserPassword(String userEmail) {
-        UserProfile.userPassword = userEmail;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public static String getUserPassword() {
+    public String getUserPassword() {
         return userPassword ;
     }
 
-    public static String getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public static void setLastName(String lastName) {
-        UserProfile.lastName = lastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public static String getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public static void setFirstName(String firstName) {
-        UserProfile.firstName = firstName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public static String getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public static void setPhoneNumber(String phoneNumber) {
-        UserProfile.phoneNumber = phoneNumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

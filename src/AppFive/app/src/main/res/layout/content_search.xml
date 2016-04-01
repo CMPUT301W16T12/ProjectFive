@@ -23,7 +23,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/searchText"/>
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@id/search"
+        android:text="@string/search"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/searchView"
+        android:layout_alignBottom="@+id/searchText" />
     <TabHost
         android:layout_width="match_parent"
         android:layout_height="match_parent"

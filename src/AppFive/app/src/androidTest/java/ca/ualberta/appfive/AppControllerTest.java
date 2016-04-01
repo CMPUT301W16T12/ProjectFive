@@ -84,3 +84,4 @@ public class AppControllerTest extends ActivityInstrumentationTestCase2 {
 
 }
 //TODO: Add tests for Searching, Bidding
+

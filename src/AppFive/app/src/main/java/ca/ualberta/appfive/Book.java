@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * Model
  */
-public class Book extends BModel<BView>{
+public class Book {
     /**
      * Kinds of status that the book can have
      */
@@ -65,6 +65,10 @@ public class Book extends BModel<BView>{
 
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {

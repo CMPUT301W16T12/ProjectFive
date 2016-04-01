@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * The methods includes getters and setters from various sub-models.
  * Sub-models include User Profile and Book details.
  */
-public class AppController implements BController{
+public class AppController {
 
     private AppFive af = null;
 
@@ -72,6 +72,8 @@ public class AppController implements BController{
 
     public void addBook(Book book) {
         af.addBook(book);
+        ESController.AddBookTask addBookTask = new ESController.AddBookTask();
+        addBookTask.execute(book);
     }
 
     public void deleteBook(int index) {
@@ -82,6 +84,7 @@ public class AppController implements BController{
         af.editBook(index, newBook);
     }
 
+    // TODO: get from database using GetBookByUser then cache in af using setMyBookArray
     public ArrayList<Book> getMyBookArray(){
         return af.getMyBookArray();
     }
@@ -92,5 +95,18 @@ public class AppController implements BController{
 
     public Book getMyBook(int index){
         return af.getMyBook(index);
+    }
+
+    public void editUserInDB(){
+        ESController.EditUserTask editUserTask = new ESController.EditUserTask();
+        editUserTask.execute(UserProfile.getInstance());
+    }
+    public void getMyBooksFromDB(){
+        ESController.GetBooksbyUserTask getBooksbyUserTask = new ESController.GetBooksbyUserTask();
+        getBooksbyUserTask.execute(UserProfile.getInstance());
+    }
+
+    public void resetUserProfile(){
+        UserProfile.resetUserProfile();
     }
 }

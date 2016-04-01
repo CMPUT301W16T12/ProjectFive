@@ -26,11 +26,11 @@ public class EditProfileActivity extends AppCompatActivity implements BView<BMod
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
 
-        TextView userName = (TextView) findViewById(R.id.usernameedit);
+        final TextView userName = (TextView) findViewById(R.id.usernameedit);
         userName.setText(ac.getUserName());
+
         final EditText editUserEmail = (EditText) findViewById(R.id.useremailedit);
         editUserEmail.setText(ac.getUserEmail(), TextView.BufferType.EDITABLE);
-
 
         Button saveProfInfo = (Button) findViewById(R.id.saveprofinfo);
         saveProfInfo.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +40,16 @@ public class EditProfileActivity extends AppCompatActivity implements BView<BMod
                 String newEmail = editUserEmail.getText().toString();
                 ac.setUserEmail(newEmail);
 
+                // TODO: check: retreive by username from database only after clicked on save
+                // TODO: need to save the edit to database
+                // getting username from database
+                //ESController.GetUserTask getUserTask = new ESController.GetUserTask();
+                //getUserTask.execute(userName.toString());
+
+                // TODO: how to save the edit to database??
+                ac.editUserInDB();
+
+
                 finish();
             }
         });
@@ -47,14 +57,6 @@ public class EditProfileActivity extends AppCompatActivity implements BView<BMod
 
     }
 
-    /**
-     * Call to update the user's email
-     * @param email New user email
-     * @throws DatabaseConnectException
-     */
-    protected void commitProfileEdits(String email) throws DatabaseConnectException{
-        throw new DatabaseConnectException();
-    }
 
     @Override
     public void update(BModel model) {
@@ -66,8 +68,8 @@ public class EditProfileActivity extends AppCompatActivity implements BView<BMod
         super.onDestroy();
         AppFive fc = AppFiveApp.getAppFive();
         fc.deleteView(this);
-        FileParser parser = new FileParser(this.getApplicationContext());
-        parser.saveInFile();
+        //FileParser parser = new FileParser(this.getApplicationContext());
+        //parser.saveInFile();
         fc.notifyViews();
     }
 

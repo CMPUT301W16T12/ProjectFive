@@ -38,8 +38,8 @@ public class SearchResultsActivity extends AppCompatActivity implements BView<BM
         super.onDestroy();
         AppFive fc = AppFiveApp.getAppFive();
         fc.deleteView(this);
-        FileParser parser = new FileParser(this.getApplicationContext());
-        parser.saveInFile();
+        //FileParser parser = new FileParser(this.getApplicationContext());
+        //parser.saveInFile();
         fc.notifyViews();
     }
 }

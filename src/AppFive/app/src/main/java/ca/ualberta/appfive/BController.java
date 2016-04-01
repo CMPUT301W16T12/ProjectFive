@@ -1,5 +1,9 @@
 package ca.ualberta.appfive;
 
+import android.graphics.Bitmap;
+
+import java.util.ArrayList;
+
 /**
  * Controller class is implemented in this.
  *
@@ -7,3 +11,4 @@ package ca.ualberta.appfive;
 public interface BController {
 
 }
+

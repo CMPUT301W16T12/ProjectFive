@@ -9,7 +9,7 @@ public class RegisterActivityTest extends ActivityInstrumentationTestCase2 {
     public RegisterActivityTest() {
         super(RegisterActivity.class);
     }
-
+    /*
     public void testRegisterNewUser() throws Exception {
         RegisterActivity ra = (RegisterActivity) getActivity();
 
@@ -20,4 +20,5 @@ public class RegisterActivityTest extends ActivityInstrumentationTestCase2 {
             fail();
         }
     }
+    */
 }

@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 /**
  * My books activity shows the user's books in a list
  */
@@ -28,10 +31,19 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
 
-       // ac.addBook(new Book("test", "this is a test", "testing","thumbnail"));
+
+        // ac.addBook(new Book("test", "this is a test", "testing","thumbnail"));
+
+
+
+        //TODO: Send to AppController
+        //TODO: correct or not if I added this ES getbooktask, but not deleting adapter?
+        // get the books by username from Elasticsearch
+        ac.getMyBooksFromDB();
 
         bla = new BookListAdapter(this, ac.getMyBookArray());
 
+        //TODO: after getting booklist, still need to do something with the display the list??
         Button addBookButton = (Button) findViewById(R.id.addbookbutton);
         ListView booksListView = (ListView) findViewById(R.id.listViewBooks);
         booksListView.setAdapter(bla);
@@ -90,7 +102,7 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
     @Override
     public void update(BModel model) {
         bla.notifyDataSetChanged();
-        FileParser parser = new FileParser(this.getApplicationContext());
-        parser.saveInFile();
+        //FileParser parser = new FileParser(this.getApplicationContext());
+        //parser.saveInFile();
     }
 }

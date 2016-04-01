@@ -22,56 +22,56 @@ public class AppFive extends BModel<BView>{
     }
 
     public String getUserName() {
-        return UserProfile.getUserName();
+        return userProfile.getUserName();
     }
 
     public void setUserName(String userName) {
-        UserProfile.setUserName(userName);
+        userProfile.setUserName(userName);
         notifyViews();
     }
 
     public String getUserEmail() {
-        return UserProfile.getUserEmail();
+        return userProfile.getUserEmail();
     }
 
     public void setUserEmail(String email) {
-        UserProfile.setUserEmail(email);
+        userProfile.setUserEmail(email);
         notifyViews();
     }
 
     public String getUserPassword() {
-        return UserProfile.getUserPassword();
+        return userProfile.getUserPassword();
     }
 
     public void setUserPassword(String password){
-        UserProfile.setUserPassword(password);
+        userProfile.setUserPassword(password);
         notifyViews();
     }
 
     public String getFirstName() {
-        return UserProfile.getFirstName();
+        return userProfile.getFirstName();
     }
 
     public void setFirstName(String firstName){
-        UserProfile.setFirstName(firstName);
+        userProfile.setFirstName(firstName);
         notifyViews();
     }
 
     public String getLastName() {
-        return UserProfile.getLastName();
+        return userProfile.getLastName();
     }
 
     public void setLastName(String lastName){
-        UserProfile.setLastName(lastName);
+        userProfile.setLastName(lastName);
         notifyViews();
     }
 
     public String getPhoneNumber() {
-        return UserProfile.getPhoneNumber();
+        return userProfile.getPhoneNumber();
     }
 
     public void setPhoneNumber(String PhoneNumber){
-        UserProfile.setPhoneNumber(PhoneNumber);
+        userProfile.setPhoneNumber(PhoneNumber);
         notifyViews();
     }
 
