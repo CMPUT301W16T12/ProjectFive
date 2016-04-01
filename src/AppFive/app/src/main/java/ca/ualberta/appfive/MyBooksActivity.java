@@ -27,7 +27,7 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
-        final String userName = UserProfile.getUserName();
+        final String userName = UserProfile.getInstance().getUserName();
 
 
         // ac.addBook(new Book("test", "this is a test", "testing","thumbnail"));

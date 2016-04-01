@@ -12,11 +12,12 @@ public class ESControllerTest extends ActivityInstrumentationTestCase2 {
         super(ESController.class);
     }
 
-    public void testExecute(){
+    public void testExecute() throws Exception{
         UserProfile.setUserName("omokdad");
         UserProfile.setUserEmail("omokdad@yahoo.com");
         ESController.AddUserTask addUserTask = new ESController.AddUserTask();
         addUserTask.execute(UserProfile.getInstance());
         assertTrue(true);
     }
+
 }

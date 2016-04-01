@@ -3,7 +3,7 @@ package ca.ualberta.appfive;
 /**
  * A model for holding Owner info of books
  */
-public class OwnerInfo extends BModel<BView>{
+public class OwnerInfo{
 
     private String name;
     private String email;
@@ -13,8 +13,8 @@ public class OwnerInfo extends BModel<BView>{
      */
     public OwnerInfo() {
         super();
-        this.name = UserProfile.getUserName();
-        this.email = UserProfile.getUserEmail();
+        this.name = UserProfile.getInstance().getUserName();
+        this.email = UserProfile.getInstance().getUserEmail();
     }
 
     /**

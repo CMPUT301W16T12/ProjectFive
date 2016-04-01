@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * Model
  */
-public class Book extends BModel<BView>{
+public class Book {
     /**
      * Kinds of status that the book can have
      */

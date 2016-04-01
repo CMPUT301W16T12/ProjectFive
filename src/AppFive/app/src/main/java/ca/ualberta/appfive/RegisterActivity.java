@@ -81,7 +81,7 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
                 //TODO: if result is true, send toast and do not submit
                 // TODO: else, add user
 
-                isUserInDatabaseTask.execute(regName.getText().toString());
+                isUserInDatabaseTask.execute(userName);
                 try {
                     Boolean result = isUserInDatabaseTask.get();
                 } catch (InterruptedException e) {

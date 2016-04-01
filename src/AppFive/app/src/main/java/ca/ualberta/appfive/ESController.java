@@ -18,6 +18,7 @@ import io.searchbox.core.DocumentResult;
 import io.searchbox.core.Index;
 import io.searchbox.core.Search;
 import io.searchbox.core.SearchResult;
+import static io.searchbox.core.Index.*;
 
 
 public class ESController {
@@ -123,18 +124,21 @@ public class ESController {
         @Override
         protected Void doInBackground(UserProfile... userProfile) {
             verifyClient();
+            for (UserProfile user: userProfile) {
+                Index index = new Builder(user).index(teamdir).type(usertype).build();
+                try {
 
-            Index index = new Index.Builder(userProfile[0]).index(teamdir).type(usertype).build();
-            try {
-                DocumentResult result = client.execute(index);
-                if (result.isSucceeded()) {
-                    // Set ID
-                    //TODO: what to do with userProfile database,  userProfile.setId(result.getId());
-                } else {
-                    Log.i("TODO", "doInBackground: Add user did not succeed");
+
+                    DocumentResult result = client.execute(index);
+                    if (result.isSucceeded()) {
+                        // Set ID
+                        //TODO: what to do with userProfile database,  userProfile.setId(result.getId());
+                    } else {
+                        Log.i("TODO", "doInBackground: Add user did not succeed");
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
 
             return null;
@@ -179,7 +183,7 @@ public class ESController {
             Index index = new Index.Builder(userProfiles[0])
                     .index(teamdir)
                     .type(booktype)
-                    .id(UserProfile.getUserId())
+                    .id(userProfiles[0].getUserId())
                     .build();
 
             try {
@@ -223,15 +227,15 @@ public class ESController {
         }
     }
 
-    public static class GetBooksbyUser extends AsyncTask<Book.Status, Void, ArrayList<Book>> {
+    public static class GetBooksbyUser extends AsyncTask<UserProfile, Void, ArrayList<Book>> {
         ArrayList<Book> myBookList = new ArrayList<Book>();
 
         @Override
-        protected ArrayList<Book> doInBackground(Book.Status... params) {
+        protected ArrayList<Book> doInBackground(UserProfile... userProfiles) {
             verifyClient();
 
 
-            String search_string = "{\"from\":0,\"size\":10000,\"query\":{\"match\":{\"owner.name\":\"" + UserProfile.getUserName() + "\"}}}";
+            String search_string = "{\"from\":0,\"size\":10000,\"query\":{\"match\":{\"owner.name\":\"" + userProfiles[0].getUserName() + "\"}}}";
             Search search = new Search.Builder(search_string).addIndex(teamdir).addType(booktype).build();
 
             try {

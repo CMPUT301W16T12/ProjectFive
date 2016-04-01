@@ -43,12 +43,12 @@ public class EditProfileActivity extends AppCompatActivity implements BView<BMod
                 // TODO: check: retreive by username from database only after clicked on save
                 // TODO: need to save the edit to database
                 // getting username from database
-                ESController.GetUserTask getUserTask = new ESController.GetUserTask();
-                getUserTask.execute(userName.toString());
+                //ESController.GetUserTask getUserTask = new ESController.GetUserTask();
+                //getUserTask.execute(userName.toString());
 
                 // TODO: how to save the edit to database??
                 ESController.AddUserTask addUserTask = new ESController.AddUserTask();
- //               addUserTask.execute(newEmail);
+                addUserTask.execute(UserProfile.getInstance());
 
 
                 finish();
