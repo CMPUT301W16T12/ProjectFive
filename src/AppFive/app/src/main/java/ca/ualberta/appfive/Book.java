@@ -149,7 +149,11 @@ public class Book {
             thumbnailBase64 = Base64.encodeToString(b, Base64.DEFAULT);
         }
     }
+    public void deleteThumbnail() {
+        thumbnail = null;
+        thumbnailBase64 = null;
 
+    }
     public Bitmap getThumbnail() {
         if (thumbnail == null && thumbnailBase64 != null){
             byte[] decodeString = Base64.decode(thumbnailBase64, Base64.DEFAULT);

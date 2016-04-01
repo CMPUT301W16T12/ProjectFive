@@ -14,7 +14,7 @@ public class RegisterActivityTest extends ActivityInstrumentationTestCase2 {
         RegisterActivity ra = (RegisterActivity) getActivity();
 
         try{
-            ra.registerNewUser("abc", "1234", "test@mail.com");
+            ra.registerNewUser("user", "first name", "last name", "password", "email");
 
         }catch (DatabaseConnectException e){
             fail();

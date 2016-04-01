@@ -41,6 +41,7 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         Button saveBookEdit = (Button) findViewById(R.id.editbookSave);
 
         final ImageButton editImage = (ImageButton) findViewById(R.id.editThumbnail);
+        final Button deleteImage = (Button) findViewById(R.id.deleteImage);
         final EditText editTitle = (EditText) findViewById(R.id.edittitle);
         final EditText editGenre = (EditText) findViewById(R.id.editgenre);
         final EditText editDesc = (EditText) findViewById(R.id.editDescription);
@@ -98,6 +99,15 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
                 }
+            }
+        });
+        deleteImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thumbnail = null;
+                myBook.deleteThumbnail();
+                editImage.setImageBitmap(myBook.getThumbnail());
+
             }
         });
     }
