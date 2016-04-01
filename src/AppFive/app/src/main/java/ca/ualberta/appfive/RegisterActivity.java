@@ -88,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
                     Boolean result = isUserInDatabaseTask.get();
 
                     if (result){
-                        Toast.makeText(getApplicationContext(), "Username not available!, try again", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Username not available, try again", Toast.LENGTH_SHORT).show();
                     }else {
                         ac.setUserName(userName);
                         ac.setFirstName(firstName);
@@ -97,6 +97,7 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
                         ac.setUserPassword(password);
                         ac.setPhoneNumber(phoneNumber);
                         ac.editUserInDB();
+                        ac.resetUserProfile();
                         finish();
                     }
                 } catch (InterruptedException e) {

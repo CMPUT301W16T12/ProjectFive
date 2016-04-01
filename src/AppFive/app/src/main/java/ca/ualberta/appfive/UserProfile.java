@@ -22,6 +22,10 @@ public class UserProfile{
     private UserProfile() {
     }
 
+    public static void resetUserProfile(){
+        ourInstance = new UserProfile();
+    }
+
     /**
      * Call this update method when a user logs in
      * Polls database for username, checks password, gets contact info

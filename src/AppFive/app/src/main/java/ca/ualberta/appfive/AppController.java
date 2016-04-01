@@ -105,4 +105,8 @@ public class AppController {
         ESController.GetBooksbyUserTask getBooksbyUserTask = new ESController.GetBooksbyUserTask();
         getBooksbyUserTask.execute(UserProfile.getInstance());
     }
+
+    public void resetUserProfile(){
+        UserProfile.resetUserProfile();
+    }
 }
