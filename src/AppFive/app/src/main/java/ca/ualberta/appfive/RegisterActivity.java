@@ -52,22 +52,28 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
             public void onClick(View view){
                 // is user in database task; null = no connection, true = user is in database, false = user is not in database, free to register
                 // if is null, means theres no connection, can't register, cant check if theres user
-                // not null and returns false, user is free to register with username
 
+                // THIS IS ALL PSEUDO FOR THE FUTURE ESCONTROLLER
+                // result = ESCONTROLLER. IsUserInDatabaseTask()
 
+                //if result = null {
+                //    Toast.makeText(getApplicationContext(),
+                //            "Weak Connection, can't register at this time", Toast.LENGTH_SHORT).show();
+                //} else if result = true {
+                //    Toast.makeText(getApplicationContext(),
+                //            "Username already exists, cannot register", Toast.LENGTH_SHORT).show();
+                //} else {
+                    // user is not in database, free to register
+                    //continue
+                //}
 
-
+                
+                //checking to make sure username is not empty
                 if ((etUserName.getText().toString().equals(""))){
                     // when username field is empty
                     Toast.makeText(getApplicationContext(),
                             "Username should be minimum 5 characters", Toast.LENGTH_SHORT).show();
                 }
-
-                // saving registration as JSON in rest api elastic search database
-                // need to be first chekcing that their username doesnt exist yet
-                // if it doesnt just re loop, dont submit info, change name
-
-
 
                 // app controller set
                 ac.setUserName(userName);
@@ -98,6 +104,8 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
     protected void registerNewUser(String userName, String firstName, String lastName, String password, String email)
             throws DatabaseConnectException {
         throw new DatabaseConnectException();
+
+        // adding valid registration information to database
     }
 
     @Override
