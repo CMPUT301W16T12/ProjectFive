@@ -141,6 +141,12 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
 
     }
 
+    /**
+     * for book image
+     * @param requestCode code for check intent
+     * @param resultCode to check if intent return successfully
+     * @param data data received from intent
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         final ImageButton editImage = (ImageButton) findViewById(R.id.editThumbnail);

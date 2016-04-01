@@ -5,7 +5,7 @@ import android.app.Application;
 /**
  * The application class for the app.
  *
- * The code was borrowed from the FillerCreep app.
+ * The code is referencing from the FillerCreep app.
  * https://github.com/abramhindle/FillerCreepForAndroid
  */
 public class AppFiveApp extends Application {
