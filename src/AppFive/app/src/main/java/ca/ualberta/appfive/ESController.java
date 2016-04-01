@@ -78,20 +78,22 @@ public class ESController {
             ArrayList<Book> books = new ArrayList<>();
 
             // NOTE: Only first search term will be used
-            Search search = new Search.Builder(searchStrings[0]).addIndex(teamdir).addType(booktype).build();
+            for (String searchStr: searchStrings) {
+                Search search = new Search.Builder(searchStr).addIndex(teamdir).addType(booktype).build();
 
-            try {
-                SearchResult execute = client.execute(search);
-                if (execute.isSucceeded()) {
-                    List<Book> retBooks = execute.getSourceAsObjectList(Book.class);
-                    books.addAll(retBooks);
-                } else {
-                    Log.i("TODO", "doInBackground: Failed in searching tweets");
+                try {
+                    SearchResult execute = client.execute(search);
+                    if (execute.isSucceeded()) {
+                        List<Book> retBooks = execute.getSourceAsObjectList(Book.class);
+                        books.addAll(retBooks);
+                        ac.setMyBookArray(books);
+                    } else {
+                        Log.i("TODO", "doInBackground: Failed in searching tweets");
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-
             return books;
         }
     }
@@ -182,7 +184,7 @@ public class ESController {
 
             Index index = new Index.Builder(userProfiles[0])
                     .index(teamdir)
-                    .type(booktype)
+                    .type(usertype)
                     .id(userProfiles[0].getUserId())
                     .build();
 
@@ -205,7 +207,7 @@ public class ESController {
         protected Boolean doInBackground(String... usernames) {
             verifyClient();
             //TODO: look up exact matching query
-            String search_string = "{\"from\":0,\"size\":10000,\"query\":{\"match\":{\"message\":\"" + usernames[0] + "\"}}, \"sort\": {\"date\": {\"order\": \"desc\"}}}";
+            String search_string = "{\"query\":{\"match\":{\"name\":\"" + usernames[0] + "\"}}}";
 
 
             // NOTE: Only first search term will be used
@@ -216,14 +218,18 @@ public class ESController {
             try {
                 SearchResult execute = client.execute(search);
                 if (execute.isSucceeded()) {
-                    return Boolean.TRUE;
+                    if (execute.getTotal() > 0){
+                        return Boolean.TRUE;
+                    } else {
+                        return Boolean.FALSE;
+                    }
+
                 } else {
-                    return Boolean.FALSE;
+                    return  null;
                 }
             } catch (IOException e) {
                 return null;
             }
-
         }
     }
 
@@ -235,7 +241,17 @@ public class ESController {
             verifyClient();
 
 
-            String search_string = "{\"from\":0,\"size\":10000,\"query\":{\"match\":{\"owner.name\":\"" + userProfiles[0].getUserName() + "\"}}}";
+            String search_string =  "{\"query\":{" +
+                                    "   \"nested\":{" +
+                                    "       \"path\":\"owner\"," +
+                                    "       \"query\":{" +
+                                    "           \"match\":{" +
+                                    "               \"owner.name\":\"" + userProfiles[0].getUserName() + "\"" +
+                                    "           }" +
+                                    "       }," +
+                                    "       \"inner_hits\":{}" +
+                                    "   }" +
+                                    "}}";
             Search search = new Search.Builder(search_string).addIndex(teamdir).addType(booktype).build();
 
             try {
@@ -243,13 +259,14 @@ public class ESController {
                 if (execute.isSucceeded()) {
                     List<Book> bookList = execute.getSourceAsObjectList(Book.class);
                     myBookList.addAll(bookList);
-                    return myBookList;
+                    ac.setMyBookArray(myBookList);
                 } else {
-                    return myBookList;
+                    return null;
                 }
             } catch (IOException e) {
                 return null;
             }
+            return null;
         }
     }
 

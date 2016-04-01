@@ -72,6 +72,8 @@ public class AppController {
 
     public void addBook(Book book) {
         af.addBook(book);
+        ESController.AddBookTask addBookTask = new ESController.AddBookTask();
+        addBookTask.execute(book);
     }
 
     public void deleteBook(int index) {
@@ -84,6 +86,8 @@ public class AppController {
 
     // TODO: get from database using GetBookByUser then cache in af using setMyBookArray
     public ArrayList<Book> getMyBookArray(){
+        ESController.GetBooksbyUserTask getBooksbyUserTask = new ESController.GetBooksbyUserTask();
+        getBooksbyUserTask.execute(UserProfile.getInstance());
         return af.getMyBookArray();
     }
 
@@ -93,5 +97,10 @@ public class AppController {
 
     public Book getMyBook(int index){
         return af.getMyBook(index);
+    }
+
+    public void editUserInDB(){
+        ESController.EditUserTask editUserTask = new ESController.EditUserTask();
+        editUserTask.execute(UserProfile.getInstance());
     }
 }

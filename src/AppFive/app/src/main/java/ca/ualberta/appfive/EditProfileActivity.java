@@ -47,8 +47,7 @@ public class EditProfileActivity extends AppCompatActivity implements BView<BMod
                 //getUserTask.execute(userName.toString());
 
                 // TODO: how to save the edit to database??
-                ESController.AddUserTask addUserTask = new ESController.AddUserTask();
-                addUserTask.execute(UserProfile.getInstance());
+                ac.editUserInDB();
 
 
                 finish();
@@ -58,14 +57,6 @@ public class EditProfileActivity extends AppCompatActivity implements BView<BMod
 
     }
 
-    /**
-     * Call to update the user's email
-     * @param email New user email
-     * @throws DatabaseConnectException
-     */
-    protected void commitProfileEdits(String email) throws DatabaseConnectException{
-        throw new DatabaseConnectException();
-    }
 
     @Override
     public void update(BModel model) {

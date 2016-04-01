@@ -52,8 +52,6 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         // TODO: correct or not if I pull the book by its title from database
         // TODO: need to save the edit to database
         // getting the book by title from database
-        ESController.GetBookTask getBookTask = new ESController.GetBookTask();
-        getBookTask.execute(title.toString());
 
         index = getIntent().getIntExtra("INDEX", -2);
         if (index != -2) {
