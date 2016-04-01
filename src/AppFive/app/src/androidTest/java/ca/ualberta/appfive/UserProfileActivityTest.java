@@ -21,4 +21,8 @@ public class UserProfileActivityTest extends ActivityInstrumentationTestCase2 {
             fail();
         }
     }
+    public void testGetPassword() throws Exception {
+        UserProfileActivity upa = (UserProfileActivity) getActivity();
+
+    }
 }

@@ -13,8 +13,8 @@ public class ESControllerTest extends ActivityInstrumentationTestCase2 {
     }
 
     public void testExecute() throws Exception{
-        UserProfile.setUserName("omokdad");
-        UserProfile.setUserEmail("omokdad@yahoo.com");
+        UserProfile.getInstance().setUserName("omokdad");
+        UserProfile.getInstance().setUserEmail("omokdad@yahoo.com");
         ESController.AddUserTask addUserTask = new ESController.AddUserTask();
         addUserTask.execute(UserProfile.getInstance());
         assertTrue(true);

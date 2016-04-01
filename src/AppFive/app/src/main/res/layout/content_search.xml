@@ -13,13 +13,21 @@
     tools:context="ca.ualberta.appfive.SearchActivity"
     tools:showIn="@layout/activity_search"
     android:background="@drawable/display_template">
-
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ETSearch"
-        android:hint="@string/search"/>
-
+        android:orientation="horizontal">
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/ETSearch"
+            android:hint="@string/search"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@id/searchButton"
+            android:text="@string/search"/>
+    </LinearLayout>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

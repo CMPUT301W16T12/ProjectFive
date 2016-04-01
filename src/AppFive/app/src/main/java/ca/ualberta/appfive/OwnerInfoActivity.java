@@ -23,9 +23,13 @@ public class OwnerInfoActivity extends AppCompatActivity implements BView<BModel
 
         TextView userName = (TextView) findViewById(R.id.TVOwnerName);
         TextView userEmail = (TextView) findViewById(R.id.TVOwnerEmail);
-
+        TextView firstName = (TextView) findViewById(R.id.TVOwnerFirstName);
+        TextView lastName = (TextView) findViewById(R.id.TVOwnerLastName);
+        TextView userNumber = (TextView) findViewById(R.id.TVOwnerPhoneNumber);
         userName.setText(name);
         userEmail.setText(email);
+        
+
 
     }
 

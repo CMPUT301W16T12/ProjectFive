@@ -17,25 +17,25 @@ public class AppControllerTest extends ActivityInstrumentationTestCase2 {
     }
     //Use Cases: User Profile (Set and Edit)
     public void testGetUserName() throws Exception {
-        UserProfile.setUserName("asdf");
+        UserProfile.getInstance().setUserName("asdf");
         AppController ac = AppFiveApp.getAppController();
         assertEquals(ac.getUserName(), "asdf");
     }
 
     public void testSetUserName() throws Exception {
-        UserProfile.setUserName("asdf");
+        UserProfile.getInstance().setUserName("asdf");
         AppController ac = AppFiveApp.getAppController();
         assertNotNull(ac.getUserName());
     }
 
     public void testGetUserEmail() throws Exception {
-        UserProfile.setUserEmail("aaaa@bbb.cc");
+        UserProfile.getInstance().setUserEmail("aaaa@bbb.cc");
         AppController ac = AppFiveApp.getAppController();
         assertEquals(ac.getUserEmail(), "aaaa@bbb.cc");
     }
 
     public void testSetUserEmail() throws Exception {
-        UserProfile.setUserEmail("aaaa@bbb.cc");
+        UserProfile.getInstance().setUserEmail("aaaa@bbb.cc");
         AppController ac = AppFiveApp.getAppController();
         assertNotNull(ac.getUserEmail());
     }

@@ -173,6 +173,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         TextView bookTitle = (TextView) findViewById(R.id.TVBookTitle);
         TextView bookdescription = (TextView) findViewById(R.id.TVDescription);
         TextView bookGenre = (TextView) findViewById(R.id.TVGenre);
+        TextView bookAuthor = (TextView) findViewById(R.id.TVAuthor);
 
 
         bookGenre.setText(myBook.getGenre());
@@ -281,7 +282,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
     /**
      * To receive bid, we either addbid or update status
      * @param myBook of Book
-     * @see reference from http://stackoverflow.com/questions/10903754/input-text-dialog-android by Aaron
+     * see reference from http://stackoverflow.com/questions/10903754/input-text-dialog-android by Aaron
      *
      */
     //TODO: add notification to owner when receive bids

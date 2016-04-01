@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +30,9 @@ public class SearchActivity extends AppCompatActivity implements BView<BModel>{
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
 
-        final EditText search = (EditText) findViewById(R.id.searchView);
-
-        final Button searchButton = (Button) findViewById(R.id.search);
+        final EditText search = (EditText) findViewById(R.id.ETSearch);
+        final ListView listView = (ListView) findViewById(R.id.LVSearchList);
+        final Button searchButton = (Button) findViewById(R.id.searchButton);
         final String result;
         final ArrayList<Book> books;
         final List<Book> bookList;
