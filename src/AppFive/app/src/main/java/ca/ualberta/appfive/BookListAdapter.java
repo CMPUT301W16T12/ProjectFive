@@ -8,11 +8,11 @@ import android.widget.ArrayAdapter;
 
 import java.util.List;
 
-// Strategy for displaying list items borrowed from
-// http://stackoverflow.com/questions/11281952/listview-with-customized-row-layout-android
-// by Sajmon on 1 July 2012
-// accessed 29 January 2016
-
+/** Strategy for displaying list items borrowed from
+ *
+ * @see http://stackoverflow.com/questions/11281952/listview-with-customized-row-layout-android
+ * by Sajmon on 1 July 2012, accessed 29 January 2016
+ */
 public class BookListAdapter extends ArrayAdapter<Book> {
 
     //private int selectedRadioIndex = -1;
@@ -22,6 +22,11 @@ public class BookListAdapter extends ArrayAdapter<Book> {
         super(context, R.layout.book_entry, objects);
     }
 
+    /**
+     * get View of a book
+     * @param position int of the Book
+     * @return convertView
+     */
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         BookViewEntryHolder holder = null;
@@ -49,6 +54,7 @@ public class BookListAdapter extends ArrayAdapter<Book> {
         holder.getGenreText().setText(getItem(position).getGenre());
         holder.getStatusImage().setImageResource(statusResource);
 
+        //TODO: delete/ clean up the code below??
         /*
         // Strategy for radio button behaviour borrowed from
         // http://stackoverflow.com/questions/7329856/how-to-use-radiogroup-in-listview-custom-adapter
