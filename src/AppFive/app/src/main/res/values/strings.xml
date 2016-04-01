@@ -40,7 +40,7 @@
     <string name="myBook">My Books</string>
     <string name="email">Email</string>
     <string name="aboutMe">About Me</string>
-    <string name="myBid">My Bid</string>
+    <string name="myBid">My Bids</string>
     <string name="myBorrow">My Borrowing</string>
     <string name="thumbnail">*Thumbnail*</string>
     // added action

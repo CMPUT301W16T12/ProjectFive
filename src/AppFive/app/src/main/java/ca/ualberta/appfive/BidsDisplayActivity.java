@@ -1,7 +1,5 @@
 package ca.ualberta.appfive;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -9,7 +7,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 
@@ -33,7 +30,7 @@ public class BidsDisplayActivity extends AppCompatActivity implements BView<BMod
 
         bla = new BidsListAdapter(this, myBook.getBids());
 
-        ListView bidsListView = (ListView) findViewById(R.id.bidList);
+        ListView bidsListView = (ListView) findViewById(R.id.LVBidList);
         bidsListView.setAdapter(bla);
 
         /** For the list view of bids, set on Long click to provide menu

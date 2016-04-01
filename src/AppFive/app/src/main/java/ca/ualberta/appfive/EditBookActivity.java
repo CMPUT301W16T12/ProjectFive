@@ -2,13 +2,8 @@ package ca.ualberta.appfive;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -38,21 +33,20 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
 
-        Button saveBookEdit = (Button) findViewById(R.id.editbookSave);
+        Button saveBookEdit = (Button) findViewById(R.id.editbookSaveButton);
 
-        final ImageButton editImage = (ImageButton) findViewById(R.id.editThumbnail);
+
         final Button deleteImage = (Button) findViewById(R.id.deleteImage);
-        final EditText editTitle = (EditText) findViewById(R.id.edittitle);
-        final EditText editGenre = (EditText) findViewById(R.id.editgenre);
-        final EditText editDesc = (EditText) findViewById(R.id.editDescription);
-        final EditText editAuthor = (EditText)findViewById(R.id.editauthor);
+
+        final ImageButton editImage = (ImageButton) findViewById(R.id.editThumbnailButton);
+        final EditText editTitle = (EditText) findViewById(R.id.ETTitle);
+        final EditText editGenre = (EditText) findViewById(R.id.ETGenre);
+        final EditText editDesc = (EditText) findViewById(R.id.ETDescription);
+        final EditText editAuthor = (EditText)findViewById(R.id.ETAuthor);
 
         //editImage.setImageResource(R.drawable.not_available);
 
-        TextView title = (TextView) findViewById(R.id.editBookTitle);
-        // TODO: correct or not if I pull the book by its title from database
-        // TODO: need to save the edit to database
-        // getting the book by title from database
+        TextView title = (TextView) findViewById(R.id.TVEditBookTitle);
 
         index = getIntent().getIntExtra("INDEX", -2);
         if (index != -2) {
@@ -149,7 +143,7 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
      */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        final ImageButton editImage = (ImageButton) findViewById(R.id.editThumbnail);
+        final ImageButton editImage = (ImageButton) findViewById(R.id.editThumbnailButton);
         //final AppController ac = AppFiveApp.getAppController();
         //final int index = getIntent().getIntExtra("INDEX", -2);
 

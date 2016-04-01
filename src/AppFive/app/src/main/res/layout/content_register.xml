@@ -19,22 +19,22 @@
         android:textSize="15pt"
         android:layout_gravity="top|center_horizontal"
         android:layout_alignParentStart="true"
-        android:id="@+id/saveReg" />
+        android:id="@+id/TVRegisterTitle" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/username"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/saveReg"
+        android:id="@+id/TVUsername"
+        android:layout_below="@+id/TVRegisterTitle"
         android:layout_alignParentStart="true"
         android:layout_marginTop="27dp" />
     <EditText
-        android:id="@+id/regName"
+        android:id="@+id/ETUsernameRegistration"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/TVUsername"
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -42,44 +42,44 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/tvFirstName"
-        android:id="@+id/FirstNametv"
-        android:layout_below="@+id/regName"
-        android:layout_alignStart="@+id/regName"
+        android:id="@+id/TVFirstName"
+        android:layout_below="@+id/ETUsernameRegistration"
+        android:layout_alignStart="@+id/ETUsernameRegistration"
         android:layout_marginTop="27dp" />
     <EditText
-        android:id="@+id/regFirstName"
+        android:id="@+id/ETFirstNameRegistration"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/FirstNametv"
-        android:layout_alignStart="@+id/FirstNametv"/>
+        android:layout_below="@+id/TVFirstName"
+        android:layout_alignStart="@+id/TVFirstName"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/tvLastName"
-        android:id="@+id/LastNametv"
-        android:layout_below="@+id/regFirstName"
+        android:id="@+id/TVLastName"
+        android:layout_below="@+id/ETFirstNameRegistration"
         android:layout_marginTop="27dp" />
     <EditText
-        android:id="@+id/regLastName"
+        android:id="@+id/ETLastNameRegistration"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/LastNametv" />
+        android:layout_below="@+id/TVLastName" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/email"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/regLastName"
+        android:id="@+id/TVEmail"
+        android:layout_below="@+id/ETLastNameRegistration"
         android:layout_marginTop="27dp"/>
     <EditText
-        android:id="@+id/regEmail"
+        android:id="@+id/ETEmailRegistration"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView4"
+        android:layout_below="@+id/TVEmail"
         android:inputType="textEmailAddress" />
 
     <TextView
@@ -87,53 +87,53 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/regEmail"
-        android:id="@+id/textView5"
+        android:layout_below="@+id/ETEmailRegistration"
+        android:id="@+id/TVPassword"
         android:layout_marginTop="27dp"/>
     <EditText
-        android:id="@+id/regPassword"
+        android:id="@+id/ETPasswordRegistration"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView5"
+        android:layout_below="@+id/TVPassword"
         android:inputType="textPassword" />
 
     <TextView
         android:text="@string/confirmPwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2"
+        android:id="@+id/TVConfirmPassword"
         android:layout_centerVertical="true"
-        android:layout_below="@id/regPassword"
+        android:layout_below="@id/ETPasswordRegistration"
         android:layout_marginTop="27dp"/>
     <EditText
-        android:id="@+id/matchPassword"
+        android:id="@+id/ETMatchPasswordRegistration"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        android:layout_below="@+id/textView2"/>
+        android:layout_below="@+id/TVConfirmPassword"/>
 
     <TextView
         android:text="@string/tvPhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/phone_number"
+        android:id="@+id/TVPhoneNumber"
         android:layout_centerVertical="true"
-        android:layout_below="@id/matchPassword"
+        android:layout_below="@id/ETMatchPasswordRegistration"
         android:layout_marginTop="27dp"/>
     <EditText
-        android:id="@+id/regPhoneNumber"
+        android:id="@+id/ETPhoneNumberRegistration"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"/>
+        android:layout_below="@+id/TVConfirmPassword"/>
 
 
     <Button
-        android:id="@+id/save"
+        android:id="@+id/saveRegistrationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save"
         android:layout_gravity="center_horizontal"
         android:textSize="10pt"
-        android:layout_alignTop="@+id/owner"
+        android:layout_alignTop="@+id/ownerButton"
         android:layout_alignParentEnd="true" />
 </RelativeLayout>

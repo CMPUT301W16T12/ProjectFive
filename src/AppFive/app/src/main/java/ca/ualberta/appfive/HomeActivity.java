@@ -7,14 +7,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.gson.Gson;
-
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-
 /**
  * This activity displays the home page of app
  */
@@ -33,9 +25,9 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
 
 
         // bodyText = (EditText) findViewById(R.id.body);
-        Button searchButton = (Button) findViewById(R.id.search);
-        Button myProfileButton = (Button) findViewById(R.id.myProfile);
-        Button myBookButton = (Button) findViewById(R.id.myBook);
+        Button searchButton = (Button) findViewById(R.id.searchButton);
+        Button myProfileButton = (Button) findViewById(R.id.myProfileButton);
+        Button myBookButton = (Button) findViewById(R.id.myBooksButton);
 
 
         searchButton.setOnClickListener(new View.OnClickListener() {

@@ -18,27 +18,94 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/username"
-        android:id="@+id/usernameedit"
+        android:id="@+id/TVUsername"
         android:layout_marginTop="57dp"
         android:layout_alignParentTop="true" />
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/tvFirstName"
+        android:id="@+id/TVFirstName"
+        android:layout_below="@+id/TVUsername"
+        android:layout_alignStart="@+id/ETUsernameRegistration"
+        android:layout_marginTop="27dp" />
     <EditText
-        android:id="@+id/useremailedit"
-        android:text="@string/email"
+        android:id="@+id/ETFirstName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/usernameedit"
-        android:inputType="textEmailAddress"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="51dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:layout_below="@+id/TVFirstName"
+        android:layout_alignStart="@+id/TVFirstName"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/tvLastName"
+        android:id="@+id/TVLastName"
+        android:layout_below="@+id/ETFirstName"
+        android:layout_marginTop="27dp" />
+    <EditText
+        android:id="@+id/ETLastName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TVLastName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/email"
+        android:id="@+id/TVEmail"
+        android:layout_below="@+id/ETLastName"
+        android:layout_marginTop="27dp"/>
+    <EditText
+        android:id="@+id/ETEmail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TVEmail"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:text="@string/password"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ETEmail"
+        android:id="@+id/TVPassword"
+        android:layout_marginTop="27dp"/>
+    <EditText
+        android:id="@+id/ETPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TVPassword"
+        android:inputType="textPassword" />
+
+
+    <TextView
+        android:text="@string/tvPhoneNumber"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TVPhoneNumber"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/ETPassword"
+        android:layout_marginTop="27dp"/>
+    <EditText
+        android:id="@+id/ETPhoneNumber"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TVPhoneNumber"/>
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save"
-        android:id="@+id/saveprofinfo"
-        android:layout_below="@+id/useremailedit"
-        android:layout_alignEnd="@+id/useremailedit" />
+        android:id="@+id/saveProfileEditButton"
+        android:layout_below="@+id/ETPhoneNumber"
+        android:layout_alignEnd="@+id/ETPhoneNumber" />
 
 </RelativeLayout>

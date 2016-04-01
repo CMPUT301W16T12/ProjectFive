@@ -2,12 +2,9 @@ package ca.ualberta.appfive;
 
 import android.app.Activity;
 import android.app.Instrumentation;
-import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.ViewAsserts;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 /**
  * Created by jjdaz on 2016-03-14.
@@ -27,68 +24,68 @@ public class LoginActivityUITest extends ActivityInstrumentationTestCase2 {
     }
 
     public void testtoRegisterActivity() throws Exception {
-        ((Button) activity.findViewById(R.id.register)).performClick();
+        ((Button) activity.findViewById(R.id.registerButton)).performClick();
         RegisterActivity ra = (RegisterActivity) getActivity();
-        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.saveReg));
+        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.TVRegisterTitle));
     }
 
     public void testtoHomeActivity() {
-        ((Button) activity.findViewById(R.id.register)).performClick();
+        ((Button) activity.findViewById(R.id.registerButton)).performClick();
         HomeActivity ha = (HomeActivity) getActivity();
-        ViewAsserts.assertOnScreen(ha.getWindow().getDecorView(), activity.findViewById(R.id.homeTitle));
+        ViewAsserts.assertOnScreen(ha.getWindow().getDecorView(), activity.findViewById(R.id.TVHomeTitle));
     }
 
     public void testtoMyBooksActivity() {
-        ((Button) activity.findViewById(R.id.myBook)).performClick();
+        ((Button) activity.findViewById(R.id.myBooksButton)).performClick();
         MyBooksActivity ra = (MyBooksActivity) getActivity();
-        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.textView6));
+        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.TVMyBooksTitle));
 
     }
 
     public void testtoMyBiddedActivity() {
-        ((Button) activity.findViewById(R.id.register)).performClick();
+        ((Button) activity.findViewById(R.id.registerButton)).performClick();
         MyBiddedActivity ra = (MyBiddedActivity) getActivity();
-        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.saveReg));
+        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.TVRegisterTitle));
 
     }
 
     public void testtoUserProfileActivity() {
-        ((Button) activity.findViewById(R.id.register)).performClick();
+        ((Button) activity.findViewById(R.id.registerButton)).performClick();
         UserProfileActivity ra = (UserProfileActivity) getActivity();
-        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.saveReg));
+        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.TVRegisterTitle));
 
     }
 
     public void testtoSearchActivity() {
-        ((Button) activity.findViewById(R.id.register)).performClick();
+        ((Button) activity.findViewById(R.id.registerButton)).performClick();
         SearchActivity ra = (SearchActivity) getActivity();
-        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.saveReg));
+        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.TVRegisterTitle));
 
     }
 
     public void testtoOwnerInfoActivity(){
-        ((Button) activity.findViewById(R.id.register)).performClick();
+        ((Button) activity.findViewById(R.id.registerButton)).performClick();
         OwnerInfoActivity ra = (OwnerInfoActivity) getActivity();
-        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.saveReg));
+        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.TVRegisterTitle));
 
     }
     public void testtoBookDisplayActivity(){
-        ((Button) activity.findViewById(R.id.register)).performClick();
+        ((Button) activity.findViewById(R.id.registerButton)).performClick();
         BookDisplayActivity ra = (BookDisplayActivity) getActivity();
-        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.saveReg));
+        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.TVRegisterTitle));
 
     }
     public void testtoEditBookActivity() {
-        ((Button) activity.findViewById(R.id.addbookbutton)).performClick();
+        ((Button) activity.findViewById(R.id.addBookButton)).performClick();
         EditBookActivity ra = (EditBookActivity) getActivity();
-        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.editBook));
+        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.editBookButton));
 
     }
 
     public void testtoEditProfileActivity() {
-        ((Button) activity.findViewById(R.id.register)).performClick();
+        ((Button) activity.findViewById(R.id.registerButton)).performClick();
         EditProfileActivity ra = (EditProfileActivity) getActivity();
-        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.saveReg));
+        ViewAsserts.assertOnScreen(ra.getWindow().getDecorView(), activity.findViewById(R.id.TVRegisterTitle));
 
     }
 

@@ -1,8 +1,6 @@
 package ca.ualberta.appfive;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -26,19 +24,42 @@ public class EditProfileActivity extends AppCompatActivity implements BView<BMod
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
 
-        final TextView userName = (TextView) findViewById(R.id.usernameedit);
+
+        // Because Username is only non editable user info
+        TextView userName = (TextView) findViewById(R.id.TVUsername);
         userName.setText(ac.getUserName());
 
-        final EditText editUserEmail = (EditText) findViewById(R.id.useremailedit);
-        editUserEmail.setText(ac.getUserEmail(), TextView.BufferType.EDITABLE);
+        final EditText editUserEmail = (EditText) findViewById(R.id.ETEmail);
+        final EditText editFirstName = (EditText) findViewById(R.id.ETFirstName);
+        final EditText editLastName = (EditText) findViewById(R.id.ETLastName);
+        final EditText editPassword = (EditText) findViewById(R.id.ETPassword);
+        final EditText editPhoneNumber = (EditText) findViewById(R.id.ETPhoneNumber);
 
-        Button saveProfInfo = (Button) findViewById(R.id.saveprofinfo);
+        editUserEmail.setText(ac.getUserEmail(), TextView.BufferType.EDITABLE);
+        editFirstName.setText(ac.getFirstName(), TextView.BufferType.EDITABLE);
+        editLastName.setText(ac.getLastName(), TextView.BufferType.EDITABLE);
+        editPassword.setText(ac.getUserPassword(), TextView.BufferType.EDITABLE);
+        editPhoneNumber.setText(ac.getPhoneNumber(), TextView.BufferType.EDITABLE);
+
+
+        Button saveProfInfo = (Button) findViewById(R.id.saveProfileEditButton);
+
         saveProfInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Save entered email
+
+                //Save entered new data
                 String newEmail = editUserEmail.getText().toString();
+                String newFirstName = editFirstName.getText().toString();
+                String newLastName = editLastName.getText().toString();
+                String newPassword = editPassword.getText().toString();
+                String newPhoneNumber = editPhoneNumber.getText().toString();
+
                 ac.setUserEmail(newEmail);
+                ac.setFirstName(newFirstName);
+                ac.setLastName(newLastName);
+                ac.setUserPassword(newPassword);
+                ac.setPhoneNumber(newPhoneNumber);
 
                 // TODO: check: retreive by username from database only after clicked on save
                 // TODO: need to save the edit to database

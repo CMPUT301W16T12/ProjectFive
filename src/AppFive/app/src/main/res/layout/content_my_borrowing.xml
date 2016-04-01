@@ -19,13 +19,13 @@
         android:layout_marginTop="@dimen/fab_margin"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:id="@+id/myBorrow" />
+        android:id="@+id/TVMyBorrowing" />
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listMyBorrow"
-        android:layout_below="@+id/myBorrow"
+        android:id="@+id/LVMyBorrowing"
+        android:layout_below="@+id/TVMyBorrowing"
         android:layout_alignParentStart="true" />
 
 </RelativeLayout>

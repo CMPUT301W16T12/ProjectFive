@@ -2,8 +2,6 @@ package ca.ualberta.appfive;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -11,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
 
 import com.google.gson.Gson;
 
@@ -22,11 +21,12 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+
 /**
  * Activity for making a new user account.
  */
 public class RegisterActivity extends AppCompatActivity implements BView<BModel>{
-    EditText etUserName, etFirstName, etLastName, etEmail, etPassword, etPhoneNumber;
+    EditText etUserName, etFirstName, etLastName, etEmail, etPassword,etConfirmPassword, etPhoneNumber;
     String userName, firstName, lastName, email, password, phoneNumber;
 
 
@@ -42,15 +42,16 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
 		
-        final Button bRegister = (Button) findViewById(R.id.save);
 
+		final Button bRegister = (Button) findViewById(R.id.saveRegistrationButton);
 		
-        etUserName = (EditText) findViewById(R.id.regName);
-        etFirstName = (EditText) findViewById(R.id.regFirstName);
-        etLastName = (EditText) findViewById(R.id. regLastName);
-        etEmail = (EditText) findViewById(R.id.regEmail);
-        etPassword = (EditText) findViewById(R.id.regPassword);
-        etPhoneNumber = (EditText) findViewById(R.id.regPhoneNumber);
+        etUserName = (EditText) findViewById(R.id.ETUsernameRegistration);
+        etFirstName = (EditText) findViewById(R.id.ETFirstNameRegistration);
+        etLastName = (EditText) findViewById(R.id.ETLastNameRegistration);
+        etEmail = (EditText) findViewById(R.id.ETEmailRegistration);
+        etPassword = (EditText) findViewById(R.id.ETPasswordRegistration);
+        etConfirmPassword = (EditText) findViewById(R.id.ETMatchPasswordRegistration);
+        etPhoneNumber = (EditText) findViewById(R.id.ETPhoneNumberRegistration);
 
         // converting to string for saving as JSON object
 
@@ -70,6 +71,7 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
                 // not null and returns false, user is free to register with username
 
                 if (userName.length() < 5 || userName.trim().equals("")){
+
                     // when username field is empty
                     Toast.makeText(getApplicationContext(),
                             "Username should be minimum 5 characters", Toast.LENGTH_SHORT).show();
@@ -110,7 +112,6 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
         });
 
     }
-
 
     @Override
     public void update(BModel model) {

@@ -43,9 +43,10 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
 
         bla = new BookListAdapter(this, ac.getMyBookArray());
 
-        //TODO: after getting booklist, still need to do something with the display the list??
-        Button addBookButton = (Button) findViewById(R.id.addbookbutton);
-        ListView booksListView = (ListView) findViewById(R.id.listViewBooks);
+
+        Button addBookButton = (Button) findViewById(R.id.addBookButton);
+        ListView booksListView = (ListView) findViewById(R.id.LVMyBooks);
+
         booksListView.setAdapter(bla);
 
         // Behaviour for clicking on a book in the list

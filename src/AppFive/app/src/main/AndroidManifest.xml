@@ -34,10 +34,6 @@
             android:label="@string/title_activity_search"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SearchResultsActivity"
-            android:label="@string/title_activity_search_results"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".BookDisplayActivity"
             android:label="@string/title_activity_book_display"
             android:theme="@style/AppTheme.NoActionBar" />

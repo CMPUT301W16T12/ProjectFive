@@ -23,7 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
     <Button
-        android:id="@+id/owner"
+        android:id="@+id/ownerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/owner"
@@ -32,22 +32,22 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
     <Button
-        android:id="@+id/editBook"
+        android:id="@+id/editBookButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/edit"
         android:layout_gravity="center_horizontal"
         android:textSize="10pt"
-        android:layout_alignTop="@+id/owner"
+        android:layout_alignTop="@+id/ownerButton"
         android:layout_alignParentEnd="true" />
     <Button
-        android:id="@+id/addBid"
+        android:id="@+id/addBidButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/addBid"
         android:layout_gravity="center_horizontal"
         android:textSize="10pt"
-        android:layout_alignTop="@+id/owner"
+        android:layout_alignTop="@+id/ownerButton"
         android:layout_alignParentEnd="true" />
     <Button
         android:id="@+id/returnButton"
@@ -56,7 +56,7 @@
         android:text="@string/Return"
         android:layout_gravity="center_horizontal"
         android:textSize="10pt"
-        android:layout_alignTop="@+id/owner"
+        android:layout_alignTop="@+id/ownerButton"
         android:layout_alignParentEnd="true" />
     <Button
         android:id="@+id/bidInfoButton"
@@ -65,8 +65,8 @@
         android:text="@string/bidInfo"
         android:layout_gravity="center_horizontal"
         android:textSize="10pt"
-        android:layout_alignTop="@+id/owner"
-        android:layout_alignParentStart="true" />
+        android:layout_alignTop="@+id/ownerButton"
+        android:layout_alignParentStart="true"/>
     <Button
         android:id="@+id/bidsButton"
         android:layout_width="wrap_content"
@@ -74,53 +74,53 @@
         android:text="@string/bids"
         android:layout_gravity="center_horizontal"
         android:textSize="10pt"
-        android:layout_alignTop="@+id/owner"
+        android:layout_alignTop="@+id/ownerButton"
         android:layout_alignParentStart="true" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></LinearLayout>
     <TextView
-        android:id="@+id/bookTitle"
+        android:id="@+id/TVBookTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title"
         android:textSize="20pt"
-        android:layout_alignBottom="@+id/thumbnail"
-        android:layout_toEndOf="@id/thumbnail"
+        android:layout_alignBottom="@+id/thumbnailBookDisplay"
+        android:layout_toEndOf="@id/thumbnailBookDisplay"
         android:layout_marginStart="5dp"/>
     <TextView
-        android:id="@+id/authorView"
+        android:id="@+id/TVAuthor"
         android:text="@string/author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="10pt"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/thumbnail"
-        android:layout_alignStart="@+id/thumbnail"/>
+        android:layout_below="@+id/thumbnailBookDisplay"
+        android:layout_alignStart="@+id/thumbnailBookDisplay"/>
     <TextView
-        android:id="@+id/genreView"
+        android:id="@+id/TVGenre"
         android:text="@string/genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="10pt"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/authorView"
-        android:layout_alignStart="@+id/thumbnail"/>
+        android:layout_below="@+id/TVAuthor"
+        android:layout_alignStart="@+id/thumbnailBookDisplay"/>
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/TVDescription"
         android:text="@string/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="10pt"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/genreView"
-        android:layout_alignStart="@+id/thumbnail" />
+        android:layout_below="@+id/TVGenre"
+        android:layout_alignStart="@+id/thumbnailBookDisplay" />
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/thumbnail"
+        android:id="@+id/thumbnailBookDisplay"
         android:layout_marginTop="75dp"
         android:layout_alignParentStart="true" />
 

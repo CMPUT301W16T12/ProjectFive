@@ -18,47 +18,47 @@
         android:text="@string/welcome"
         android:textSize="20pt"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/homeTitle"
+        android:id="@+id/TVHomeTitle"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/myBook" />
+        android:layout_alignEnd="@+id/myBooksButton" />
 
     <Button
-        android:id="@+id/search"
+        android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/search"
         android:layout_gravity="center_horizontal"
         android:onClick="search"
-        android:layout_below="@+id/homeTitle"
+        android:layout_below="@+id/TVHomeTitle"
         android:layout_alignParentStart="true" />
 
     <Button
-        android:id="@+id/myProfile"
+        android:id="@+id/myProfileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/myProfile"
         android:layout_gravity="center_horizontal"
         android:onClick="myProfile"
-        android:layout_below="@+id/homeTitle"
+        android:layout_below="@+id/TVHomeTitle"
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:id="@+id/myBook"
+        android:id="@+id/myBooksButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/myBook"
         android:layout_gravity="center_horizontal"
         android:onClick="myBook"
-        android:layout_below="@+id/homeTitle"
+        android:layout_below="@+id/TVHomeTitle"
         android:layout_alignParentEnd="true" />
 
     <ListView
-        android:id="@+id/activityHistory"
+        android:id="@+id/LVActivityHistory"
         android:layout_width="fill_parent"
         android:layout_height="263dp"
         android:layout_weight="1"
         android:scrollbars="vertical"
-        android:layout_below="@+id/notificationsTitle"
+        android:layout_below="@+id/TVNotificationsTitle"
         android:layout_alignParentStart="true" />
 
     <Button
@@ -67,7 +67,7 @@
         android:text="@string/myBorrowedButton"
         android:id="@+id/borrowedButton"
         android:layout_marginEnd="41dp"
-        android:layout_below="@+id/search"
+        android:layout_below="@+id/searchButton"
         android:layout_toStartOf="@+id/biddedButton" />
 
     <Button
@@ -76,15 +76,15 @@
         android:text="@string/myBidsButton"
         android:id="@+id/biddedButton"
         android:layout_marginEnd="65dp"
-        android:layout_below="@+id/myProfile"
-        android:layout_alignEnd="@+id/myBook" />
+        android:layout_below="@+id/myProfileButton"
+        android:layout_alignEnd="@+id/myBooksButton" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/notifications"
-        android:id="@+id/notificationsTitle"
+        android:id="@+id/TVNotificationsTitle"
         android:layout_below="@+id/borrowedButton"
         android:layout_alignParentStart="true" />
 

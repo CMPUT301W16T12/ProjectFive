@@ -2,8 +2,6 @@ package ca.ualberta.appfive;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -27,11 +25,20 @@ public class UserProfileActivity extends AppCompatActivity implements BView<BMod
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
 
-        TextView userName = (TextView) findViewById(R.id.username);
-        TextView userEmail = (TextView) findViewById(R.id.useremail);
+        TextView userEmail = (TextView) findViewById(R.id.TVEmail);
+        TextView firstName = (TextView) findViewById(R.id.TVFirstName);
+        TextView lastName = (TextView) findViewById(R.id.TVLastName);
+        TextView password = (TextView) findViewById(R.id.TVPassword);
+        TextView phoneNumber = (TextView) findViewById(R.id.TVPhoneNumber);
+        TextView userName = (TextView) findViewById(R.id.TVUsername);
 
         userName.setText(ac.getUserName());
         userEmail.setText(ac.getUserEmail());
+        firstName.setText(ac.getFirstName());
+        lastName.setText(ac.getLastName());
+        password.setText(ac.getUserPassword());
+        phoneNumber.setText(ac.getPhoneNumber());
+
 
         /**
          * Button for opening edit profile activity.
@@ -63,8 +70,20 @@ public class UserProfileActivity extends AppCompatActivity implements BView<BMod
     @Override
     public void update(BModel model) {
         AppController ac = AppFiveApp.getAppController();
-        TextView userEmail = (TextView) findViewById(R.id.useremail);
+        TextView userEmail = (TextView) findViewById(R.id.TVEmail);
+        TextView firstName = (TextView) findViewById(R.id.TVFirstName);
+        TextView lastName = (TextView) findViewById(R.id.TVLastName);
+        TextView password = (TextView) findViewById(R.id.TVPassword);
+        TextView phoneNumber = (TextView) findViewById(R.id.TVPhoneNumber);
+        TextView userName = (TextView) findViewById(R.id.TVUsername);
+
+        userName.setText(ac.getUserName());
         userEmail.setText(ac.getUserEmail());
+        firstName.setText(ac.getFirstName());
+        lastName.setText(ac.getLastName());
+        password.setText(ac.getUserPassword());
+        phoneNumber.setText(ac.getPhoneNumber());
+
     }
 
     @Override
