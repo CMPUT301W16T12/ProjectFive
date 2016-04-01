@@ -132,7 +132,7 @@ public class ESController {
                     DocumentResult result = client.execute(index);
                     if (result.isSucceeded()) {
                         // Set ID
-                        //TODO: what to do with userProfile database,  userProfile.setId(result.getId());
+                        user.setUserId(result.getId());
                     } else {
                         Log.i("TODO", "doInBackground: Add user did not succeed");
                     }
@@ -227,7 +227,7 @@ public class ESController {
         }
     }
 
-    public static class GetBooksbyUser extends AsyncTask<UserProfile, Void, ArrayList<Book>> {
+    public static class GetBooksbyUserTask extends AsyncTask<UserProfile, Void, ArrayList<Book>> {
         ArrayList<Book> myBookList = new ArrayList<Book>();
 
         @Override
