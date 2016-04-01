@@ -73,13 +73,14 @@ public class AppControllerTest extends ActivityInstrumentationTestCase2 {
         ac.deleteBook(0);
 
     }
+    //Database tests
+    public void testGetBook() throws Exception {
 
-    public void testGetMyBooks() throws Exception {
+    }
+
+    public void testGetBooks() throws Exception {
 
     }
 
-    public void testGetMyBook() throws Exception {
-
-    }
 }
 //TODO: Add tests for Searching, Bidding
