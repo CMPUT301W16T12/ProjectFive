@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class Book {
     /**
-     * Kinds of status that the book can have
+     * enum for different status of the book
      */
     public enum Status {AVAILABLE, BIDDED, BORROWED}
 

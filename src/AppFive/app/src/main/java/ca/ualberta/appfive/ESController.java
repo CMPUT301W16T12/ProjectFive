@@ -20,6 +20,9 @@ import io.searchbox.core.Search;
 import io.searchbox.core.SearchResult;
 import static io.searchbox.core.Index.*;
 
+/**
+ * ESController is used for communication to database
+ */
 
 public class ESController {
     private static JestDroidClient client;
@@ -41,7 +44,11 @@ public class ESController {
         }
     }
 
-
+    /**
+     * For adding a book to database
+     * @param Book book as an object
+     * @return null
+     */
     public static class AddBookTask extends AsyncTask<Book, Void, Void> {
         @Override
         protected Void doInBackground(Book... books) {
@@ -67,8 +74,11 @@ public class ESController {
         }
     }
 
-    /*
-    Might not need, since books are always opened from lists, the book can be gotten from that list
+    /**
+     * For getting a book from database
+     * @param String for searching keyword
+     * @return books, of a array list of book
+    TODO: check : Might not need, since books are always opened from lists, the book can be gotten from that list
     */
     public static class GetBookTask extends AsyncTask<String, Void, ArrayList<Book>> {
         @Override
@@ -96,6 +106,12 @@ public class ESController {
         }
     }
 
+    /**
+     * For editing a book to database
+     * @param book book as object by index to edit
+     * @return Boolean true or false
+    TODO: check : Might not need, since books are always opened from lists, the book can be gotten from that list
+     */
     public static class EditBookTask extends AsyncTask<Book, Void, Boolean> {
         @Override
         protected Boolean doInBackground(Book... books) {
@@ -120,6 +136,11 @@ public class ESController {
         }
     }
 
+    /**
+     * For adding a user to database
+     * @param UserProfile user profile as an object
+     * @return null
+     */
     public static class AddUserTask extends AsyncTask<UserProfile, Void, Void> {
         @Override
         protected Void doInBackground(UserProfile... userProfile) {
@@ -145,6 +166,11 @@ public class ESController {
         }
     }
 
+    /**
+    * For getting the user from database
+    * @param String for searching user
+    * @return null,
+    **/
     public static class GetUserTask extends AsyncTask<String, Void, Void> {
         @Override
         protected Void doInBackground(String... usernames) {
@@ -175,6 +201,11 @@ public class ESController {
         }
     }
 
+    /**
+     * For editing a user to database
+     * @param UserProfile user as object by index to edit
+     * @return Boolean true or false
+     */
     public static class EditUserTask extends AsyncTask<UserProfile, Void, Boolean> {
         @Override
         protected Boolean doInBackground(UserProfile... userProfiles) {
@@ -199,6 +230,11 @@ public class ESController {
         }
     }
 
+    /**
+     * For checking whether user is in database
+     * @param String string to search user by usernmaes
+     * @return Boolean true or false
+     */
     public static class IsUserInDatabaseTask extends AsyncTask<String, Void, Boolean> {
 
         @Override
@@ -227,6 +263,11 @@ public class ESController {
         }
     }
 
+    /**
+     * To get books by specified user from database
+     * @param UserProfile search the list of books by user
+     * @return ArrayList of Book
+     */
     public static class GetBooksbyUserTask extends AsyncTask<UserProfile, Void, ArrayList<Book>> {
         ArrayList<Book> myBookList = new ArrayList<Book>();
 

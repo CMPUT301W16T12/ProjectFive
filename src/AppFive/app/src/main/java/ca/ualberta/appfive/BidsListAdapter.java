@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * This BidsList Adapter displays items from array list to view
+ *
  */
 public class BidsListAdapter extends ArrayAdapter<Bid> {
 
@@ -20,6 +21,10 @@ public class BidsListAdapter extends ArrayAdapter<Bid> {
         super(context, R.layout.bid_entry, objects);
     }
 
+    /** This method gets the view
+     * @param position int for specific book
+     * @return convertView
+     */
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         BidViewEntryHolder holder;

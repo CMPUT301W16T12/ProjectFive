@@ -36,7 +36,11 @@ public class BidsDisplayActivity extends AppCompatActivity implements BView<BMod
         ListView bidsListView = (ListView) findViewById(R.id.bidList);
         bidsListView.setAdapter(bla);
 
-        //Long click provides menu delete
+        /** For the list view of bids, set on Long click to provide menu
+         * @param menuitem for item
+         * @return boolean true of false, which will deleteBids/setStatus/addbid
+         */
+
         bidsListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
@@ -75,6 +79,9 @@ public class BidsDisplayActivity extends AppCompatActivity implements BView<BMod
         fc.notifyViews();
     }
 
+    /** to update model
+     * @param model for BModel
+     */
     @Override
     public void update(BModel model) {
         bla.notifyDataSetChanged();

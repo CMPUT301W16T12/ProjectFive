@@ -50,6 +50,8 @@ public class FileParser {
 
     /**
      * This method loads a book array from a file
+     * @exception FileNotFoundException
+     * TODO: do we need this? or we can delete this??
      */
     public void loadFromFile() {
         try {
