@@ -206,7 +206,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
 
 
         switch (mode){
-            case 1:
+            case DISPLAY_EDIT_MODE:
                 bidsButton.setActivated(true);
                 bidsButton.setVisibility(View.VISIBLE);
                 editBookButton.setActivated(true);
@@ -214,25 +214,25 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
                 deleteBookButton.setVisibility(View.VISIBLE);
                 deleteBookButton.setActivated(true);
                 break;
-            case 2:
+            case DISPLAY_BORROWED_MODE:
                 ownerButton.setActivated(true);
                 ownerButton.setVisibility(View.VISIBLE);
                 bidInfoButton.setActivated(true);
                 bidInfoButton.setVisibility(View.VISIBLE);
                 break;
-            case 3:
+            case DISPLAY_AVAILABLE_MODE:
                 ownerButton.setActivated(true);
                 ownerButton.setVisibility(View.VISIBLE);
                 addBidButton.setVisibility(View.VISIBLE);
                 addBidButton.setActivated(true);
                 break;
-            case 4:
+            case DISPLAY_BIDED_MODE :
                 bidInfoButton.setActivated(true);
                 bidInfoButton.setVisibility(View.VISIBLE);
                 ownerButton.setVisibility(View.VISIBLE);
                 ownerButton.setActivated(true);
                 break;
-            case 5:
+            case DISPLAY_OWNER_BORROWED_MODE:
                 returnButton.setActivated(true);
                 returnButton.setVisibility(View.VISIBLE);
             default:
@@ -242,6 +242,10 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         return index;
     }
 
+    /**
+     * View all the bids of a book
+     * @param myBook of Book
+     */
     private void showBid (Book myBook){
         AppController ac = AppFiveApp.getAppController();
         for (Bid bid : myBook.getBids()){
@@ -260,6 +264,11 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         return index;
     }
 
+    /**
+     * Check whether the book has bidded on
+     * @param myBook of Book
+     * @return Boolean
+     */
     private Boolean hasBiddedOn (Book myBook){
         AppController ac = AppFiveApp.getAppController();
         for (Bid bid : myBook.getBids()){
@@ -270,10 +279,14 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         return false;
     }
 
-    /*
-    * method from http://stackoverflow.com/questions/10903754/input-text-dialog-android by Aaron
-    */
 
+    /**
+     * To receive bid, we either addbid or update status
+     * @param myBook of Book
+     * @see reference from http://stackoverflow.com/questions/10903754/input-text-dialog-android by Aaron
+     *
+     */
+    //TODO: add notification to owner when receive bids
     private void recieveBid(final Book myBook) {
         final AppController ac = AppFiveApp.getAppController();
 
@@ -292,6 +305,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
             public void onClick(DialogInterface dialog, int which) {
                 String rate = input.getText().toString();
                 if (!rate.trim().contentEquals("")) {
+                    //TODO: check if we need the parse float here
                     myBook.addBid(new Bid(ac.getUserName(), Float.parseFloat(rate)));
                     myBook.updateStatus();
                     update(AppFiveApp.getAppFive());

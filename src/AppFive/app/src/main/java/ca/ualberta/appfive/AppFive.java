@@ -101,7 +101,7 @@ public class AppFive extends BModel<BView>{
 
     /**
      * This method deletes a book locally by index and deletes from the database
-     * @param index from the booklist to delete
+     * @param index from the booklist to delete a book
      */
     public void deleteBook(int index) {
         //books.remove(index);
