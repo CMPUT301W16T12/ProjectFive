@@ -73,8 +73,8 @@ public class SearchActivity extends AppCompatActivity implements BView<BModel>{
         super.onDestroy();
         AppFive fc = AppFiveApp.getAppFive();
         fc.deleteView(this);
-        FileParser parser = new FileParser(this.getApplicationContext());
-        parser.saveInFile();
+        //FileParser parser = new FileParser(this.getApplicationContext());
+        //parser.saveInFile();
         fc.notifyViews();
     }
 }

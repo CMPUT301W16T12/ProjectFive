@@ -86,8 +86,6 @@ public class AppController {
 
     // TODO: get from database using GetBookByUser then cache in af using setMyBookArray
     public ArrayList<Book> getMyBookArray(){
-        ESController.GetBooksbyUserTask getBooksbyUserTask = new ESController.GetBooksbyUserTask();
-        getBooksbyUserTask.execute(UserProfile.getInstance());
         return af.getMyBookArray();
     }
 
@@ -102,5 +100,9 @@ public class AppController {
     public void editUserInDB(){
         ESController.EditUserTask editUserTask = new ESController.EditUserTask();
         editUserTask.execute(UserProfile.getInstance());
+    }
+    public void getMyBooksFromDB(){
+        ESController.GetBooksbyUserTask getBooksbyUserTask = new ESController.GetBooksbyUserTask();
+        getBooksbyUserTask.execute(UserProfile.getInstance());
     }
 }

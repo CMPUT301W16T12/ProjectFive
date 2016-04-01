@@ -39,6 +39,8 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
         //TODO: Send to AppController
         //TODO: correct or not if I added this ES getbooktask, but not deleting adapter?
         // get the books by username from Elasticsearch
+        ac.getMyBooksFromDB();
+
         bla = new BookListAdapter(this, ac.getMyBookArray());
 
         //TODO: after getting booklist, still need to do something with the display the list??
@@ -100,7 +102,7 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
     @Override
     public void update(BModel model) {
         bla.notifyDataSetChanged();
-        FileParser parser = new FileParser(this.getApplicationContext());
-        parser.saveInFile();
+        //FileParser parser = new FileParser(this.getApplicationContext());
+        //parser.saveInFile();
     }
 }

@@ -78,7 +78,7 @@ public class BidsDisplayActivity extends AppCompatActivity implements BView<BMod
     @Override
     public void update(BModel model) {
         bla.notifyDataSetChanged();
-        FileParser parser = new FileParser(this.getApplicationContext());
-        parser.saveInFile();
+        //FileParser parser = new FileParser(this.getApplicationContext());
+        //parser.saveInFile();
     }
 }
