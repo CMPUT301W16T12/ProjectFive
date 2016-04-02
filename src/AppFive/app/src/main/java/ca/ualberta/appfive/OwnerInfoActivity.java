@@ -30,7 +30,7 @@ public class OwnerInfoActivity extends AppCompatActivity implements BView<BModel
         userEmail.setText(email);
 
 
-        
+
     }
 
     @Override
