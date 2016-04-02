@@ -48,12 +48,12 @@ public class LoginActivity extends AppCompatActivity implements BView<BModel>{
                 // LOGIN BUTTON ACTIVITY
 
 
-                try {
+                //try {
                     // Poll database for username and update model
                     loginToApp(username);
 
                     //Go to home activity if successful
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    /*Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(intent);
                 } catch (DatabaseConnectException e) {
                     // TODO: Read user info from Prefs
@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements BView<BModel>{
                     Toast notFoundToast = Toast.makeText(LoginActivity.this,R.string.user_not_found,
                             Toast.LENGTH_LONG);
                     notFoundToast.show();
-                }
+                }*/
 
                 // TODO handle wrong password entry
 
@@ -88,15 +88,21 @@ public class LoginActivity extends AppCompatActivity implements BView<BModel>{
     /**
      * Call when logging in to app.
      * Connects online, verifies user, gets user data
-     * @param userName the entered username
-     * @throws DatabaseConnectException
-     */
-    protected void loginToApp(String userName) throws DatabaseConnectException, NotFoundException {
+     * @param userName the entered username     */
+    protected void loginToApp(String userName) {
         //TODO: Connect to database and verify user, get user data
+        AppController ac = AppFiveApp.getAppController();
+        Boolean result = ac.isUserInDataBase(userName);
+        //Toast.makeText(getApplicationContext(),result.toString(),Toast.LENGTH_SHORT).show();
+        if (result) {
+            ac.getUserProfile(userName);
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(intent);
 
+        } else {
+            Toast.makeText(this, "User does not exist, please register first.", Toast.LENGTH_SHORT).show();
+        }
         //Update our model
-        final AppController ac = AppFiveApp.getAppController();
-        ac.setUserName(userName);
 
     }
 

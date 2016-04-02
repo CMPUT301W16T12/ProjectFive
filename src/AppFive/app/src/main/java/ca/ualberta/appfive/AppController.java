@@ -1,6 +1,9 @@
 package ca.ualberta.appfive;
 
+import android.widget.Toast;
+
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 /**
  * App Controller calls for methods of the AppFive model
@@ -109,4 +112,27 @@ public class AppController {
     public void resetUserProfile(){
         UserProfile.resetUserProfile();
     }
+    public Boolean isUserInDataBase(String userName) {
+        ESController.IsUserInDatabaseTask isUserInDatabaseTask = new ESController.IsUserInDatabaseTask();
+        isUserInDatabaseTask.execute(userName);
+        try {
+            Boolean result = isUserInDatabaseTask.get();
+
+            return result;
+
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+
+        }
+        return Boolean.FALSE;
+    }
+    public void getUserProfile(String userName) {
+        ESController.GetUserTask getUserTask = new ESController.GetUserTask();
+        getUserTask.execute(userName);
+    }
+
 }
+

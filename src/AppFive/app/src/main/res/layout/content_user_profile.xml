@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,7 +11,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="ca.ualberta.appfive.UserProfileActivity"
     tools:showIn="@layout/activity_user_profile"
-    android:background="@drawable/display_template" >
+    android:background="@drawable/display_template"
+    android:orientation="vertical">
 
 
     <TextView
@@ -20,8 +21,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/username"
         android:id="@+id/TVUsername"
-        android:layout_marginTop="57dp"
-        android:layout_alignParentTop="true" />
+        />
 
 
     <TextView
@@ -29,19 +29,38 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/tvFirstName"
+        android:id="@+id/TVFirstName2"
+        android:layout_marginTop="20dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/tvFirstName"
         android:id="@+id/TVFirstName"
-        android:layout_below="@+id/TVUsername"
-        android:layout_alignStart="@+id/TVUsername"
-        android:layout_marginTop="27dp" />
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/tvLastName"
+        android:id="@+id/TVLastName2"
+        android:layout_marginTop="20dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/tvLastName"
         android:id="@+id/TVLastName"
-        android:layout_below="@+id/TVFirstName"
-        android:layout_marginTop="27dp" />
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/email"
+        android:id="@+id/TVEmailTitle"
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,8 +68,15 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/email"
         android:id="@+id/TVEmail"
-        android:layout_below="@+id/TVLastName"
-        android:layout_marginTop="27dp"/>
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:text="@string/tvPhoneNumber"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TVPhoneNumber2"
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:text="@string/tvPhoneNumber"
@@ -58,17 +84,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/TVPhoneNumber"
-        android:layout_centerVertical="true"
-        android:layout_below="@id/TVEmail"
-        android:layout_marginTop="27dp"/>
+        android:layout_marginTop="10dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/edit"
         android:id="@+id/editbutton"
-        android:layout_below="@+id/TVPhoneNumber"
-        android:layout_alignEnd="@+id/TVPhoneNumber" />
+        android:layout_gravity="end"/>
 
 
-</RelativeLayout>
+</LinearLayout>

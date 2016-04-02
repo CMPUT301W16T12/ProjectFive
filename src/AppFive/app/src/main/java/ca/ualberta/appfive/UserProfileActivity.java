@@ -36,7 +36,6 @@ public class UserProfileActivity extends AppCompatActivity implements BView<BMod
         userEmail.setText(ac.getUserEmail());
         firstName.setText(ac.getFirstName());
         lastName.setText(ac.getLastName());
-
         phoneNumber.setText(ac.getPhoneNumber());
 
 
@@ -53,15 +52,6 @@ public class UserProfileActivity extends AppCompatActivity implements BView<BMod
         });
     }
 
-    /**
-     * For changing the user's contact information
-     * @param newEmail Updated contact information
-     * @throws DatabaseConnectException when device is offline
-     */
-    protected void changeContactInfo(String newEmail) throws DatabaseConnectException{
-        throw new DatabaseConnectException();
-
-    }
 
     /**
      * When the User's profile is updated, update the view
@@ -73,7 +63,6 @@ public class UserProfileActivity extends AppCompatActivity implements BView<BMod
         TextView userEmail = (TextView) findViewById(R.id.TVEmail);
         TextView firstName = (TextView) findViewById(R.id.TVFirstName);
         TextView lastName = (TextView) findViewById(R.id.TVLastName);
-        TextView password = (TextView) findViewById(R.id.TVPassword);
         TextView phoneNumber = (TextView) findViewById(R.id.TVPhoneNumber);
         TextView userName = (TextView) findViewById(R.id.TVUsername);
 
@@ -81,7 +70,6 @@ public class UserProfileActivity extends AppCompatActivity implements BView<BMod
         userEmail.setText(ac.getUserEmail());
         firstName.setText(ac.getFirstName());
         lastName.setText(ac.getLastName());
-        password.setText(ac.getUserPassword());
         phoneNumber.setText(ac.getPhoneNumber());
 
     }

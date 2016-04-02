@@ -80,34 +80,24 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
                 // saving registration as JSON in rest api elastic search database
                 // need to be first checking that their username doesn't exist yet
                 // if it doesn't just re loop, don't submit info, change name
-				ESController.IsUserInDatabaseTask isUserInDatabaseTask = new ESController.IsUserInDatabaseTask();
 
-                //TODO: if result is true, send toast and do not submit
-                // TODO: else, add user
 
-                isUserInDatabaseTask.execute(userName);
-                try {
-                    Boolean result = isUserInDatabaseTask.get();
+                Boolean result = ac.isUserInDataBase(userName);
 
-                    if (result){
-                        Toast.makeText(getApplicationContext(), "Username not available, try again", Toast.LENGTH_SHORT).show();
-                    }else {
-                        ac.setUserName(userName);
-                        ac.setFirstName(firstName);
-                        ac.setLastName(lastName);
-                        ac.setUserEmail(email);
-                        ac.setUserPassword(password);
-                        ac.setPhoneNumber(phoneNumber);
-                        ac.editUserInDB();
-                        ac.resetUserProfile();
-                        finish();
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
+
+                if (result){
+                    Toast.makeText(getApplicationContext(), "Username not available, try again", Toast.LENGTH_SHORT).show();
+                }else {
+                    ac.setUserName(userName);
+                    ac.setFirstName(firstName);
+                    ac.setLastName(lastName);
+                    ac.setUserEmail(email);
+                    ac.setUserPassword(password);
+                    ac.setPhoneNumber(phoneNumber);
+                    ac.editUserInDB();
+                    ac.resetUserProfile();
+                    finish();
                 }
-
             }
         });
 
