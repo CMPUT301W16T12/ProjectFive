@@ -28,9 +28,9 @@ public class OwnerInfoActivity extends AppCompatActivity implements BView<BModel
         TextView userNumber = (TextView) findViewById(R.id.TVOwnerPhoneNumber);
         userName.setText(name);
         userEmail.setText(email);
+
+
         
-
-
     }
 
     @Override
