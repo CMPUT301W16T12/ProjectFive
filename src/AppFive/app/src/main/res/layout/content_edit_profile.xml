@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress" />
 
-    
+
     <TextView
         android:text="@string/tvPhoneNumber"
         android:textAppearance="?android:attr/textAppearanceMedium"

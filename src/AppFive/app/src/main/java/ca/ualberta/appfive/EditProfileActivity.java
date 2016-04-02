@@ -32,13 +32,11 @@ public class EditProfileActivity extends AppCompatActivity implements BView<BMod
         final EditText editUserEmail = (EditText) findViewById(R.id.ETEmail);
         final EditText editFirstName = (EditText) findViewById(R.id.ETFirstName);
         final EditText editLastName = (EditText) findViewById(R.id.ETLastName);
-        final EditText editPassword = (EditText) findViewById(R.id.ETPassword);
         final EditText editPhoneNumber = (EditText) findViewById(R.id.ETPhoneNumber);
 
         editUserEmail.setText(ac.getUserEmail(), TextView.BufferType.EDITABLE);
         editFirstName.setText(ac.getFirstName(), TextView.BufferType.EDITABLE);
         editLastName.setText(ac.getLastName(), TextView.BufferType.EDITABLE);
-        editPassword.setText(ac.getUserPassword(), TextView.BufferType.EDITABLE);
         editPhoneNumber.setText(ac.getPhoneNumber(), TextView.BufferType.EDITABLE);
 
 
@@ -52,13 +50,11 @@ public class EditProfileActivity extends AppCompatActivity implements BView<BMod
                 String newEmail = editUserEmail.getText().toString();
                 String newFirstName = editFirstName.getText().toString();
                 String newLastName = editLastName.getText().toString();
-                String newPassword = editPassword.getText().toString();
                 String newPhoneNumber = editPhoneNumber.getText().toString();
 
                 ac.setUserEmail(newEmail);
                 ac.setFirstName(newFirstName);
                 ac.setLastName(newLastName);
-                ac.setUserPassword(newPassword);
                 ac.setPhoneNumber(newPhoneNumber);
 
                 // TODO: check: retreive by username from database only after clicked on save
