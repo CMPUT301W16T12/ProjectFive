@@ -50,7 +50,6 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
         etLastName = (EditText) findViewById(R.id.ETLastNameRegistration);
         etEmail = (EditText) findViewById(R.id.ETEmailRegistration);
         etPassword = (EditText) findViewById(R.id.ETPasswordRegistration);
-        etConfirmPassword = (EditText) findViewById(R.id.ETMatchPasswordRegistration);
         etPhoneNumber = (EditText) findViewById(R.id.ETPhoneNumberRegistration);
 
         // converting to string for saving as JSON object

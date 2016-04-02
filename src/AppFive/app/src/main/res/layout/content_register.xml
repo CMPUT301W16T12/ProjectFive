@@ -1,139 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="ca.ualberta.appfive.RegisterActivity"
-    tools:showIn="@layout/activity_register"
-    android:background="@drawable/display_template">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/register"
-        android:textSize="15pt"
-        android:layout_gravity="top|center_horizontal"
-        android:layout_alignParentStart="true"
-        android:id="@+id/TVRegisterTitle" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/username"
-        android:id="@+id/TVUsername"
-        android:layout_below="@+id/TVRegisterTitle"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="27dp" />
-    <EditText
-        android:id="@+id/ETUsernameRegistration"
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TVUsername"
-        android:layout_alignParentStart="true" />
+        android:layout_height="wrap_content">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context="ca.ualberta.appfive.RegisterActivity"
+            tools:showIn="@layout/activity_register"
+            android:background="@drawable/display_template"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register"
+                android:textSize="15pt"
+                android:layout_gravity="top|center_horizontal"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/tvFirstName"
-        android:id="@+id/TVFirstName"
-        android:layout_below="@+id/ETUsernameRegistration"
-        android:layout_alignStart="@+id/ETUsernameRegistration"
-        android:layout_marginTop="27dp" />
-    <EditText
-        android:id="@+id/ETFirstNameRegistration"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TVFirstName"
-        android:layout_alignStart="@+id/TVFirstName"/>
+                android:id="@+id/TVRegisterTitle" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/tvLastName"
-        android:id="@+id/TVLastName"
-        android:layout_below="@+id/ETFirstNameRegistration"
-        android:layout_marginTop="27dp" />
-    <EditText
-        android:id="@+id/ETLastNameRegistration"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TVLastName" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/username"
+                android:id="@+id/TVUsername" />
+            <EditText
+                android:id="@+id/ETUsernameRegistration"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/email"
-        android:id="@+id/TVEmail"
-        android:layout_below="@+id/ETLastNameRegistration"
-        android:layout_marginTop="27dp"/>
-    <EditText
-        android:id="@+id/ETEmailRegistration"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TVEmail"
-        android:inputType="textEmailAddress" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/tvFirstName"
+                android:id="@+id/TVFirstName" />
+            <EditText
+                android:id="@+id/ETFirstNameRegistration"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
 
-    <TextView
-        android:text="@string/password"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ETEmailRegistration"
-        android:id="@+id/TVPassword"
-        android:layout_marginTop="27dp"/>
-    <EditText
-        android:id="@+id/ETPasswordRegistration"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TVPassword"
-        android:inputType="textPassword" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/tvLastName"
+                android:id="@+id/TVLastName" />
+            <EditText
+                android:id="@+id/ETLastNameRegistration"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
 
-    <TextView
-        android:text="@string/confirmPwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TVConfirmPassword"
-        android:layout_centerVertical="true"
-        android:layout_below="@id/ETPasswordRegistration"
-        android:layout_marginTop="27dp"/>
-    <EditText
-        android:id="@+id/ETMatchPasswordRegistration"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:layout_below="@+id/TVConfirmPassword"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/email"
+                android:id="@+id/TVEmail" />
+            <EditText
+                android:id="@+id/ETEmailRegistration"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
 
-    <TextView
-        android:text="@string/tvPhoneNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TVPhoneNumber"
-        android:layout_centerVertical="true"
-        android:layout_below="@id/ETMatchPasswordRegistration"
-        android:layout_marginTop="27dp"/>
-    <EditText
-        android:id="@+id/ETPhoneNumberRegistration"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TVConfirmPassword"/>
+            <TextView
+                android:text="@string/password"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/TVPassword" />
+            <EditText
+                android:id="@+id/ETPasswordRegistration"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
 
 
-    <Button
-        android:id="@+id/saveRegistrationButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/save"
-        android:layout_gravity="center_horizontal"
-        android:textSize="10pt"
-        android:layout_alignTop="@+id/ownerButton"
-        android:layout_alignParentEnd="true" />
-</RelativeLayout>
+            <TextView
+                android:text="@string/tvPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/TVPhoneNumber" />
+
+            <EditText
+                android:id="@+id/ETPhoneNumberRegistration"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"/>
+
+
+            <Button
+                android:id="@+id/saveRegistrationButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:layout_gravity="end"
+                android:textSize="10pt" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
