@@ -2,6 +2,8 @@ package ca.ualberta.appfive;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +19,7 @@ import android.widget.TextView;
  */
 public class EditBookActivity extends AppCompatActivity implements BView<BModel> {
 
-    private Bitmap thumbnail;
+    private Bitmap thumbnail = null;
     static final int REQUEST_IMAGE_CAPTURE = 1234;
     Book myBook;
     static int index;
@@ -44,7 +46,7 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         final EditText editDesc = (EditText) findViewById(R.id.ETDescription);
         final EditText editAuthor = (EditText)findViewById(R.id.ETAuthor);
 
-        //editImage.setImageResource(R.drawable.not_available);
+        editImage.setImageResource(R.drawable.not_available);
 
         TextView title = (TextView) findViewById(R.id.TVEditBookTitle);
 
@@ -72,12 +74,15 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
                 String descEdit = editDesc.getText().toString();
                 String authorEdit = editAuthor.getText().toString();
 
+                if (thumbnail == null){
+                    thumbnail = ((BitmapDrawable)getApplicationContext().getDrawable(R.drawable.not_available)).getBitmap();
+                }
+
+                Book newBook = new Book(titleEdit, authorEdit, descEdit, genreEdit, thumbnail);
 
                 if (index != -2) {
-                    Book newBook = new Book(titleEdit, authorEdit, descEdit, genreEdit, myBook.getThumbnail());
                     ac.editBook(index, newBook);
                 } else {
-                    Book newBook = new Book(titleEdit, authorEdit, descEdit, genreEdit, thumbnail);
                     ac.addBook(newBook);
                 }
 
@@ -98,10 +103,8 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         deleteImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                thumbnail = null;
-                myBook.deleteThumbnail();
-                editImage.setImageBitmap(myBook.getThumbnail());
-
+                thumbnail = ((BitmapDrawable)getApplicationContext().getDrawable(R.drawable.not_available)).getBitmap();
+                editImage.setImageResource(R.drawable.not_available);
             }
         });
     }
@@ -151,9 +154,6 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             thumbnail =(Bitmap) extras.get("data");
-            if(index != -2) {
-                myBook.addThumbnail(thumbnail);
-            }
             editImage.setImageBitmap(thumbnail);
         }
 

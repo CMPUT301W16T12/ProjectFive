@@ -139,7 +139,7 @@ public class Book {
         this.bids.clear();
     }
 
-    public void addThumbnail(Bitmap newThumbnail) {
+    public void setThumbnail(Bitmap newThumbnail) {
         if(newThumbnail != null){
             thumbnail = newThumbnail;
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();

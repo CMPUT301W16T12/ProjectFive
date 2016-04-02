@@ -122,6 +122,7 @@ public class AppFive extends BModel<BView>{
         oldBook.setGenre(newBook.getGenre());
         oldBook.setTitle(newBook.getTitle());
         oldBook.setAuthor(newBook.getAuthor());
+        oldBook.setThumbnail(newBook.getThumbnail());
         notifyViews();
 
         // TODO sync up with database
