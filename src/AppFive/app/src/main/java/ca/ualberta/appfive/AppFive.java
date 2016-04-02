@@ -8,70 +8,64 @@ import java.util.ArrayList;
  */
 public class AppFive extends BModel<BView>{
 
-    private UserProfile userProfile;
     private ArrayList<Book> books = new ArrayList<Book>();
     private ArrayList<Book> myBooks = new ArrayList<Book>();
 
     AppFive() {
         super();
-        init();
-    }
-
-    private void init() {
-        this.userProfile = UserProfile.getInstance();
     }
 
     public String getUserName() {
-        return userProfile.getUserName();
+        return UserProfile.getInstance().getUserName();
     }
 
     public void setUserName(String userName) {
-        userProfile.setUserName(userName);
+        UserProfile.getInstance().setUserName(userName);
         notifyViews();
     }
 
     public String getUserEmail() {
-        return userProfile.getUserEmail();
+        return UserProfile.getInstance().getUserEmail();
     }
 
     public void setUserEmail(String email) {
-        userProfile.setUserEmail(email);
+        UserProfile.getInstance().setUserEmail(email);
         notifyViews();
     }
 
     public String getUserPassword() {
-        return userProfile.getUserPassword();
+        return UserProfile.getInstance().getUserPassword();
     }
 
     public void setUserPassword(String password){
-        userProfile.setUserPassword(password);
+        UserProfile.getInstance().setUserPassword(password);
         notifyViews();
     }
 
     public String getFirstName() {
-        return userProfile.getFirstName();
+        return UserProfile.getInstance().getFirstName();
     }
 
     public void setFirstName(String firstName){
-        userProfile.setFirstName(firstName);
+        UserProfile.getInstance().setFirstName(firstName);
         notifyViews();
     }
 
     public String getLastName() {
-        return userProfile.getLastName();
+        return UserProfile.getInstance().getLastName();
     }
 
     public void setLastName(String lastName){
-        userProfile.setLastName(lastName);
+        UserProfile.getInstance().setLastName(lastName);
         notifyViews();
     }
 
     public String getPhoneNumber() {
-        return userProfile.getPhoneNumber();
+        return UserProfile.getInstance().getPhoneNumber();
     }
 
     public void setPhoneNumber(String PhoneNumber){
-        userProfile.setPhoneNumber(PhoneNumber);
+        UserProfile.getInstance().setPhoneNumber(PhoneNumber);
         notifyViews();
     }
 

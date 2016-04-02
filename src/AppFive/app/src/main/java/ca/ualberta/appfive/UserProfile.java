@@ -19,7 +19,10 @@ public class UserProfile{
         return ourInstance;
     }
 
-    private UserProfile() {
+    public static void setUserProfile(UserProfile user) {
+            ourInstance = user;
+    }
+    private UserProfile(){
     }
 
     public static void resetUserProfile(){

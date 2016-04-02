@@ -4,6 +4,7 @@ package ca.ualberta.appfive;
 import android.os.AsyncTask;
 import android.provider.DocumentsContract;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.searchly.jestdroid.DroidClientConfig;
 import com.searchly.jestdroid.JestClientFactory;
@@ -46,7 +47,7 @@ public class ESController {
 
     /**
      * For adding a book to database
-     * @param Book book as an object
+     * param Book book as an object
      * @return null
      */
     public static class AddBookTask extends AsyncTask<Book, Void, Void> {
@@ -76,7 +77,7 @@ public class ESController {
 
     /**
      * For getting a book from database
-     * @param String for searching keyword
+     * param String for searching keyword
      * @return books, of a array list of book
     TODO: check : Might not need, since books are always opened from lists, the book can be gotten from that list
     */
@@ -110,7 +111,7 @@ public class ESController {
 
     /**
      * For editing a book to database
-     * @param book book as object by index to edit
+     * param book book as object by index to edit
      * @return Boolean true or false
     TODO: check : Might not need, since books are always opened from lists, the book can be gotten from that list
      */
@@ -140,7 +141,7 @@ public class ESController {
 
     /**
      * For adding a user to database
-     * @param UserProfile user profile as an object
+     * param UserProfile user profile as an object
      * @return null
      */
     public static class AddUserTask extends AsyncTask<UserProfile, Void, Void> {
@@ -170,7 +171,7 @@ public class ESController {
 
     /**
     * For getting the user from database
-    * @param String for searching user
+    * param String for searching user
     * @return null,
     **/
     public static class GetUserTask extends AsyncTask<String, Void, Void> {
@@ -179,19 +180,20 @@ public class ESController {
             verifyClient();
 
             //TODO: look up exact matching query
-            String search_string = "{\"from\":0,\"size\":10000,\"query\":{\"match\":{\"message\":\"" + usernames[0] + "\"}}, \"sort\": {\"date\": {\"order\": \"desc\"}}}";
+            String search_string = "{\"query\":{\"match\":{\"userName\":\"" + usernames[0] + "\"}}}";
 
 
             // NOTE: Only first search term will be used
             Search search = new Search.Builder(search_string).addIndex(teamdir).addType(usertype).build();
 
-            //searchStrings = "{\"from\":0,\"size\":10000, \"sort\": {\"date\": {\"order\": \"desc\"}}}";
 
             try {
-                SearchResult execute = client.execute(search);
-                if (execute.isSucceeded()) {
+                SearchResult searchResult = client.execute(search);
+                if (searchResult.isSucceeded()) {
+                    UserProfile user = searchResult.getSourceAsObject(UserProfile.class);
+                    UserProfile.setUserProfile(user);
+                    //UserProfile.getInstance().setUserId(searchResult.);
 
-                    UserProfile retUser = execute.getSourceAsObject(UserProfile.class);
                 } else {
                     Log.i("TODO", "doInBackground: Failed in searching tweets");
                 }
@@ -205,7 +207,7 @@ public class ESController {
 
     /**
      * For editing a user to database
-     * @param UserProfile user as object by index to edit
+     * param UserProfile user as object by index to edit
      * @return Boolean true or false
      */
     public static class EditUserTask extends AsyncTask<UserProfile, Void, Boolean> {
@@ -234,7 +236,7 @@ public class ESController {
 
     /**
      * For checking whether user is in database
-     * @param String string to search user by usernmaes
+     * param String string to search user by usernmaes
      * @return Boolean true or false
      */
     public static class IsUserInDatabaseTask extends AsyncTask<String, Void, Boolean> {
@@ -243,7 +245,7 @@ public class ESController {
         protected Boolean doInBackground(String... usernames) {
             verifyClient();
             //TODO: look up exact matching query
-            String search_string = "{\"query\":{\"match\":{\"name\":\"" + usernames[0] + "\"}}}";
+            String search_string = "{\"query\":{\"match\":{\"userName\":\"" + usernames[0] + "\"}}}";
 
 
             // NOTE: Only first search term will be used
@@ -271,7 +273,7 @@ public class ESController {
 
     /**
      * To get books by specified user from database
-     * @param UserProfile search the list of books by user
+     * param UserProfile search the list of books by user
      * @return ArrayList of Book
      */
     public static class GetBooksbyUserTask extends AsyncTask<UserProfile, Void, ArrayList<Book>> {
