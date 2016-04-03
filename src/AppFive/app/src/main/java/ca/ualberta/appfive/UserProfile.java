@@ -1,5 +1,7 @@
 package ca.ualberta.appfive;
 
+import java.util.ArrayList;
+
 /**
  * Singleton for User Profile information.
  * This class is only for the logged in user's profile data
@@ -12,6 +14,7 @@ public class UserProfile{
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    public ArrayList<String> notifications;
 
 
     public static UserProfile getInstance() {
@@ -95,5 +98,13 @@ public class UserProfile{
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public ArrayList<String> getNotifications() {
+        return notifications;
+    }
+
+    public void addNotification(String notification) {
+        notifications.add(0,notification);
     }
 }

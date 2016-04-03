@@ -33,7 +33,6 @@ public class AppFive extends BModel<BView>{
         notifyViews();
     }
 
-
     public String getFirstName() {
         return UserProfile.getInstance().getFirstName();
     }
