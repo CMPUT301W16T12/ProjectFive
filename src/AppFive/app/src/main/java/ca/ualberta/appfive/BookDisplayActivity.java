@@ -79,8 +79,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(BookDisplayActivity.this, OwnerInfoActivity.class);
-                intent.putExtra("OWNER", myBook.getOwner().getName());
-                intent.putExtra("EMAIL", myBook.getOwner().getEmail());
+                intent.putExtra("INDEX",index);
                 startActivity(intent);
             }
         });
@@ -145,7 +144,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
 
         myBook = ac.getMyBook(index);
 
-        if (myBook.getOwner().getName().contentEquals(ac.getUserName())){
+        if (myBook.getOwner().getUserName().contentEquals(ac.getUserName())){
             if(myBook.getStatus() == Book.Status.BORROWED){
                 mode = DISPLAY_OWNER_BORROWED_MODE;
             }else {

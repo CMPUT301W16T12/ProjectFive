@@ -5,34 +5,43 @@ package ca.ualberta.appfive;
  */
 public class OwnerInfo{
 
-    private String name;
-    private String email;
+    private String userName;
+    private String userEmail;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+
 
     /**
      * This constructor is called when creating the Owner Info for the current user of the app.
      */
     public OwnerInfo() {
         super();
-        this.name = UserProfile.getInstance().getUserName();
-        this.email = UserProfile.getInstance().getUserEmail();
+        this.userName = UserProfile.getInstance().getUserName();
+        this.userEmail = UserProfile.getInstance().getUserEmail();
+        this.phoneNumber = UserProfile.getInstance().getPhoneNumber();
+        this.firstName = UserProfile.getInstance().getFirstName();
+        this.lastName = UserProfile.getInstance().getLastName();
     }
 
-    /**
-     * This is called when creating a book's Owner Info
-     * @param name Owner's User Name
-     * @param email Owner's contact info
-     */
-    public OwnerInfo(String name, String email) {
-        super();
-        this.name = name;
-        this.email = email;
+
+    public String getUserName() {
+        return userName;
     }
 
-    public String getName() {
-        return name;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public String getEmail() {
-        return email;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 }
