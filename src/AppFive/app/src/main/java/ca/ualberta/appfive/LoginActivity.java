@@ -52,6 +52,7 @@ public class LoginActivity extends AppCompatActivity implements BView<BModel>{
 
         Button registerButton = (Button) findViewById(R.id.registerButton);
 
+
         // If the register button is clicked, head straight to the RegisterActivity
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override

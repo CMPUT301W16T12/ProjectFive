@@ -87,8 +87,8 @@ public class AppController {
         af.deleteBook(index);
     }
 
-    public void editBook(int index, Book newBook) {
-        af.editBook(index, newBook);
+    public void editBook(int index, Book newBook, int list) {
+        af.editBook(index, newBook,list);
     }
 
     // TODO: get from database using GetBookByUser then cache in af using setMyBookArray
@@ -126,6 +126,27 @@ public class AppController {
         ESController.GetBooksbyUserTask getBooksbyUserTask = new ESController.GetBooksbyUserTask();
         getBooksbyUserTask.execute(userName);
     }
+    public void getMyBorrowedFromDB(String userName){
+        ESController.GetBooksBorrowedbyUserTask getBooksBorrowedbyUserTask = new ESController.GetBooksBorrowedbyUserTask();
+        getBooksBorrowedbyUserTask.execute(userName);
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        af.notifyViews();
+    }
+    public void getMyBidsFromDB(String userName){
+        ESController.GetBooksBidsbyUserTask getBooksBidsbyUserTask = new ESController.GetBooksBidsbyUserTask();
+        getBooksBidsbyUserTask.execute(userName);
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        af.notifyViews();
+    }
+
 
     public void resetUserProfile(){
         UserProfile.resetUserProfile();

@@ -35,26 +35,31 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
 
     /**
      * The mode for allowing the user to view and possibly edit/delete the book if not borrowed
+     * uses myBookList
      */
     public static final int DISPLAY_EDIT_MODE = 1;
 
     /**
      * The mode for showing a borrowed item to borrower
+     * uses BookList
      */
     public static final int DISPLAY_BORROWED_MODE = 2;
 
     /**
      * The mode for showing a book that the user can bid on
+     * uses Booklist
      */
     public static final int DISPLAY_AVAILABLE_MODE = 3;
 
     /**
      * The mode for showing a book that the user has bid on
+     * uses Booklist
      */
     public static final int DISPLAY_BIDED_MODE = 4;
 
     /**
      * The mode for allowing the user to view the book if borrowed
+     * uses MyBookList
      */
     public static final int DISPLAY_OWNER_BORROWED_MODE = 5;
 
@@ -139,7 +144,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
             public void onClick(View v) {
                 myBook.deleteBids();
                 myBook.updateStatus();
-                ac.editBook(index, myBook);
+                ac.editBook(index, myBook,0);
                 update(AppFiveApp.getAppFive());
             }
         });
@@ -164,11 +169,14 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
-
+        int mode = getIntent().getIntExtra("MODE", DISPLAY_EDIT_MODE);
         final int index = getindex();
-        int mode;
 
-        myBook = ac.getMyBook(index);
+        if(mode == DISPLAY_EDIT_MODE || mode == DISPLAY_OWNER_BORROWED_MODE) {
+            myBook = ac.getMyBook(index);
+        } else {
+            myBook = ac.getBook(index);
+        }
 
         if (myBook.getOwner().getUserName().contentEquals(ac.getUserName())){
             if(myBook.getStatus() == Book.Status.BORROWED){
@@ -337,7 +345,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
                     String notificationText = myBook.getOwner().getUserName() + " has made a bid of" + rate + " $/hr  on your item, " + myBook.getTitle();
 
                     //getting user profile being sent to
-                    ESController.GetUserProfileTask getUserProfileTask = new ESController.GetUserProfileTask;
+                    ESController.GetUserProfileTask getUserProfileTask = new ESController.GetUserProfileTask();
                     getUserProfileTask.execute(myBook.getOwner().getUserName());
 
                     try {
