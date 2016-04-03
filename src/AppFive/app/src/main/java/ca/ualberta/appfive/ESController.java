@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.searchbox.client.JestResult;
+import io.searchbox.core.Delete;
 import io.searchbox.core.DocumentResult;
 import io.searchbox.core.Index;
 import io.searchbox.core.Search;
@@ -322,7 +323,7 @@ public class ESController {
 
             String search_string =  "{\"query\":{" +
                                     "   \"match\":{" +
-                                    "       \"owner.name\":\"" + userNames[0] + "\"" +
+                                    "       \"owner.userName\":\"" + userNames[0] + "\"" +
                                     "   }" +
                                     "}}";
             Search search = new Search.Builder(search_string).addIndex(teamdir).addType(booktype).build();
@@ -340,6 +341,32 @@ public class ESController {
                 return null;
             }
             return null;
+        }
+    }
+
+    public static class DeleteBookTask extends AsyncTask<Book, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Book... books) {
+            verifyClient();
+
+            Delete delete = new Delete.Builder("")
+                    .index(teamdir)
+                    .type(booktype)
+                    .id(books[0].getId())
+                    .build();
+
+            try {
+                DocumentResult execute = client.execute(delete);
+                if (execute.isSucceeded()) {
+                    return Boolean.TRUE;
+                } else {
+                    return Boolean.FALSE;
+                }
+            } catch (IOException e) {
+                return null;
+            }
+
         }
     }
 

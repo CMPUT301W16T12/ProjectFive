@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -106,6 +107,29 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
             @Override
             public void onClick(View v) {
                 fc.deleteView(BookDisplayActivity.this);
+                Boolean result = null;
+                ESController.DeleteBookTask deleteBookTask = new ESController.DeleteBookTask();
+                deleteBookTask.execute(ac.getMyBook(index));
+                try {
+                    result = deleteBookTask.get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+
+                if(result == null){
+                    // Could not connect to database
+                    // TODO: Offline behaviour, store task and do when online again
+
+                } else if(result){
+                    // Successfully deleted book in database
+                    Log.d("MyBooksActivity", "onMenuItemClick: Deleted book successfully in database");
+                } else {
+                    // This is reached when the database is not synced with the device
+                    Log.d("MyBooksActivity", "onMenuItemClick: connected but could not delete book in database");
+                }
+                // Delete book locally
                 ac.deleteBook(index);
                 finish();
             }
