@@ -89,7 +89,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         addBidButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recieveBid(myBook);
+                recieveBid(myBook, index);
             }
         });
 
@@ -287,7 +287,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
      *
      */
     //TODO: add notification to owner when receive bids
-    private void recieveBid(final Book myBook) {
+    private void recieveBid(final Book myBook, final int index) {
         final AppController ac = AppFiveApp.getAppController();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -308,9 +308,8 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
                     // TODO: check if we need the parse float here
                     myBook.addBid(new Bid(ac.getUserName(), Float.parseFloat(rate)));
                     myBook.updateStatus();
-
                     // creating string notification
-                    String notificationText = myBook.getOwner().getUserName() + " has made a bid of" + rate + " $/hr  on your item, " + myBook.getTitle();
+                    String notificationText = UserProfile.getInstance().getUserName() + " has made a bid of $" + rate + "/hr  on your book, " + myBook.getTitle();
 
                     //getting user profile being sent to
                     ESController.GetUserProfileTask getUserProfileTask = new ESController.GetUserProfileTask();
@@ -319,12 +318,15 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
                     try {
                         UserProfile ownerProfile = getUserProfileTask.get();
                         ownerProfile.addNotification(notificationText);
+                        ESController.EditUserTask editUserTask = new ESController.EditUserTask();
+                        editUserTask.execute(ownerProfile);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
                         e.printStackTrace();
                     }
 
+                    ac.editBook(index, myBook);
 
                     update(AppFiveApp.getAppFive());
                 }

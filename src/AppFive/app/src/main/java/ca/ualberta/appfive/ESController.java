@@ -320,11 +320,12 @@ public class ESController {
             verifyClient();
 
 
-            String search_string =  "{\"query\":{" +
-                                    "   \"match\":{" +
-                                    "       \"owner.name\":\"" + userNames[0] + "\"" +
-                                    "   }" +
-                                    "}}";
+            String search_string =  "";
+//                    "{\"query\":{" +
+//                                    "   \"match\":{" +
+//                                    "       \"owner.name\":\"" + userNames[0] + "\"" +
+//                                    "   }" +
+//                                    "}}";
             Search search = new Search.Builder(search_string).addIndex(teamdir).addType(booktype).build();
 
             try {

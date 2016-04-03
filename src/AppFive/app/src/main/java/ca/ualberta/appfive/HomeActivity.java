@@ -26,6 +26,7 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
+        ArrayAdapter<String> nla;
 
 
         // bodyText = (EditText) findViewById(R.id.body);
@@ -36,8 +37,7 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
         Button borrowedButton = (Button) findViewById(R.id.borrowedButton);
         ListView notificationsLV = (ListView) findViewById(R.id.LVNotifications);
 
-        ArrayAdapter<String> nla = new ArrayAdapter<String>(this, R.layout.notification_entry,UserProfile.getInstance().getNotifications());
-
+        nla = new ArrayAdapter<String>(this, R.layout.notification_entry,UserProfile.getInstance().getNotifications());
         notificationsLV.setAdapter(nla);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
