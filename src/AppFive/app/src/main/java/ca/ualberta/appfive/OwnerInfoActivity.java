@@ -18,24 +18,23 @@ public class OwnerInfoActivity extends AppCompatActivity implements BView<BModel
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
 
-        String name = getIntent().getStringExtra("OWNER");
-        String email = getIntent().getStringExtra("EMAIL");
+        int index = getIntent().getIntExtra("INDEX", -1);
 
+        OwnerInfo owner = ac.getBook(index).getOwner();
         TextView userName = (TextView) findViewById(R.id.TVOwnerName);
         TextView userEmail = (TextView) findViewById(R.id.TVOwnerEmail);
         TextView firstName = (TextView) findViewById(R.id.TVOwnerFirstName);
         TextView lastName = (TextView) findViewById(R.id.TVOwnerLastName);
         TextView userNumber = (TextView) findViewById(R.id.TVOwnerPhoneNumber);
-        userName.setText(name);
-        userEmail.setText(email);
-
-
-
+        userName.setText(owner.getUserName());
+        userEmail.setText(owner.getUserEmail());
+        firstName.setText(owner.getFirstName());
+        lastName.setText(owner.getLastName());
+        userNumber.setText(owner.getPhoneNumber());
     }
 
     @Override
     public void update(BModel model) {
-
     }
 
     @Override
