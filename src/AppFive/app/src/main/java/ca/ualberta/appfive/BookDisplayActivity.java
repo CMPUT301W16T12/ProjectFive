@@ -313,7 +313,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
                     String notificationText = myBook.getOwner().getUserName() + " has made a bid of" + rate + " $/hr  on your item, " + myBook.getTitle();
 
                     //getting user profile being sent to
-                    ESController.GetUserProfileTask getUserProfileTask = new ESController.GetUserProfileTask;
+                    ESController.GetUserProfileTask getUserProfileTask = new ESController.GetUserProfileTask();
                     getUserProfileTask.execute(myBook.getOwner().getUserName());
 
                     try {

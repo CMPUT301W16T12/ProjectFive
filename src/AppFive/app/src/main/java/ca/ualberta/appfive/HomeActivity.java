@@ -5,7 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 /**
  * This activity displays the home page of app
@@ -28,7 +32,13 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
         Button searchButton = (Button) findViewById(R.id.searchButton);
         Button myProfileButton = (Button) findViewById(R.id.myProfileButton);
         Button myBookButton = (Button) findViewById(R.id.myBooksButton);
+        Button biddedButton = (Button) findViewById(R.id.biddedButton);
+        Button borrowedButton = (Button) findViewById(R.id.borrowedButton);
+        ListView notificationsLV = (ListView) findViewById(R.id.LVNotifications);
 
+        ArrayAdapter<String> nla = new ArrayAdapter<String>(this, R.layout.notification_entry,UserProfile.getInstance().getNotifications());
+
+        notificationsLV.setAdapter(nla);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
