@@ -109,19 +109,6 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         });
     }
 
-    /**
-     * Call to commit the changes made to the book
-     * @param title Edited title
-     * @param description Edited description
-     * @param genre Edited genre
-     * @throws DatabaseConnectException
-     */
-    protected void commitBookEdits(String title, String description, String genre)
-            throws DatabaseConnectException{
-
-        throw new DatabaseConnectException();
-
-    }
 
     @Override
     public void onDestroy() {

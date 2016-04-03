@@ -19,11 +19,9 @@ public class LoginActivity extends AppCompatActivity implements BView<BModel>{
      * This might be referenced for skipping login
      * This should be updated when user logs in, or when user updates data
      */
-    private EditText usernameInput, passwordInput;
+    private EditText usernameInput;
 
     private String username;
-    private String passwd = "";
-    private String userEmail = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +34,6 @@ public class LoginActivity extends AppCompatActivity implements BView<BModel>{
         af.addView(this);
 
         usernameInput = (EditText) findViewById(R.id.ETUserNameLogin);
-        passwordInput = (EditText) findViewById(R.id.ETPasswordLogin);
 
         Button logInButton = (Button) findViewById(R.id.logInButton);
 
@@ -48,26 +45,7 @@ public class LoginActivity extends AppCompatActivity implements BView<BModel>{
                 // LOGIN BUTTON ACTIVITY
 
 
-                //try {
-                    // Poll database for username and update model
                     loginToApp(username);
-
-                    //Go to home activity if successful
-                    /*Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                } catch (DatabaseConnectException e) {
-                    // TODO: Read user info from Prefs
-                    // Go to home activity if parsing user data from file successful
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                } catch (NotFoundException e) {
-                    // Show an error if name is not found in database
-                    Toast notFoundToast = Toast.makeText(LoginActivity.this,R.string.user_not_found,
-                            Toast.LENGTH_LONG);
-                    notFoundToast.show();
-                }*/
-
-                // TODO handle wrong password entry
 
             }
         });

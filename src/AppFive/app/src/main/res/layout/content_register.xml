@@ -101,21 +101,6 @@
                 android:inputType="phone"
                 android:layout_marginTop="5dp"/>
 
-            <TextView
-                android:text="@string/password"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/TVPassword"
-                android:layout_marginTop="10dp"/>
-
-            <EditText
-                android:id="@+id/ETPasswordRegistration"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:layout_marginTop="5dp"/>
-
             <Button
                 android:id="@+id/saveRegistrationButton"
                 android:layout_width="wrap_content"

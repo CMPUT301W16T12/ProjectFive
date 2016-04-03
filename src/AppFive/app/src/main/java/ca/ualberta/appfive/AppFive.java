@@ -33,14 +33,6 @@ public class AppFive extends BModel<BView>{
         notifyViews();
     }
 
-    public String getUserPassword() {
-        return UserProfile.getInstance().getUserPassword();
-    }
-
-    public void setUserPassword(String password){
-        UserProfile.getInstance().setUserPassword(password);
-        notifyViews();
-    }
 
     public String getFirstName() {
         return UserProfile.getInstance().getFirstName();

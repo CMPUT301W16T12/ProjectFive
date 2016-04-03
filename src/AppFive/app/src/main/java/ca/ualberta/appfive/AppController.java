@@ -44,13 +44,6 @@ public class AppController {
         af.setLastName(lastName);
     }
 
-    public String getUserPassword() {
-        return af.getUserPassword();
-    }
-
-    public void setUserPassword(String UserPassword) {
-        af.setUserPassword(UserPassword);
-    }
 
     public String getPhoneNumber() {
         return af.getPhoneNumber();

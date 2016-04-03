@@ -13,12 +13,8 @@ public class RegisterActivityTest extends ActivityInstrumentationTestCase2 {
     public void testRegisterNewUser() throws Exception {
         RegisterActivity ra = (RegisterActivity) getActivity();
 
-        try{
             ra.registerNewUser("user", "first name", "last name", "password", "email");
 
-        }catch (DatabaseConnectException e){
-            fail();
-        }
     }
     */
 }

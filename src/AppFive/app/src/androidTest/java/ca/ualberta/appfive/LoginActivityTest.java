@@ -14,11 +14,6 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2 {
     public void testLoginToApp() throws Exception {
         LoginActivity la = (LoginActivity) getActivity();
 
-        try{
             la.loginToApp("abc");
-
-        }catch (DatabaseConnectException e){
-            fail();
-        }
     }
 }
