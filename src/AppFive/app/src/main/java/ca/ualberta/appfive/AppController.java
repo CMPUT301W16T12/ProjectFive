@@ -103,6 +103,20 @@ public class AppController {
         return af.getMyBook(index);
     }
 
+    public void addUserToDB(){
+        ESController.AddUserTask addUserTask = new ESController.AddUserTask();
+        addUserTask.execute(UserProfile.getInstance());
+        try {
+            String id = addUserTask.get();
+            UserProfile.getInstance().setUserId(id);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        editUserInDB();
+    }
+
     public void editUserInDB(){
         ESController.EditUserTask editUserTask = new ESController.EditUserTask();
         editUserTask.execute(UserProfile.getInstance());

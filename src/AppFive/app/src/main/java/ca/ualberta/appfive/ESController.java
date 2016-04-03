@@ -144,19 +144,17 @@ public class ESController {
      * param UserProfile user profile as an object
      * @return null
      */
-    public static class AddUserTask extends AsyncTask<UserProfile, Void, Void> {
+    public static class AddUserTask extends AsyncTask<UserProfile, Void, String > {
         @Override
-        protected Void doInBackground(UserProfile... userProfile) {
+        protected String doInBackground(UserProfile... userProfile) {
             verifyClient();
             for (UserProfile user: userProfile) {
                 Index index = new Builder(user).index(teamdir).type(usertype).build();
                 try {
-
-
                     DocumentResult result = client.execute(index);
                     if (result.isSucceeded()) {
                         // Set ID
-                        user.setUserId(result.getId());
+                        return result.getId();
                     } else {
                         Log.i("TODO", "doInBackground: Add user did not succeed");
                     }
@@ -222,8 +220,8 @@ public class ESController {
                     .build();
 
             try {
-                DocumentResult execute = client.execute(index);
-                if (execute.isSucceeded()) {
+                DocumentResult result = client.execute(index);
+                if (result.isSucceeded()) {
                     return true;
                 } else {
                     return false;

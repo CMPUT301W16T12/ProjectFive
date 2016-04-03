@@ -90,7 +90,7 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
                     ac.setLastName(lastName);
                     ac.setUserEmail(email);
                     ac.setPhoneNumber(phoneNumber);
-                    ac.editUserInDB();
+                    ac.addUserToDB();
                     ac.resetUserProfile();
                     finish();
                 }
