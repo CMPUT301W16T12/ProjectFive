@@ -44,13 +44,6 @@ public class AppController {
         af.setLastName(lastName);
     }
 
-    public String getUserPassword() {
-        return af.getUserPassword();
-    }
-
-    public void setUserPassword(String UserPassword) {
-        af.setUserPassword(UserPassword);
-    }
 
     public String getPhoneNumber() {
         return af.getPhoneNumber();
@@ -74,9 +67,19 @@ public class AppController {
     }
 
     public void addBook(Book book) {
-        af.addBook(book);
         ESController.AddBookTask addBookTask = new ESController.AddBookTask();
         addBookTask.execute(book);
+        try {
+            String id = addBookTask.get();
+            book.setId(id);
+            af.addBook(book);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        ESController.EditBookTask editBookTask = new ESController.EditBookTask();
+        editBookTask.execute(book);
     }
 
     public void deleteBook(int index) {
@@ -104,9 +107,9 @@ public class AppController {
         ESController.EditUserTask editUserTask = new ESController.EditUserTask();
         editUserTask.execute(UserProfile.getInstance());
     }
-    public void getMyBooksFromDB(){
+    public void getMyBooksFromDB(String userName){
         ESController.GetBooksbyUserTask getBooksbyUserTask = new ESController.GetBooksbyUserTask();
-        getBooksbyUserTask.execute(UserProfile.getInstance());
+        getBooksbyUserTask.execute(userName);
     }
 
     public void resetUserProfile(){

@@ -33,14 +33,6 @@ public class AppFive extends BModel<BView>{
         notifyViews();
     }
 
-    public String getUserPassword() {
-        return UserProfile.getInstance().getUserPassword();
-    }
-
-    public void setUserPassword(String password){
-        UserProfile.getInstance().setUserPassword(password);
-        notifyViews();
-    }
 
     public String getFirstName() {
         return UserProfile.getInstance().getFirstName();
@@ -122,7 +114,13 @@ public class AppFive extends BModel<BView>{
         oldBook.setGenre(newBook.getGenre());
         oldBook.setTitle(newBook.getTitle());
         oldBook.setAuthor(newBook.getAuthor());
+        oldBook.setThumbnail(newBook.getThumbnail());
+
+        ESController.EditBookTask editBookTask = new ESController.EditBookTask();
+        editBookTask.execute(oldBook);
+
         notifyViews();
+
 
         // TODO sync up with database
         // try catch block to sync, follow offline user story if fail

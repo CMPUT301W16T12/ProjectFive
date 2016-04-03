@@ -26,8 +26,8 @@ import java.util.concurrent.ExecutionException;
  * Activity for making a new user account.
  */
 public class RegisterActivity extends AppCompatActivity implements BView<BModel>{
-    EditText etUserName, etFirstName, etLastName, etEmail, etPassword,etConfirmPassword, etPhoneNumber;
-    String userName, firstName, lastName, email, password, phoneNumber;
+    EditText etUserName, etFirstName, etLastName, etEmail, etPhoneNumber;
+    String userName, firstName, lastName, email, phoneNumber;
 
 
 
@@ -49,8 +49,6 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
         etFirstName = (EditText) findViewById(R.id.ETFirstNameRegistration);
         etLastName = (EditText) findViewById(R.id.ETLastNameRegistration);
         etEmail = (EditText) findViewById(R.id.ETEmailRegistration);
-        etPassword = (EditText) findViewById(R.id.ETPasswordRegistration);
-        etConfirmPassword = (EditText) findViewById(R.id.ETMatchPasswordRegistration);
         etPhoneNumber = (EditText) findViewById(R.id.ETPhoneNumberRegistration);
 
         // converting to string for saving as JSON object
@@ -64,7 +62,6 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
                 firstName = etFirstName.getText().toString();
                 lastName = etLastName.getText().toString();
                 email = etEmail.getText().toString();
-                password = etPassword.getText().toString();
                 phoneNumber = etPhoneNumber.getText().toString();
                 // is user in database task; null = no connection, true = user is in database, false = user is not in database, free to register
                 // if is null, means there is no connection, can't register, cant check if there is user
@@ -92,7 +89,6 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
                     ac.setFirstName(firstName);
                     ac.setLastName(lastName);
                     ac.setUserEmail(email);
-                    ac.setUserPassword(password);
                     ac.setPhoneNumber(phoneNumber);
                     ac.editUserInDB();
                     ac.resetUserProfile();

@@ -14,18 +14,11 @@ public class UserProfileActivityTest extends ActivityInstrumentationTestCase2 {
     public void testChangeContactInfo() throws Exception {
         UserProfileActivity upa = (UserProfileActivity) getActivity();
 
-        try{
-            upa.changeContactInfo("test@mail.com");
 
-        }catch (DatabaseConnectException e){
-            fail();
-        }
-    }
-    public void testGetPassword() throws Exception {
-        UserProfileActivity upa = (UserProfileActivity) getActivity();
-
+//            upa.changeContactInfo("test@mail.com");
 
     }
+
 
 
 }

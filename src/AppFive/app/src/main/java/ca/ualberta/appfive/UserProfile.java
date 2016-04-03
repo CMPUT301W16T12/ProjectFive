@@ -9,7 +9,6 @@ public class UserProfile{
     private String userName;
     private String userEmail;
     private String userId = null;
-    private String userPassword;
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -73,13 +72,6 @@ public class UserProfile{
         return userEmail;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
-
-    public String getUserPassword() {
-        return userPassword ;
-    }
 
     public String getLastName() {
         return lastName;

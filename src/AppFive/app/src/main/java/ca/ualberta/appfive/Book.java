@@ -60,7 +60,7 @@ public class Book {
         this.genre = genre;
         this.status = Status.AVAILABLE;
         this.owner = new OwnerInfo();
-        this.thumbnail = thumbnail;
+        setThumbnail(thumbnail);
     }
 
     public String getId() {
@@ -139,14 +139,15 @@ public class Book {
         this.bids.clear();
     }
 
-    public void addThumbnail(Bitmap newThumbnail) {
+    public void setThumbnail(Bitmap newThumbnail) {
         if(newThumbnail != null){
             thumbnail = newThumbnail;
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            newThumbnail.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+            newThumbnail.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream);
 
             byte[] b = byteArrayOutputStream.toByteArray();
             thumbnailBase64 = Base64.encodeToString(b, Base64.DEFAULT);
+            thumbnail = null;
         }
     }
     public void deleteThumbnail() {
