@@ -39,7 +39,6 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
         //TODO: Send to AppController
         //TODO: correct or not if I added this ES getbooktask, but not deleting adapter?
         // get the books by username from Elasticsearch
-        ac.getMyBooksFromDB();
 
         bla = new BookListAdapter(this, ac.getMyBookArray());
 

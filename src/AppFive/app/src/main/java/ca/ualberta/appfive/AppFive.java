@@ -123,7 +123,12 @@ public class AppFive extends BModel<BView>{
         oldBook.setTitle(newBook.getTitle());
         oldBook.setAuthor(newBook.getAuthor());
         oldBook.setThumbnail(newBook.getThumbnail());
+
+        ESController.EditBookTask editBookTask = new ESController.EditBookTask();
+        editBookTask.execute(oldBook);
+
         notifyViews();
+
 
         // TODO sync up with database
         // try catch block to sync, follow offline user story if fail

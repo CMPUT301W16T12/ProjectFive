@@ -95,6 +95,7 @@ public class LoginActivity extends AppCompatActivity implements BView<BModel>{
         Boolean result = ac.isUserInDataBase(userName);
         //Toast.makeText(getApplicationContext(),result.toString(),Toast.LENGTH_SHORT).show();
         if (result) {
+            ac.getMyBooksFromDB(userName);
             ac.getUserProfile(userName);
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(intent);

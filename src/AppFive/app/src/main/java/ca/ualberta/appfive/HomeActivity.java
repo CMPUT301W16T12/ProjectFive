@@ -53,6 +53,7 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
                 setResult(RESULT_OK);
                 Intent intent = new Intent(HomeActivity.this, MyBooksActivity.class);
                 startActivity(intent);
+
             }
         });
 
@@ -63,6 +64,7 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
     @Override
     protected void onStart() {
         super.onStart();
+
         //FileParser parser = new FileParser(this.getApplicationContext());
         //parser.loadFromFile();
     }

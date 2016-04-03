@@ -50,9 +50,9 @@ public class ESController {
      * param Book book as an object
      * @return null
      */
-    public static class AddBookTask extends AsyncTask<Book, Void, Void> {
+    public static class AddBookTask extends AsyncTask<Book, Void, String> {
         @Override
-        protected Void doInBackground(Book... books) {
+        protected String doInBackground(Book... books) {
             verifyClient();
 
             for (Book book : books) {
@@ -61,7 +61,7 @@ public class ESController {
                     DocumentResult result = client.execute(index);
                     if (result.isSucceeded()) {
                         // Set ID
-                        book.setId(result.getId());
+                        return result.getId();
                     } else {
                         Log.i("TODO", "doInBackground: Add book did not succeed");
                     }
@@ -276,23 +276,17 @@ public class ESController {
      * param UserProfile search the list of books by user
      * @return ArrayList of Book
      */
-    public static class GetBooksbyUserTask extends AsyncTask<UserProfile, Void, ArrayList<Book>> {
+    public static class GetBooksbyUserTask extends AsyncTask<String, Void, ArrayList<Book>> {
         ArrayList<Book> myBookList = new ArrayList<Book>();
 
         @Override
-        protected ArrayList<Book> doInBackground(UserProfile... userProfiles) {
+        protected ArrayList<Book> doInBackground(String... userNames) {
             verifyClient();
 
 
             String search_string =  "{\"query\":{" +
-                                    "   \"nested\":{" +
-                                    "       \"path\":\"owner\"," +
-                                    "       \"query\":{" +
-                                    "           \"match\":{" +
-                                    "               \"owner.name\":\"" + userProfiles[0].getUserName() + "\"" +
-                                    "           }" +
-                                    "       }," +
-                                    "       \"inner_hits\":{}" +
+                                    "   \"match\":{" +
+                                    "       \"owner.name\":\"" + userNames[0] + "\"" +
                                     "   }" +
                                     "}}";
             Search search = new Search.Builder(search_string).addIndex(teamdir).addType(booktype).build();
