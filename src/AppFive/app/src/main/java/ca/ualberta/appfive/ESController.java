@@ -377,24 +377,29 @@ public class ESController {
     public static class GetBooksBidsbyUserTask extends AsyncTask<String, Void, ArrayList<Book>> {
         ArrayList<Book> myBookList = new ArrayList<Book>();
 
+        ArrayList<Book> BookList = new ArrayList<Book>();
+
         @Override
         protected ArrayList<Book> doInBackground(String... userNames) {
             verifyClient();
 
 
-            String search_string =  "{\"query\":{" +
-                    "   \"match\":{" +
-                    "       \"owner.username\":\"" + userNames[0] + "\"" +
-                    "   }" +
-                    "}}";
+            String search_string =  "{\"query\": {\"bool\": { \"should\": [" +
+                    "   {\"match\":{" +
+                    "       \"bids.bidder\":\"" + userNames[0] + "\"" +
+                    "   }}," +
+                    "   {\"match\":{" +
+                    "       \"status\":\" BIDDED\"" +
+                    "   }}]}}"+
+                    "}";
             Search search = new Search.Builder(search_string).addIndex(teamdir).addType(booktype).build();
 
             try {
                 SearchResult execute = client.execute(search);
                 if (execute.isSucceeded()) {
                     List<Book> bookList = execute.getSourceAsObjectList(Book.class);
-                    myBookList.addAll(bookList);
-                    ac.setMyBookArray(myBookList);
+                    BookList.addAll(bookList);
+                    ac.setBookArray(BookList);
                 } else {
                     return null;
                 }
