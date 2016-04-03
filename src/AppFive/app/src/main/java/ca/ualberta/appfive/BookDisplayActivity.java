@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.concurrent.ExecutionException;
+
 /**
  * This activity displays a book and all of it's data.
  * The mode will control the view the user has of the book and the options to edit it.
@@ -303,9 +305,27 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
             public void onClick(DialogInterface dialog, int which) {
                 String rate = input.getText().toString();
                 if (!rate.trim().contentEquals("")) {
-                    //TODO: check if we need the parse float here
+                    // TODO: check if we need the parse float here
                     myBook.addBid(new Bid(ac.getUserName(), Float.parseFloat(rate)));
                     myBook.updateStatus();
+
+                    // creating string notification
+                    String notificationText = myBook.getOwner().getUserName() + " has made a bid of" + rate + " $/hr  on your item, " + myBook.getTitle();
+
+                    //getting user profile being sent to
+                    ESController.GetUserProfileTask getUserProfileTask = new ESController.GetUserProfileTask;
+                    getUserProfileTask.execute(myBook.getOwner().getUserName());
+
+                    try {
+                        UserProfile ownerProfile = getUserProfileTask.get();
+                        ownerProfile.addNotification(notificationText);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+
+
                     update(AppFiveApp.getAppFive());
                 }
             }

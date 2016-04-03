@@ -203,6 +203,44 @@ public class ESController {
         }
     }
 
+
+    /**
+     * For getting the user from database
+     * param String for searching user
+     * @return null,
+     **/
+    public static class GetUserProfileTask extends AsyncTask<String, Void, UserProfile> {
+        @Override
+        protected UserProfile doInBackground(String... usernames) {
+            verifyClient();
+
+            //TODO: look up exact matching query
+            String search_string = "{\"query\":{\"match\":{\"userName\":\"" + usernames[0] + "\"}}}";
+
+
+            // NOTE: Only first search term will be used
+            Search search = new Search.Builder(search_string).addIndex(teamdir).addType(usertype).build();
+
+
+            try {
+                SearchResult searchResult = client.execute(search);
+                if (searchResult.isSucceeded()) {
+                    UserProfile user = searchResult.getSourceAsObject(UserProfile.class);
+                    return user;
+                    //UserProfile.getInstance().setUserId(searchResult.);
+
+                } else {
+                    Log.i("TODO", "doInBackground: Failed in searching tweets");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+    }
+
+
     /**
      * For editing a user to database
      * param UserProfile user as object by index to edit

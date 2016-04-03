@@ -66,6 +66,7 @@ public class AppController {
         return af.getBook(index);
     }
 
+
     public void addBook(Book book) {
         ESController.AddBookTask addBookTask = new ESController.AddBookTask();
         addBookTask.execute(book);
