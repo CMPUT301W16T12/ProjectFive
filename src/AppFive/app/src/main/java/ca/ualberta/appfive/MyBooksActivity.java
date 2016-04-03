@@ -3,6 +3,7 @@ package ca.ualberta.appfive;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,6 +15,7 @@ import android.widget.PopupMenu;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 /**
  * My books activity shows the user's books in a list
@@ -72,6 +74,29 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
+                        Boolean result = null;
+                        ESController.DeleteBookTask deleteBookTask = new ESController.DeleteBookTask();
+                        deleteBookTask.execute(ac.getBook(position));
+                        try {
+                            result = deleteBookTask.get();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        }
+
+                        if(result == null){
+                            // Could not connect to database
+                            // TODO: Offline behaviour, store task and do when online again
+
+                        } else if(result){
+                            // Successfully deleted book in database
+                            Log.d("MyBooksActivity", "onMenuItemClick: Deleted book successfully in database");
+                        } else {
+                            // This is reached when the database is not synced with the device
+                            Log.d("MyBooksActivity", "onMenuItemClick: connected but could not delete book in database");
+                        }
+                        // Delete book locally
                         ac.deleteBook(position);
                         return true;
                     }
