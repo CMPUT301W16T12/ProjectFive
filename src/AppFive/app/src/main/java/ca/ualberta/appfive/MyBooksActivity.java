@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupMenu;
+import android.widget.RadioButton;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -114,6 +115,34 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
                 startActivity(intent);
             }
         });
+    }
+
+
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton)view).isChecked();
+        switch(view.getId()) {
+            case R.id.radioButtonAll:
+                if(checked){
+
+                }
+                break;
+            case R.id.radioButtonAvailable:
+                if(checked){
+
+                }
+                break;
+            case R.id.radioButtonBidded:
+                if(checked){
+
+                }
+                break;
+            case R.id.radioButtonorrowed:
+                if(checked){
+
+                }
+                break;
+        }
+
     }
 
     @Override

@@ -20,30 +20,42 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/myBook"
         android:id="@+id/TVMyBooksTitle" />
-
-    <LinearLayout
-        android:orientation="horizontal"
+    <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/all"
+            android:id="@+id/radioButtonAll"
+            android:checked="true"
+            android:onClick = "onRadioButtonClicked" />
 
-        <CheckBox
+        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/available"
-            android:id="@+id/checkBoxAvailable" />
+            android:id="@+id/radioButtonAvailable"
+            android:checked="false"
+            android:onClick = "onRadioButtonClicked"/>
 
-        <CheckBox
+        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bidded"
-            android:id="@+id/checkBoxBidded" />
+            android:id="@+id/radioButtonBidded"
+            android:checked="false"
+            android:onClick = "onRadioButtonClicked"/>
 
-        <CheckBox
+        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/borrowed"
-            android:id="@+id/checkBoxBorrowed" />
-    </LinearLayout>
+            android:id="@+id/radioButtonorrowed"
+            android:checked="false"
+            android:onClick = "onRadioButtonClicked"/>
+    </RadioGroup>
 
     <ListView
         android:layout_width="match_parent"
