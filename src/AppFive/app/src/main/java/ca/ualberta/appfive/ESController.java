@@ -285,7 +285,7 @@ public class ESController {
 
             String search_string =  "{\"query\":{" +
                                     "   \"match\":{" +
-                                    "       \"owner.name\":\"" + userNames[0] + "\"" +
+                                    "       \"owner.userName\":\"" + userNames[0] + "\"" +
                                     "   }" +
                                     "}}";
             Search search = new Search.Builder(search_string).addIndex(teamdir).addType(booktype).build();

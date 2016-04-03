@@ -76,7 +76,7 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
                     public boolean onMenuItemClick(MenuItem item) {
                         Boolean result = null;
                         ESController.DeleteBookTask deleteBookTask = new ESController.DeleteBookTask();
-                        deleteBookTask.execute(ac.getBook(position));
+                        deleteBookTask.execute(ac.getMyBook(position));
                         try {
                             result = deleteBookTask.get();
                         } catch (InterruptedException e) {
