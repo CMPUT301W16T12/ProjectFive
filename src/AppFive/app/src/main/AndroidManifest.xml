@@ -13,7 +13,6 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,49 +21,40 @@
         </activity>
         <activity
             android:name=".RegisterActivity"
-            android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SearchActivity"
-            android:label="@string/title_activity_search"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BookDisplayActivity"
-            android:label="@string/title_activity_book_display"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UserProfileActivity"
-            android:label="@string/title_activity_user_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MyBorrowingActivity"
-            android:label="@string/title_activity_my_borrowing"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MyBiddedActivity"
-            android:label="@string/title_activity_my_bidded"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EditProfileActivity"
-            android:label="@string/title_activity_edit_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EditBookActivity"
-            android:label="@string/title_activity_edit_book"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".OwnerInfoActivity"
-            android:label="@string/title_activity_owner_info" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MyBooksActivity"
-            android:label="@string/title_activity_my_books" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BidsDisplayActivity"
-            android:label="@string/title_activity_bids_display"/>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
