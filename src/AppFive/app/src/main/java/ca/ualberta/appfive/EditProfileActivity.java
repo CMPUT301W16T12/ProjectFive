@@ -17,8 +17,6 @@ public class EditProfileActivity extends AppCompatActivity implements BView<BMod
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);

@@ -75,8 +75,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_display);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
 
         final int index = initialize();
 
@@ -267,6 +266,9 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
             case DISPLAY_OWNER_BORROWED_MODE:
                 returnButton.setActivated(true);
                 returnButton.setVisibility(View.VISIBLE);
+                bidsButton.setActivated(true);
+                bidsButton.setVisibility(View.VISIBLE);
+                bidsButton.setText(R.string.borrower);
             default:
                 break;
         }
@@ -358,7 +360,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
                         e.printStackTrace();
                     }
 
-                    ac.editBook(index, myBook);
+                    ac.editBook(index, myBook,1);
 
                     update(AppFiveApp.getAppFive());
                 }

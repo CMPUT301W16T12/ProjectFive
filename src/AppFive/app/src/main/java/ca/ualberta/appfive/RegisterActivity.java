@@ -35,8 +35,7 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
 
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);

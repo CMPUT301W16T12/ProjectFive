@@ -349,7 +349,7 @@ public class ESController {
             verifyClient();
 
 
-            String search_string =  "{\"query\": {\"bool\": { \"should\": [" +
+            String search_string =  "{\"query\": {\"bool\": { \"must\": [" +
                     "   {\"match\":{" +
                     "       \"bids.bidder\":\"" + userNames[0] + "\"" +
                     "   }}," +
@@ -384,7 +384,7 @@ public class ESController {
             verifyClient();
 
 
-            String search_string =  "{\"query\": {\"bool\": { \"should\": [" +
+            String search_string =  "{\"query\": {\"bool\": { \"must\": [" +
                     "   {\"match\":{" +
                     "       \"bids.bidder\":\"" + userNames[0] + "\"" +
                     "   }}," +

@@ -20,8 +20,7 @@ public class MyBorrowingActivity extends AppCompatActivity implements BView<BMod
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_borrowing);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
 
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);

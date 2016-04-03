@@ -20,8 +20,7 @@ public class MyBiddedActivity extends AppCompatActivity implements BView<BModel>
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_bidded);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
 
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);

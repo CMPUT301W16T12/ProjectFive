@@ -17,7 +17,6 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -63,7 +62,9 @@
         <activity
             android:name=".MyBooksActivity"
             android:label="@string/title_activity_my_books" />
-        <activity android:name=".BidsDisplayActivity"></activity>
+        <activity
+            android:name=".BidsDisplayActivity"
+            android:label="@string/title_activity_bids_display"/>
     </application>
 
 </manifest>
