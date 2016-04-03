@@ -75,6 +75,11 @@ public class LoginActivity extends AppCompatActivity implements BView<BModel>{
         if (result) {
             ac.getMyBooksFromDB(userName);
             ac.getUserProfile(userName);
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(intent);
 
