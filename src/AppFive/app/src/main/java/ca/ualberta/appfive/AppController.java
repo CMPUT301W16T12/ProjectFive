@@ -53,6 +53,9 @@ public class AppController {
         af.setPhoneNumber(PhoneNumber);
     }
 
+    public ArrayList<String> getNotifications () {return af.getNotifications();}
+
+    public void addNotification(String notification, UserProfile ownerProfile) {af.addNotification(notification, ownerProfile);}
 
     public ArrayList<Book> getBookArray(){
         return af.getBookArray();

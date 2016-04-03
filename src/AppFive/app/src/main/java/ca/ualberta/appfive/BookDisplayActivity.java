@@ -317,7 +317,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
 
                     try {
                         UserProfile ownerProfile = getUserProfileTask.get();
-                        ownerProfile.addNotification(notificationText);
+                        ac.addNotification(notificationText,ownerProfile);
                         ESController.EditUserTask editUserTask = new ESController.EditUserTask();
                         editUserTask.execute(ownerProfile);
                     } catch (InterruptedException e) {

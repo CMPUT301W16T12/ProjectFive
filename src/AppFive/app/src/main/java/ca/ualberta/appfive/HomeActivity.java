@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * This activity displays the home page of app
  */
 public class HomeActivity extends AppCompatActivity implements BView<BModel>{
-
+    ArrayAdapter<String> nla;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +26,9 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
-        ArrayAdapter<String> nla;
 
+
+        ArrayList<String> notifications = ac.getNotifications();
 
         // bodyText = (EditText) findViewById(R.id.body);
         Button searchButton = (Button) findViewById(R.id.searchButton);
@@ -37,8 +38,9 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
         Button borrowedButton = (Button) findViewById(R.id.borrowedButton);
         ListView notificationsLV = (ListView) findViewById(R.id.LVNotifications);
 
-        nla = new ArrayAdapter<String>(this, R.layout.notification_entry,UserProfile.getInstance().getNotifications());
+        nla = new ArrayAdapter<String>(this, R.layout.notification_entry,notifications);
         notificationsLV.setAdapter(nla);
+
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +83,7 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
 
     @Override
     public void update(BModel model) {
-
+        nla.notifyDataSetChanged();
     }
 
     @Override
