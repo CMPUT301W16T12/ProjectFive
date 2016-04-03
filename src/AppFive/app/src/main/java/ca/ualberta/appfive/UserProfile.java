@@ -14,7 +14,7 @@ public class UserProfile{
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    public ArrayList<String> notifications;
+    private ArrayList<String> notifications = new ArrayList<String>();
 
 
     public static UserProfile getInstance() {
@@ -31,21 +31,6 @@ public class UserProfile{
         ourInstance = new UserProfile();
     }
 
-    /**
-     * Call this update method when a user logs in
-     * Polls database for username, checks password, gets contact info
-     * @param userName Unique user name
-     * @param firstName User's first Name
-     * @param lastName User's last Name
-     * @param userPassword User's password
-     * @param userEmail User's email
-     * @param phoneNumber User's phone number
-     * @throws IllegalArgumentException if the user's name is not in database, or if password
-     * isn't right
-     */
-    public void updateUserData(String userName, String userPassword)
-            throws IllegalArgumentException{
-    }
 
     public void setUserName(String userName) {
         this.userName = userName;

@@ -60,6 +60,14 @@ public class AppFive extends BModel<BView>{
         notifyViews();
     }
 
+    public ArrayList<String> getNotifications(){
+        return UserProfile.getInstance().getNotifications();
+    }
+
+    public void addNotification(String notification, UserProfile ownerProfile){
+        ownerProfile.addNotification(notification);
+    }
+
     public ArrayList<Book> getBookArray(){
        return books;
     }

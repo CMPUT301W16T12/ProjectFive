@@ -54,6 +54,8 @@ public class BidsDisplayActivity extends AppCompatActivity implements BView<BMod
                             myBook.deleteBids();
                             myBook.setStatus(Book.Status.BORROWED);
                             myBook.addBid(acceptedBid);
+                            ESController.EditBookTask editBookTask = new ESController.EditBookTask();
+                            editBookTask.execute(myBook);
                             finish();
                         } else {
                             myBook.deleteBid(myBook.getBid(position));

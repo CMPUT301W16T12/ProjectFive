@@ -5,13 +5,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 /**
  * This activity displays the home page of app
  */
 public class HomeActivity extends AppCompatActivity implements BView<BModel>{
-
+    ArrayAdapter<String> nla;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,12 +28,18 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
         final AppController ac = AppFiveApp.getAppController();
 
 
+        ArrayList<String> notifications = ac.getNotifications();
+
         // bodyText = (EditText) findViewById(R.id.body);
         Button searchButton = (Button) findViewById(R.id.searchButton);
         Button myProfileButton = (Button) findViewById(R.id.myProfileButton);
         Button myBookButton = (Button) findViewById(R.id.myBooksButton);
         Button myBorrowedButton = (Button) findViewById(R.id.borrowedButton);
         Button myBidsButton = (Button) findViewById(R.id.biddedButton);
+        ListView notificationsLV = (ListView) findViewById(R.id.LVNotifications);
+
+        nla = new ArrayAdapter<String>(this, R.layout.notification_entry,notifications);
+        notificationsLV.setAdapter(nla);
 
 
         searchButton.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +99,7 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
 
     @Override
     public void update(BModel model) {
-
+        nla.notifyDataSetChanged();
     }
 
     @Override
