@@ -103,12 +103,16 @@ public class AppFive extends BModel<BView>{
      * @param index
      * @param newBook
      */
-    public void editBook(int index, Book newBook) {
+    public void editBook(int index, Book newBook, int list) {
         // to edit a book construct a new book with the new attributes
         // and call this function with the index of the old instance,
         // and the new book to replace it.
-
-        Book oldBook = getMyBook(index);
+        Book oldBook;
+        if(list == 0) { //0 Means Books owned by user
+            oldBook = getMyBook(index);
+        } else {  //Book not owned by user
+            oldBook = getBook(index);
+        }
         oldBook.setDescription(newBook.getDescription());
         oldBook.setGenre(newBook.getGenre());
         oldBook.setTitle(newBook.getTitle());

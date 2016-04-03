@@ -2,9 +2,7 @@ package ca.ualberta.appfive;
 
 
 import android.os.AsyncTask;
-import android.provider.DocumentsContract;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.searchly.jestdroid.DroidClientConfig;
 import com.searchly.jestdroid.JestClientFactory;
@@ -14,7 +12,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.searchbox.client.JestResult;
 import io.searchbox.core.Delete;
 import io.searchbox.core.DocumentResult;
 import io.searchbox.core.Index;
@@ -334,6 +331,75 @@ public class ESController {
                     List<Book> bookList = execute.getSourceAsObjectList(Book.class);
                     myBookList.addAll(bookList);
                     ac.setMyBookArray(myBookList);
+                } else {
+                    return null;
+                }
+            } catch (IOException e) {
+                return null;
+            }
+            return null;
+        }
+    }
+
+    public static class GetBooksBorrowedbyUserTask extends AsyncTask<String, Void, ArrayList<Book>> {
+        ArrayList<Book> BookList = new ArrayList<Book>();
+
+        @Override
+        protected ArrayList<Book> doInBackground(String... userNames) {
+            verifyClient();
+
+
+            String search_string =  "{\"query\": {\"bool\": { \"should\": [" +
+                    "   {\"match\":{" +
+                    "       \"bids.bidder\":\"" + userNames[0] + "\"" +
+                    "   }}," +
+                    "   {\"match\":{" +
+                    "       \"status\":\" BORROWED\"" +
+                    "   }}]}}"+
+                    "}";
+            Search search = new Search.Builder(search_string).addIndex(teamdir).addType(booktype).build();
+
+            try {
+                SearchResult execute = client.execute(search);
+                if (execute.isSucceeded()) {
+                    List<Book> bookList = execute.getSourceAsObjectList(Book.class);
+                    BookList.addAll(bookList);
+                    ac.setBookArray(BookList);
+                } else {
+                    return null;
+                }
+            } catch (IOException e) {
+                return null;
+            }
+            return null;
+        }
+    }
+    public static class GetBooksBidsbyUserTask extends AsyncTask<String, Void, ArrayList<Book>> {
+        ArrayList<Book> myBookList = new ArrayList<Book>();
+
+        ArrayList<Book> BookList = new ArrayList<Book>();
+
+        @Override
+        protected ArrayList<Book> doInBackground(String... userNames) {
+            verifyClient();
+
+
+            String search_string =  "{\"query\": {\"bool\": { \"should\": [" +
+                    "   {\"match\":{" +
+                    "       \"bids.bidder\":\"" + userNames[0] + "\"" +
+                    "   }}," +
+                    "   {\"match\":{" +
+                    "       \"status\":\" BIDDED\"" +
+                    "   }}]}}"+
+                    "}";
+            Search search = new Search.Builder(search_string).addIndex(teamdir).addType(booktype).build();
+
+            try {
+                SearchResult execute = client.execute(search);
+                if (execute.isSucceeded()) {
+                    List<Book> bookList = execute.getSourceAsObjectList(Book.class);
+                    BookList.addAll(bookList);
+                    ac.setBookArray(BookList);
                 } else {
                     return null;
                 }

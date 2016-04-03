@@ -81,7 +81,7 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
                 Book newBook = new Book(titleEdit, authorEdit, descEdit, genreEdit, thumbnail);
 
                 if (index != -2) {
-                    ac.editBook(index, newBook);
+                    ac.editBook(index, newBook,0);
                 } else {
                     ac.addBook(newBook);
                 }

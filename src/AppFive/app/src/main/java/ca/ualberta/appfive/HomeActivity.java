@@ -28,6 +28,8 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
         Button searchButton = (Button) findViewById(R.id.searchButton);
         Button myProfileButton = (Button) findViewById(R.id.myProfileButton);
         Button myBookButton = (Button) findViewById(R.id.myBooksButton);
+        Button myBorrowedButton = (Button) findViewById(R.id.borrowedButton);
+        Button myBidsButton = (Button) findViewById(R.id.biddedButton);
 
 
         searchButton.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +58,22 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
 
             }
         });
+        myBorrowedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ac.getMyBorrowedFromDB(UserProfile.getInstance().getUserName());
+                Intent intent = new Intent(HomeActivity.this, MyBorrowingActivity.class);
+                startActivity(intent);
+            }
+        });
+        myBidsButton.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ac.getMyBidsFromDB(UserProfile.getInstance().getUserName());
+                Intent intent = new Intent(HomeActivity.this, MyBiddedActivity.class);
+                startActivity(intent);
+            }
+        }));
 
         //TODO: ListView of Event Histroy
 
