@@ -94,7 +94,7 @@ public class BidsDisplayActivity extends AppCompatActivity implements BView<BMod
         if (requestCode == PLACE_PICKER_REQUEST) {
             if (resultCode == RESULT_OK) {
                 place = PlacePicker.getPlace(this, data);
-                String toastMsg = "Location for pickup set";
+                String toastMsg = getString(R.string.location_set);
                 Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
                 Bid acceptedBid = myBook.getBid(bidPosition);
                 acceptedBid.setLatitude(place.getLatLng().latitude);
