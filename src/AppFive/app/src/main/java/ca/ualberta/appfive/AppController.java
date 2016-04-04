@@ -16,14 +16,30 @@ public class AppController {
 
     public AppController(AppFive appFive) {this.af = appFive;}
 
+    /**
+     * This method gets the user's username
+     * @return The unique UserName
+     */
     public String getUserName() {return af.getUserName();}
 
+    /**
+     * This method sets the UserName. Check for uniqueness before calling this method.
+     * @param userName The new userName
+     */
     public void setUserName(String userName) {af.setUserName(userName);}
 
+    /**
+     * Get the user's email
+     * @return The user's email address
+     */
     public String getUserEmail() {
         return af.getUserEmail();
     }
 
+    /**
+     * Set the user's email
+     * @param email The user's email address
+     */
     public void setUserEmail(String email) {
         af.setUserEmail(email);
     }
@@ -53,8 +69,17 @@ public class AppController {
         af.setPhoneNumber(PhoneNumber);
     }
 
+    /**
+     * Get the notifications
+     * @return An array list of notifications
+     */
     public ArrayList<String> getNotifications () {return af.getNotifications();}
 
+    /**
+     * Append a notification onto the list of notifications
+     * @param notification New notification to be added
+     * @param ownerProfile The target owner
+     */
     public void addNotification(String notification, UserProfile ownerProfile) {af.addNotification(notification, ownerProfile);}
 
     public ArrayList<Book> getBookArray(){
@@ -70,6 +95,11 @@ public class AppController {
     }
 
 
+    /**
+     * This method adds a book to the ElasticSearch database.
+     * It adds this book to the local data as well.
+     * @param book New book to be added
+     */
     public void addBook(Book book) {
         ESController.AddBookTask addBookTask = new ESController.AddBookTask();
         addBookTask.execute(book);
@@ -86,10 +116,21 @@ public class AppController {
         editBookTask.execute(book);
     }
 
+    /**
+     * This method deletes a book from local data and from the ElasticSearch database
+     * @param index Index of book in list to be deleted
+     */
     public void deleteBook(int index) {
         af.deleteBook(index);
     }
 
+    /**
+     * This method edits a book. It makes the changes locally and in the ElasticSearch database.
+     *
+     * @param index Index of book to be edited
+     * @param newBook The book object to replace the existing book
+     * @param list 0 if it is owned by the current user
+     */
     public void editBook(int index, Book newBook, int list) {
         af.editBook(index, newBook,list);
     }
@@ -107,6 +148,9 @@ public class AppController {
         return af.getMyBook(index);
     }
 
+    /**
+     * This method adds the current user to the ElasticSearch database
+     */
     public void addUserToDB(){
         ESController.AddUserTask addUserTask = new ESController.AddUserTask();
         addUserTask.execute(UserProfile.getInstance());
@@ -121,39 +165,71 @@ public class AppController {
         editUserInDB();
     }
 
+    /**
+     * If changes have been made to the current user's profile, calling this method will push those
+     * changes to the ElasticSearch database
+     */
     public void editUserInDB(){
         ESController.EditUserTask editUserTask = new ESController.EditUserTask();
         editUserTask.execute(UserProfile.getInstance());
     }
+
+    /**
+     * This method updates the local list of books belonging to the user
+     * @param userName The name of the user who owns the books
+     */
     public void getMyBooksFromDB(String userName){
         ESController.GetBooksbyUserTask getBooksbyUserTask = new ESController.GetBooksbyUserTask();
         getBooksbyUserTask.execute(userName);
     }
+
+    /**
+     * This method fetches a list of books currently borrowed by the user from the ElasticSearch
+     * database
+     * @param userName The current user's username
+     */
     public void getMyBorrowedFromDB(String userName){
         ESController.GetBooksBorrowedbyUserTask getBooksBorrowedbyUserTask = new ESController.GetBooksBorrowedbyUserTask();
         getBooksBorrowedbyUserTask.execute(userName);
         try {
+            // Wait for the task to execute
             Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        // Notify views that the model has changed
         af.notifyViews();
     }
+
+    /**
+     * Fetch a list of books that the user has bidded on from the ElasticSearch database
+     * @param userName The user's username
+     */
     public void getMyBidsFromDB(String userName){
         ESController.GetBooksBidsbyUserTask getBooksBidsbyUserTask = new ESController.GetBooksBidsbyUserTask();
         getBooksBidsbyUserTask.execute(userName);
         try {
+            // Wait for task to finish executing
             Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        // Notify the views that the model has changed
         af.notifyViews();
     }
 
-
+    /**
+     * This method sets the user profile object to have no data
+     */
     public void resetUserProfile(){
         UserProfile.resetUserProfile();
     }
+
+    /**
+     * This method tests to see if the given username is in the ElasticSearch database.
+     * @param userName The username to be tested
+     * @return True if the username is currently in the database, false if it is not
+     */
     public Boolean isUserInDataBase(String userName) {
         ESController.IsUserInDatabaseTask isUserInDatabaseTask = new ESController.IsUserInDatabaseTask();
         isUserInDatabaseTask.execute(userName);
@@ -171,6 +247,11 @@ public class AppController {
         }
         return Boolean.FALSE;
     }
+
+    /**
+     * Fetches the user's profile data from the ElasticSearch database
+     * @param userName The current user's username
+     */
     public void getUserProfile(String userName) {
         ESController.GetUserTask getUserTask = new ESController.GetUserTask();
         getUserTask.execute(userName);

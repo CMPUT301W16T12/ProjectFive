@@ -9,9 +9,7 @@ import java.util.ArrayList;
 
 /**
  * Class for the book object.
- * Contains data for a book, status and history
- *
- * Model
+ * Contains data for a book, along with a list of bids
  */
 public class Book {
     /**
@@ -30,19 +28,9 @@ public class Book {
     private Status status;
     private OwnerInfo owner;
     private String author;
-    // TODO: Thumbnail is a picture
     private transient Bitmap thumbnail;
     private String thumbnailBase64;
-    // TODO: Make bids a Class
     private ArrayList<Bid> bids = new ArrayList<Bid>();
-
-    /*
-    public Book() {
-        super();
-    }
-    */
-
-
 
     /**
      * Construct a book from scratch, without an id.
@@ -139,6 +127,10 @@ public class Book {
         this.bids.clear();
     }
 
+    /**
+     * Set the picture data. Converted to JPEG and compressed.
+     * @param newThumbnail Bitmap to be stored
+     */
     public void setThumbnail(Bitmap newThumbnail) {
         if(newThumbnail != null){
             thumbnail = newThumbnail;
@@ -150,11 +142,17 @@ public class Book {
             thumbnail = null;
         }
     }
+
     public void deleteThumbnail() {
         thumbnail = null;
         thumbnailBase64 = null;
 
     }
+
+    /**
+     * Get the picture as a bitmap
+     * @return bitmap of the image
+     */
     public Bitmap getThumbnail() {
         if (thumbnail == null && thumbnailBase64 != null){
             byte[] decodeString = Base64.decode(thumbnailBase64, Base64.DEFAULT);
@@ -163,6 +161,9 @@ public class Book {
         return thumbnail;
     }
 
+    /**
+     * This method checks current bids and updates status
+     */
     public void updateStatus(){
         if (this.getBids().isEmpty()){
             this.setStatus(Status.AVAILABLE);

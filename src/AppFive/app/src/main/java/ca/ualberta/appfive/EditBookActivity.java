@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
- * This activity edits book and save it.
+ * This activity edits book and saves it.
  */
 public class EditBookActivity extends AppCompatActivity implements BView<BModel> {
 
