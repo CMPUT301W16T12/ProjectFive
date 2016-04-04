@@ -97,7 +97,7 @@ public class ESController {
                         books.addAll(retBooks);
                         ac.setMyBookArray(books);
                     } else {
-                        Log.i("TODO", "doInBackground: Failed in searching tweets");
+                        Log.i("TODO", "doInBackground: Failed in searching books");
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -191,7 +191,7 @@ public class ESController {
                     //UserProfile.getInstance().setUserId(searchResult.);
 
                 } else {
-                    Log.i("TODO", "doInBackground: Failed in searching tweets");
+                    Log.i("TODO", "doInBackground: Failed in searching books");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -228,7 +228,7 @@ public class ESController {
                     //UserProfile.getInstance().setUserId(searchResult.);
 
                 } else {
-                    Log.i("TODO", "doInBackground: Failed in searching tweets");
+                    Log.i("TODO", "doInBackground: Failed in searching books");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
