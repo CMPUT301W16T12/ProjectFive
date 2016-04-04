@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutionException;
  */
 public class AppController {
 
-    private AppFive af = null;
+    private AppFive af;
 
     public AppController(AppFive appFive) {this.af = appFive;}
 

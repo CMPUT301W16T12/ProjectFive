@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity implements BView<BModel>{
     private ArrayAdapter<String> nla;
     private ArrayList<String> notifications = new ArrayList<String>();
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
