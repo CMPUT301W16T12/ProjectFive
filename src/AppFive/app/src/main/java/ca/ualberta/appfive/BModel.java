@@ -3,7 +3,7 @@ package ca.ualberta.appfive;
 import java.util.ArrayList;
 
 /**
- * All model classes are inherited from this class.
+ * Model classes inherit from this class.
  *
  * The code was borrowed from the FillerCreep app.
  * https://github.com/abramhindle/FillerCreepForAndroid

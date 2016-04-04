@@ -3,9 +3,9 @@ package ca.ualberta.appfive;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -70,6 +70,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
     private Button returnButton;
     private Button bidInfoButton;
     private Button bidsButton;
+    private Button locationButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,7 +144,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
             public void onClick(View v) {
                 myBook.deleteBids();
                 myBook.updateStatus();
-                ac.editBook(index, myBook,0);
+                ac.editBook(index, myBook, 0);
                 update(AppFiveApp.getAppFive());
             }
         });
@@ -159,6 +160,13 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
                 Intent intent = new Intent(BookDisplayActivity.this, BidsDisplayActivity.class);
                 intent.putExtra("INDEX", index);
                 startActivity(intent);
+            }
+        });
+        locationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bid bid = ac.getMyBook(index).getBid(0);
+                showMap(bid.getLatitude(), bid.getLongitude());
             }
         });
 
@@ -200,6 +208,8 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         returnButton = (Button) findViewById(R.id.returnButton);
         bidInfoButton = (Button) findViewById(R.id.bidInfoButton);
         bidsButton = (Button) findViewById(R.id.bidsButton);
+        locationButton = (Button) findViewById(R.id.locationButton);
+
 
         ImageView thumbnail = (ImageView) findViewById(R.id.thumbnailBookDisplay);
         TextView bookTitle = (TextView) findViewById(R.id.TVBookTitle);
@@ -234,6 +244,8 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         bidInfoButton.setActivated(false);
         bidsButton.setVisibility(View.INVISIBLE);
         bidsButton.setActivated(false);
+        locationButton.setVisibility(View.INVISIBLE);
+        locationButton.setActivated(false);
 
 
         switch (mode){
@@ -250,6 +262,8 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
                 ownerButton.setVisibility(View.VISIBLE);
                 bidInfoButton.setActivated(true);
                 bidInfoButton.setVisibility(View.VISIBLE);
+                locationButton.setVisibility(View.VISIBLE);
+                locationButton.setActivated(true);
                 break;
             case DISPLAY_AVAILABLE_MODE:
                 ownerButton.setActivated(true);
@@ -374,6 +388,14 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         });
 
         builder.show();
+    }
+
+    private void showMap (double latitude, double longitude){
+        String uriString = String.format("geo:%f,%f?q=%f,%f,(%s)",latitude, longitude, latitude, longitude,"Pickup Location");
+        Uri gmmIntentUri = Uri.parse(uriString);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
     }
 
     @Override

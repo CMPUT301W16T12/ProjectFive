@@ -15,11 +15,9 @@ import android.widget.TextView;
 public class BookViewEntryHolder {
 
     private View entry;
-    //private RadioButton radio = null;
     private TextView titleText = null;
     private TextView genreText = null;
     private ImageView statusImage = null;
-    //TODO: Add other views to book list entry
 
     public BookViewEntryHolder(View entry) {
         this.entry = entry;
@@ -45,14 +43,4 @@ public class BookViewEntryHolder {
         }
         return statusImage;
     }
-
-    /*
-    public RadioButton getRadio(){
-        if(this.radio == null){
-            this.radio = (RadioButton) entry.findViewById(R.id.radioButton);
-        }
-        entry.findViewById(R.id.book_entry_layout);
-
-        return this.radio;
-    }*/
 }

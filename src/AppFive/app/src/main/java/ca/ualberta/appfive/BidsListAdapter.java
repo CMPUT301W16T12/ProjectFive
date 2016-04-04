@@ -14,9 +14,6 @@ import java.util.List;
  */
 public class BidsListAdapter extends ArrayAdapter<Bid> {
 
-    //private int selectedRadioIndex = -1;
-    //private RadioButton selectedRadio;
-
     public BidsListAdapter(Context context, List<Bid> objects) {
         super(context, R.layout.bid_entry, objects);
     }

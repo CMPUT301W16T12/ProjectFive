@@ -8,7 +8,14 @@ import java.util.ArrayList;
  */
 public class AppFive extends BModel<BView>{
 
+    /**
+     * A list of books
+     */
     private ArrayList<Book> books = new ArrayList<Book>();
+
+    /**
+     * A list of all the books belonging to the user
+     */
     private ArrayList<Book> myBooks = new ArrayList<Book>();
 
     AppFive() {
@@ -81,35 +88,32 @@ public class AppFive extends BModel<BView>{
     }
 
     /**
-     * This method adds a book to the local list of books and to the database
-     * @param book to be added
+     * This method adds a book to the local list of books
+     * @param book New book to be added
      */
     public void addBook(Book book) {
         //books.add(book);
         myBooks.add(book);
         notifyViews();
-        //TODO update database
-        // try catch block to sync, follow offline user story if fail
     }
 
     /**
-     * This method deletes a book locally by index and deletes from the database
-     * @param index from the booklist to delete a book
+     * This method deletes a book locally by index
+     * @param index Index of book to be deleted
      */
     public void deleteBook(int index) {
         //books.remove(index);
         myBooks.remove(index);
         notifyViews();
-        // TODO sync up with database
-        // try catch block to sync, follow offline user story if fail
     }
 
     /**
      * This method edits a book by first contructing a new book
      * then edit the original book by call its index and replace by the new book
      * to the local and database
-     * @param index
-     * @param newBook
+     * @param index Index of book to be edited
+     * @param newBook New book object to replace existing book
+     * @param list 0 if book is owned by user
      */
     public void editBook(int index, Book newBook, int list) {
         // to edit a book construct a new book with the new attributes
@@ -119,7 +123,7 @@ public class AppFive extends BModel<BView>{
         if(list == 0) { //0 Means Books owned by user
             oldBook = getMyBook(index);
         } else {  //Book not owned by user
-            oldBook = getBook(index);
+            oldBook = getMyBook(index);
         }
         oldBook.setDescription(newBook.getDescription());
         oldBook.setGenre(newBook.getGenre());
@@ -131,10 +135,6 @@ public class AppFive extends BModel<BView>{
         editBookTask.execute(oldBook);
 
         notifyViews();
-
-
-        // TODO sync up with database
-        // try catch block to sync, follow offline user story if fail
     }
 
     public ArrayList<Book> getMyBookArray(){

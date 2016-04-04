@@ -44,9 +44,8 @@ public class ESController {
     }
 
     /**
-     * For adding a book to database
-     * param Book book as an object
-     * @return null
+     * For adding a book to database. Pass in the book object when creating.
+     * Call get to get the ElasticSearch id.
      */
     public static class AddBookTask extends AsyncTask<Book, Void, String> {
         @Override
@@ -74,10 +73,8 @@ public class ESController {
     }
 
     /**
-     * For getting a book from database
-     * param String for searching keyword
-     * @return books, of a array list of book
-    TODO: check : Might not need, since books are always opened from lists, the book can be gotten from that list
+     * For getting books from database based on a search string. Pass in a search term.
+     * Call get to get the list of books.
     */
     public static class GetBookTask extends AsyncTask<String, Void, ArrayList<Book>> {
         @Override
@@ -108,10 +105,9 @@ public class ESController {
     }
 
     /**
-     * For editing a book to database
-     * param book book as object by index to edit
-     * @return Boolean true or false
-    TODO: check : Might not need, since books are always opened from lists, the book can be gotten from that list
+     * For updating an edited book. Pass in the edited book on task creation.
+     * Call get to get a Boolean. This will be true if it went through,
+     * false if it connected but could not update, and null if it could not connect.
      */
     public static class EditBookTask extends AsyncTask<Book, Void, Boolean> {
         @Override
@@ -138,9 +134,8 @@ public class ESController {
     }
 
     /**
-     * For adding a user to database
-     * param UserProfile user profile as an object
-     * @return null
+     * For adding a user to the database. Pass in the UserProfile on task creation.
+     * Call get to obtain the ElasticSearch id
      */
     public static class AddUserTask extends AsyncTask<UserProfile, Void, String > {
         @Override
@@ -151,7 +146,7 @@ public class ESController {
                 try {
                     DocumentResult result = client.execute(index);
                     if (result.isSucceeded()) {
-                        // Set ID
+                        // Return ID
                         return result.getId();
                     } else {
                         Log.i("TODO", "doInBackground: Add user did not succeed");
@@ -166,10 +161,8 @@ public class ESController {
     }
 
     /**
-    * For getting the user from database
-    * param String for searching user
-    * @return null,
-    **/
+    * Fetch current user data from the database. Pass in the user's username on task creation.
+    */
     public static class GetUserTask extends AsyncTask<String, Void, Void> {
         @Override
         protected Void doInBackground(String... usernames) {
@@ -203,10 +196,9 @@ public class ESController {
 
 
     /**
-     * For getting the user from database
-     * param String for searching user
-     * @return null,
-     **/
+     * Fetch user's profile data from the database. Pass in the user's username on task creation.
+     * Call get to get the user's data as a UserProfile object
+     */
     public static class GetUserProfileTask extends AsyncTask<String, Void, UserProfile> {
         @Override
         protected UserProfile doInBackground(String... usernames) {
@@ -305,11 +297,6 @@ public class ESController {
         }
     }
 
-    /**
-     * To get books by specified user from database
-     * param UserProfile search the list of books by user
-     * @return ArrayList of Book
-     */
     public static class GetBooksbyUserTask extends AsyncTask<String, Void, ArrayList<Book>> {
         ArrayList<Book> myBookList = new ArrayList<Book>();
 
@@ -318,11 +305,12 @@ public class ESController {
             verifyClient();
 
 
-            String search_string =  "{\"query\":{" +
-                                    "   \"match\":{" +
-                                    "       \"owner.userName\":\"" + userNames[0] + "\"" +
-                                    "   }" +
-                                    "}}";
+            String search_string =  "";
+//            "{\"query\":{" +
+//                                    "   \"match\":{" +
+//                                    "       \"owner.userName\":\"" + userNames[0] + "\"" +
+//                                    "   }" +
+//                                    "}}";
             Search search = new Search.Builder(search_string).addIndex(teamdir).addType(booktype).build();
 
             try {
