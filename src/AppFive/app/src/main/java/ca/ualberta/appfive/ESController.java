@@ -362,7 +362,6 @@ public class ESController {
         }
     }
     public static class GetBooksBidsbyUserTask extends AsyncTask<String, Void, ArrayList<Book>> {
-        ArrayList<Book> myBookList = new ArrayList<Book>();
 
         ArrayList<Book> BookList = new ArrayList<Book>();
 
@@ -431,13 +430,29 @@ public class ESController {
         protected Void doInBackground(String... items) {
             verifyClient();
 
-            String search_string =  "{\"multi_match\":{" +
-                                    "   \"query\":\""+ items[0] + "\"" +
-                                    "   ,\"type\":\"cross_fields\"" +
-                                    "   ,\"fields\":\"[\"title\",\"author\",\"description\",\"genre\"]\"" +
-                                    "   ,\"operator\":\"or\"" +
-                                    "   }" +
-                                    "}";
+            String search_string =  "{\"query\": {\"bool\": " +
+                                    "{ \"should\": [" +
+                                    "   {\"match\":{" +
+                                    "       \"title\":\"" + items[0] + "\"" +
+                                    "   }}," +
+                                    "   {\"match\":{" +
+                                    "       \"author\":\"" + items[0] + "\"" +
+                                    "    }}," +
+                                    "   {\"match\":{" +
+                                    "       \"description\":\"" + items[0] + "\"" +
+                                    "    }}," +
+                                    "   {\"match\":{" +
+                                    "       \"genre\":\"" + items[0] + "\"" +
+                                    "   }}]}," +
+                                    "{\"must_not\":[" +
+                                    "   {\"match\":{" +
+                                    "       \"status\":\"BORROWED\"}}," +
+                                    "   {\"match\":{" +
+                                    "       \"owner.userName\":\"" + UserProfile.getInstance().getUserName() + "\"}}" +
+                                    "]}}}";
+//                                    "}}";
+
+
             Search search = new Search.Builder(search_string).addIndex(teamdir).addType(booktype).build();
 
             try {

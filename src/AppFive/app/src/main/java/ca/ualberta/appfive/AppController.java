@@ -193,12 +193,10 @@ public class AppController {
         getBooksBorrowedbyUserTask.execute(userName);
         try {
             // Wait for the task to execute
-            Thread.sleep(200);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // Notify views that the model has changed
-        af.notifyViews();
     }
 
     /**
@@ -210,12 +208,10 @@ public class AppController {
         getBooksBidsbyUserTask.execute(userName);
         try {
             // Wait for task to finish executing
-            Thread.sleep(200);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // Notify the views that the model has changed
-        af.notifyViews();
     }
 
     /**
@@ -259,11 +255,11 @@ public class AppController {
     public void search (String search){
         ESController.SearchTask searchTask = new ESController.SearchTask();
         searchTask.execute(search);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         af.notifyViews();
     }
 
