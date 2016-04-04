@@ -105,12 +105,19 @@ public class AppController {
         addBookTask.execute(book);
         try {
             String id = addBookTask.get();
-            book.setId(id);
-            af.addBook(book);
+            if(id == null) {
+                book.setStatus(Book.Status.OFFLINE);
+                addBookOffline(book);
+
+            } else {
+                book.setId(id);
+                af.addBook(book);
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
+
         }
         ESController.EditBookTask editBookTask = new ESController.EditBookTask();
         editBookTask.execute(book);
@@ -132,7 +139,7 @@ public class AppController {
      * @param list 0 if it is owned by the current user
      */
     public void editBook(int index, Book newBook, int list) {
-        af.editBook(index, newBook,list);
+        af.editBook(index, newBook, list);
     }
 
     public ArrayList<Book> getMyBookArray(){
@@ -255,6 +262,27 @@ public class AppController {
         ESController.GetUserTask getUserTask = new ESController.GetUserTask();
         getUserTask.execute(userName);
     }
+
+
+    //Offline book handling methods
+    public ArrayList<Book> getMyOfflineBooks() {
+        return af.getMyOfflineBookArray();
+    }
+
+    public void addBookOffline(Book book) {
+        af.addBookOffline(book);
+    }
+
+    public void deleteBookOffline(int index) {
+        af.deleteBookOffline(index);
+    }
+
+    public void setMyOfflineBooks(ArrayList<Book> myNewBooks) {
+        af.setMyOfflineBooks(myNewBooks);
+    }
+
+
+
 
 }
 
