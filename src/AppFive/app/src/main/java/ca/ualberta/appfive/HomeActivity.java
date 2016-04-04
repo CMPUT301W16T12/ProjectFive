@@ -45,6 +45,7 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
             @Override
             public void onClick(View view) {
                 setResult(RESULT_OK);
+               // ac.populateSearchFromDB(UserProfile.getInstance().getUserName());
                 Intent intent = new Intent(HomeActivity.this, SearchActivity.class);
                 startActivity(intent);
             }
@@ -70,6 +71,7 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
         myBorrowedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setResult(RESULT_OK);
                 ac.getMyBorrowedFromDB(UserProfile.getInstance().getUserName());
                 Intent intent = new Intent(HomeActivity.this, MyBorrowingActivity.class);
                 startActivity(intent);
@@ -78,6 +80,7 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
         myBidsButton.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setResult(RESULT_OK);
                 ac.getMyBidsFromDB(UserProfile.getInstance().getUserName());
                 Intent intent = new Intent(HomeActivity.this, MyBiddedActivity.class);
                 startActivity(intent);

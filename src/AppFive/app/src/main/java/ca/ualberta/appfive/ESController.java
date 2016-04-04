@@ -360,7 +360,11 @@ public class ESController {
             }
             return null;
         }
+
     }
+
+
+
     public static class GetBooksBidsbyUserTask extends AsyncTask<String, Void, ArrayList<Book>> {
 
         ArrayList<Book> BookList = new ArrayList<Book>();
@@ -443,14 +447,14 @@ public class ESController {
                                     "    }}," +
                                     "   {\"match\":{" +
                                     "       \"genre\":\"" + items[0] + "\"" +
-                                    "   }}]}," +
-                                    "{\"must_not\":[" +
-                                    "   {\"match\":{" +
-                                    "       \"status\":\"BORROWED\"}}," +
-                                    "   {\"match\":{" +
-                                    "       \"owner.userName\":\"" + UserProfile.getInstance().getUserName() + "\"}}" +
-                                    "]}}}";
-//                                    "}}";
+                                    "   }}]}" +
+ //                                   "{\"must_not\":[" +
+//                                    "   {\"match\":{" +
+//                                    "       \"status\":\"BORROWED\"}}," +
+//                                    "   {\"match\":{" +
+//                                    "       \"owner.userName\":\"" + UserProfile.getInstance().getUserName() + "\"}}" +
+//                                    "]}}}";
+                                    "}}";
 
 
             Search search = new Search.Builder(search_string).addIndex(teamdir).addType(booktype).build();
@@ -470,5 +474,43 @@ public class ESController {
             return null;
         }
     }
+
+
+    /*public static class PopulateSearchTask extends AsyncTask<String, Void, Void> {
+        ArrayList<Book> myBookList = new ArrayList<Book>();
+
+        @Override
+        protected Void doInBackground(String... items) {
+            verifyClient();
+
+            String search_string =  " {\n" +
+                                    " \"from\": 0,\n" +
+                                    " \"size\": 10000,\n" +
+                                    " \"query\":{\n" +
+                                    "  \t\"match\": {\"Status\" : \"\" }\n" +
+                                    "  }, \n" +
+                                    "  \"filter\":{ \n" +
+                                    "  \t\"not\": { \"term\": {\"owner.userName\" :\""+items[0]+"\"} }\n" +
+                                    "\t}\n" +
+                                    "}";
+
+
+            Search search = new Search.Builder(search_string).addIndex(teamdir).addType(booktype).build();
+
+            try {
+                SearchResult execute = client.execute(search);
+                if (execute.isSucceeded()) {
+                    List<Book> bookList = execute.getSourceAsObjectList(Book.class);
+                    myBookList.addAll(bookList);
+                    ac.setBookArray(myBookList);
+                } else {
+                    return null;
+                }
+            } catch (IOException e) {
+                return null;
+            }
+            return null;
+        }
+    }*/
 
 }

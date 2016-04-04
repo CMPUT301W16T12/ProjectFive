@@ -191,9 +191,9 @@ public class AppController {
     public void getMyBorrowedFromDB(String userName){
         ESController.GetBooksBorrowedbyUserTask getBooksBorrowedbyUserTask = new ESController.GetBooksBorrowedbyUserTask();
         getBooksBorrowedbyUserTask.execute(userName);
+        //wait for query to return
         try {
-            // Wait for the task to execute
-            Thread.sleep(500);
+            Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -206,13 +206,25 @@ public class AppController {
     public void getMyBidsFromDB(String userName){
         ESController.GetBooksBidsbyUserTask getBooksBidsbyUserTask = new ESController.GetBooksBidsbyUserTask();
         getBooksBidsbyUserTask.execute(userName);
+        //wait for query to return
         try {
-            // Wait for task to finish executing
-            Thread.sleep(500);
+            Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
+   /* public void populateSearchFromDB(String userName){
+        ESController.PopulateSearchTask populateSearchTask = new ESController.PopulateSearchTask();
+        populateSearchTask.execute(UserProfile.getInstance().getUserName());
+
+        //wait for query to return
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }*/
 
     /**
      * This method sets the user profile object to have no data
@@ -255,11 +267,11 @@ public class AppController {
     public void search (String search){
         ESController.SearchTask searchTask = new ESController.SearchTask();
         searchTask.execute(search);
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         af.notifyViews();
     }
 

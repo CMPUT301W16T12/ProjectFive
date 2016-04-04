@@ -44,7 +44,12 @@ public class SearchActivity extends AppCompatActivity implements BView<BModel>{
             public void onClick(View v) {
                 String search = searchET.getText().toString();
                 ac.search(search);
-                //TODO: display the search result for the list of books (notify)
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                bla.notifyDataSetChanged();
             }
         });
 
