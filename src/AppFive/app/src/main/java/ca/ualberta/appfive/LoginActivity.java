@@ -84,6 +84,7 @@ public class LoginActivity extends AppCompatActivity implements BView<BModel>{
                     ac.addBook(book);
                 }
                 ac.getMyOfflineBooks().clear();
+                parser.saveInFile();
             }
             try {
                 Thread.sleep(200);
