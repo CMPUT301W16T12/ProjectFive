@@ -21,6 +21,7 @@
         android:text="@string/myBook"
         android:id="@+id/TVMyBooksTitle" />
     <RadioGroup
+        android:id = "@+id/radioDisplayGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -52,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/borrowed"
-            android:id="@+id/radioButtonorrowed"
+            android:id="@+id/radioButtonBorrowed"
             android:checked="false"
             android:onClick = "onRadioButtonClicked"/>
     </RadioGroup>
