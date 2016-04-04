@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * This activity edits book and saves it.
@@ -24,11 +25,12 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
     Book myBook;
     static int index;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_book);
-
+        final FileParser parser = new FileParser(this.getApplicationContext());
 
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);
@@ -63,6 +65,7 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
         } else {
             title.setText(R.string.add_book);
 
+
         }
         saveBookEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +86,11 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
                     ac.editBook(index, newBook,0);
                 } else {
                     ac.addBook(newBook);
+                    //Toast.makeText(EditBookActivity.this,ac.getMyBook(ac.getMyBookArray().size()-1).getId().toString() , Toast.LENGTH_SHORT).show();
+                    if(ac.getMyOfflineBooks().size()!= 0) {
+                        Toast.makeText(EditBookActivity.this, "No connection. Offline books will sync after re-login.", Toast.LENGTH_LONG).show();
+                        parser.saveInFile();
+                    }
                 }
 
                 finish();

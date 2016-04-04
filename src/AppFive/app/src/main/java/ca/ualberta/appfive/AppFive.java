@@ -18,6 +18,11 @@ public class AppFive extends BModel<BView>{
      */
     private ArrayList<Book> myBooks = new ArrayList<Book>();
 
+    /**
+     * A list that stores all books belonging to the user when attempting to add offline
+     */
+    private ArrayList<Book> myOfflineBooks = new ArrayList<Book>();
+
     AppFive() {
         super();
     }
@@ -147,6 +152,23 @@ public class AppFive extends BModel<BView>{
 
     public Book getMyBook(int index){
         return myBooks.get(index);
+    }
+
+    //Offline handling methods
+    public ArrayList<Book> getMyOfflineBookArray() {
+        return myOfflineBooks;
+    }
+
+    public void addBookOffline(Book book){
+        myOfflineBooks.add(book);
+    }
+
+    public void deleteBookOffline(int index) {
+        myOfflineBooks.remove(index);
+    }
+
+    public void setMyOfflineBooks(ArrayList<Book> myNewBooks) {
+        myOfflineBooks = myNewBooks;
     }
 
 
