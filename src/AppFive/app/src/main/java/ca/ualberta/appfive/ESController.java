@@ -72,37 +72,7 @@ public class ESController {
         }
     }
 
-    /**
-     * For getting books from database based on a search string. Pass in a search term.
-     * Call get to get the list of books.
-    */
-    public static class GetBookTask extends AsyncTask<String, Void, ArrayList<Book>> {
-        @Override
-        protected ArrayList<Book> doInBackground(String... searchStrings) {
-            verifyClient();
 
-            ArrayList<Book> books = new ArrayList<>();
-
-            // NOTE: Only first search term will be used
-            for (String searchStr: searchStrings) {
-                Search search = new Search.Builder(searchStr).addIndex(teamdir).addType(booktype).build();
-
-                try {
-                    SearchResult execute = client.execute(search);
-                    if (execute.isSucceeded()) {
-                        List<Book> retBooks = execute.getSourceAsObjectList(Book.class);
-                        books.addAll(retBooks);
-                        ac.setMyBookArray(books);
-                    } else {
-                        Log.i("TODO", "doInBackground: Failed in searching tweets");
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            return books;
-        }
-    }
 
     /**
      * For updating an edited book. Pass in the edited book on task creation.
@@ -192,6 +162,12 @@ public class ESController {
 
             return null;
         }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            AppFive af = AppFiveApp.getAppFive();
+            af.notifyViews();
+        }
     }
 
 
@@ -227,6 +203,12 @@ public class ESController {
             }
 
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(UserProfile books) {
+            AppFive af = AppFiveApp.getAppFive();
+            af.notifyViews();
         }
     }
 
@@ -326,6 +308,12 @@ public class ESController {
             }
             return null;
         }
+
+        @Override
+        protected void onPostExecute(ArrayList<Book> books) {
+            AppFive af = AppFiveApp.getAppFive();
+            af.notifyViews();
+        }
     }
 
     public static class GetBooksBorrowedbyUserTask extends AsyncTask<String, Void, ArrayList<Book>> {
@@ -359,6 +347,12 @@ public class ESController {
                 return null;
             }
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Book> books) {
+            AppFive af = AppFiveApp.getAppFive();
+            af.notifyViews();
         }
 
     }
@@ -397,6 +391,12 @@ public class ESController {
                 return null;
             }
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Book> books) {
+            AppFive af = AppFiveApp.getAppFive();
+            af.notifyViews();
         }
     }
 
@@ -472,6 +472,12 @@ public class ESController {
                 return null;
             }
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            AppFive af = AppFiveApp.getAppFive();
+            af.notifyViews();
         }
     }
 

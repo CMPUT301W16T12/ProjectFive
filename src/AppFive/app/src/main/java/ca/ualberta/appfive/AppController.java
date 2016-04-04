@@ -192,11 +192,6 @@ public class AppController {
         ESController.GetBooksBorrowedbyUserTask getBooksBorrowedbyUserTask = new ESController.GetBooksBorrowedbyUserTask();
         getBooksBorrowedbyUserTask.execute(userName);
         //wait for query to return
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -207,11 +202,6 @@ public class AppController {
         ESController.GetBooksBidsbyUserTask getBooksBidsbyUserTask = new ESController.GetBooksBidsbyUserTask();
         getBooksBidsbyUserTask.execute(userName);
         //wait for query to return
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
    /* public void populateSearchFromDB(String userName){
@@ -267,12 +257,6 @@ public class AppController {
     public void search (String search){
         ESController.SearchTask searchTask = new ESController.SearchTask();
         searchTask.execute(search);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        af.notifyViews();
     }
 
 }

@@ -165,7 +165,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         locationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bid bid = ac.getMyBook(index).getBid(0);
+                Bid bid = ac.getBook(index).getBid(0);
                 showMap(bid.getLatitude(), bid.getLongitude());
             }
         });
@@ -376,7 +376,6 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
 
                     ac.editBook(index, myBook,1);
 
-                    update(AppFiveApp.getAppFive());
                 }
             }
         });

@@ -15,7 +15,9 @@ import java.util.ArrayList;
  * This activity displays the home page of app
  */
 public class HomeActivity extends AppCompatActivity implements BView<BModel>{
-    ArrayAdapter<String> nla;
+    private ArrayAdapter<String> nla;
+    private ArrayList<String> notifications = new ArrayList<String>();
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,9 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
         final AppController ac = AppFiveApp.getAppController();
 
 
-        ArrayList<String> notifications = ac.getNotifications();
+
+        notifications.addAll(ac.getNotifications());
+
 
         // bodyText = (EditText) findViewById(R.id.body);
         Button searchButton = (Button) findViewById(R.id.searchButton);
@@ -91,13 +95,6 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        //FileParser parser = new FileParser(this.getApplicationContext());
-        //parser.loadFromFile();
-    }
 
     @Override
     public void update(BModel model) {
@@ -109,8 +106,7 @@ public class HomeActivity extends AppCompatActivity implements BView<BModel>{
         super.onDestroy();
         AppFive fc = AppFiveApp.getAppFive();
         fc.deleteView(this);
-        //FileParser parser = new FileParser(this.getApplicationContext());
-        //parser.saveInFile();
+        notifications.clear();
         fc.notifyViews();
     }
 

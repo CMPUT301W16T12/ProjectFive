@@ -80,7 +80,8 @@ public class AppFive extends BModel<BView>{
     }
 
     public void setBookArray(ArrayList<Book> newBooks){
-        books = newBooks;
+        books.clear();
+        books.addAll(newBooks);
     }
 
     public Book getBook(int index){
@@ -123,7 +124,7 @@ public class AppFive extends BModel<BView>{
         if(list == 0) { //0 Means Books owned by user
             oldBook = getMyBook(index);
         } else {  //Book not owned by user
-            oldBook = getMyBook(index);
+            oldBook = getBook(index);
         }
         oldBook.setDescription(newBook.getDescription());
         oldBook.setGenre(newBook.getGenre());
@@ -142,7 +143,8 @@ public class AppFive extends BModel<BView>{
     }
 
     public void setMyBookArray(ArrayList<Book> myNewBooks){
-        myBooks = myNewBooks;
+        myBooks.clear();
+        myBooks.addAll(myNewBooks);
     }
 
     public Book getMyBook(int index){

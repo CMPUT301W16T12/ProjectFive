@@ -16,8 +16,8 @@ import java.util.ArrayList;
  * This activity shows the books that the user has bidded on.
  */
 public class MyBiddedActivity extends AppCompatActivity implements BView<BModel> {
-    BookListAdapter bla;
-    final AppController ac = AppFiveApp.getAppController();
+    private BookListAdapter bla;
+    private final AppController ac = AppFiveApp.getAppController();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,9 +56,7 @@ public class MyBiddedActivity extends AppCompatActivity implements BView<BModel>
         super.onDestroy();
         AppFive fc = AppFiveApp.getAppFive();
         fc.deleteView(this);
-//        ac.setBookArray(new ArrayList<Book>());
-        //FileParser parser = new FileParser(this.getApplicationContext());
-        //parser.saveInFile();
+        ac.setBookArray(new ArrayList<Book>());
         fc.notifyViews();
     }
 

@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity implements BView<BModel>{
             ac.getMyBooksFromDB(userName);
             ac.getUserProfile(userName);
             try {
-                Thread.sleep(500);
+                Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

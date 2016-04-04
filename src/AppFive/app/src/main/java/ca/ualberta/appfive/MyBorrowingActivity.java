@@ -57,7 +57,7 @@ public class MyBorrowingActivity extends AppCompatActivity implements BView<BMod
         super.onDestroy();
         AppFive fc = AppFiveApp.getAppFive();
         fc.deleteView(this);
-//        ac.setBookArray(new ArrayList<Book>());
+        ac.setBookArray(new ArrayList<Book>());
         //FileParser parser = new FileParser(this.getApplicationContext());
         //parser.saveInFile();
         fc.notifyViews();
