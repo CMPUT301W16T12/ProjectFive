@@ -298,7 +298,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         AppController ac = AppFiveApp.getAppController();
         for (Bid bid : myBook.getBids()){
             if (ac.getUserName().contentEquals( bid.getBidder())){
-                Toast.makeText(this, "I bid $" + Float.toString(bid.getRate()) + "/hr", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.i_bid) + Float.toString(bid.getRate()) + getString(R.string.per_hour), Toast.LENGTH_LONG).show();
             }
         }
     }

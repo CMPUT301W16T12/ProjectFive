@@ -82,4 +82,10 @@
     <string name="tvLastName">Last Name</string>
     <string name="tvPhoneNumber">Phone Number</string>
     <string name="all">All</string>
+    <string name="username_minlen">Username should be minimum 5 characters</string>
+    <string name="username_unavailable">Username not available, try again</string>
+    <string name="user_notexist">User does not exist, please register first.</string>
+    <string name="i_bid">I bid $</string>
+    <string name="per_hour">/hr</string>
+    <string name="location_set">Location for pickup set</string>
 </resources>

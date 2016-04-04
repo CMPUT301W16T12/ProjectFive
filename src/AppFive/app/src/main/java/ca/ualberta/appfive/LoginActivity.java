@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity implements BView<BModel>{
             startActivity(intent);
 
         } else {
-            Toast.makeText(this, "User does not exist, please register first.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.user_notexist, Toast.LENGTH_SHORT).show();
         }
         //Update our model
 
