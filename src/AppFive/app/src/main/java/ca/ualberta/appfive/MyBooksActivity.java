@@ -168,6 +168,11 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
         fc.notifyViews();
     }
 
+    /**
+     * For updating model
+     * @param BModel model
+     * @return void
+     */
     @Override
     public void update(BModel model) {
         AppController ac = AppFiveApp.getAppController();

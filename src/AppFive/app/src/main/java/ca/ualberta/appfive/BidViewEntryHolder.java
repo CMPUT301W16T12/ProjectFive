@@ -15,6 +15,7 @@ public class BidViewEntryHolder {
         this.entry = entry;
     }
 
+
     public TextView getBidderText() {
         if(bidderText == null){
             bidderText = (TextView) entry.findViewById(R.id.TVBidderEntry);

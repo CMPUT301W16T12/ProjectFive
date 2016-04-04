@@ -215,7 +215,7 @@ public class ESController {
 
     /**
      * For editing a user to database
-     * param UserProfile user as object by index to edit
+     * @param UserProfile user as object by index to edit
      * @return Boolean true or false
      */
     public static class EditUserTask extends AsyncTask<UserProfile, Void, Boolean> {
@@ -244,7 +244,7 @@ public class ESController {
 
     /**
      * For checking whether user is in database
-     * param String string to search user by usernmaes
+     * @param String string to search user by usernmaes
      * @return Boolean true or false
      */
     public static class IsUserInDatabaseTask extends AsyncTask<String, Void, Boolean> {
@@ -278,6 +278,11 @@ public class ESController {
         }
     }
 
+    /**
+     * For getting books by user from database
+     * @param String Username
+     * @return ArrayList<Book>
+     */
     public static class GetBooksbyUserTask extends AsyncTask<String, Void, ArrayList<Book>> {
         ArrayList<Book> myBookList = new ArrayList<Book>();
 
@@ -315,6 +320,11 @@ public class ESController {
         }
     }
 
+    /**
+     * For getting books borrowed by user from database
+     * @param String Username
+     * @return ArrayList<Book>
+     */
     public static class GetBooksBorrowedbyUserTask extends AsyncTask<String, Void, ArrayList<Book>> {
         ArrayList<Book> BookList = new ArrayList<Book>();
 
@@ -356,8 +366,11 @@ public class ESController {
 
     }
 
-
-
+    /**
+     * For getting books bidded by user from database
+     * @param String Username
+     * @return ArrayList<Book>
+     */
     public static class GetBooksBidsbyUserTask extends AsyncTask<String, Void, ArrayList<Book>> {
 
         ArrayList<Book> BookList = new ArrayList<Book>();
@@ -399,6 +412,11 @@ public class ESController {
         }
     }
 
+    /**
+     * For deleting books from database by Boolean
+     * @param Book book
+     * @return Boolean
+     */
     public static class DeleteBookTask extends AsyncTask<Book, Void, Boolean> {
 
         @Override
@@ -425,7 +443,11 @@ public class ESController {
         }
     }
 
-
+    /**
+     * For searching books from database
+     * @param String items
+     * @return void
+     */
     public static class SearchTask extends AsyncTask<String, Void, Void> {
         ArrayList<Book> myBookList = new ArrayList<Book>();
 
@@ -473,6 +495,11 @@ public class ESController {
             return null;
         }
 
+        /**
+         * For notification according to executing a post
+         * @param String Username
+         * @return ArrayList<Book>
+         */
         @Override
         protected void onPostExecute(Void aVoid) {
             AppFive af = AppFiveApp.getAppFive();
