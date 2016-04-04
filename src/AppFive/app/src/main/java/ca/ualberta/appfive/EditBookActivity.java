@@ -24,13 +24,13 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
     static final int REQUEST_IMAGE_CAPTURE = 1234;
     Book myBook;
     static int index;
-    private FileParser parser = new FileParser(this.getApplicationContext());
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_book);
-
+        final FileParser parser = new FileParser(this.getApplicationContext());
 
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);

@@ -71,10 +71,20 @@ public class LoginActivity extends AppCompatActivity implements BView<BModel>{
         //TODO: Connect to database and verify user, get user data
         AppController ac = AppFiveApp.getAppController();
         Boolean result = ac.isUserInDataBase(userName);
+        final FileParser parser = new FileParser(this.getApplicationContext());
         //Toast.makeText(getApplicationContext(),result.toString(),Toast.LENGTH_SHORT).show();
         if (result) {
             ac.getMyBooksFromDB(userName);
             ac.getUserProfile(userName);
+
+            parser.loadFromFile();
+            if(ac.getMyOfflineBooks().size() != 0) {
+                for(Book book:ac.getMyOfflineBooks()) {
+                    book.setStatus(Book.Status.AVAILABLE);
+                    ac.addBook(book);
+                }
+                ac.getMyOfflineBooks().clear();
+            }
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
