@@ -435,5 +435,31 @@ public class ESController {
 
         }
     }
+    //Method DeleteUserTask strictly for test cases
+    public static class DeleteUserTask extends AsyncTask<UserProfile, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(UserProfile... users) {
+            verifyClient();
+
+            Delete delete = new Delete.Builder("")
+                    .index(teamdir)
+                    .type(booktype)
+                    .id(users[0].getUserId())
+                    .build();
+
+            try {
+                DocumentResult execute = client.execute(delete);
+                if (execute.isSucceeded()) {
+                    return Boolean.TRUE;
+                } else {
+                    return Boolean.FALSE;
+                }
+            } catch (IOException e) {
+                return null;
+            }
+
+        }
+    }
 
 }
