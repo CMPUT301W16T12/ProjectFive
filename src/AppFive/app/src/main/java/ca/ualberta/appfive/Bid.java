@@ -3,7 +3,7 @@ package ca.ualberta.appfive;
 import com.google.android.gms.location.places.Place;
 
 /**
- * This Bid class gets bidder and bid rate
+ * This Bid class has bidder and bid rate
  */
 public class Bid {
     private String bidder;
@@ -29,6 +29,11 @@ public class Bid {
     private double longitude;
 
 
+    /**
+     * This contructs a bid object
+     * @param bidder The username of the bidder
+     * @param rate Hourly rate at which bidder is willing to borrow item for
+     */
     public Bid(String bidder, float rate ){
         this.bidder = bidder;
         this.rate = rate;
