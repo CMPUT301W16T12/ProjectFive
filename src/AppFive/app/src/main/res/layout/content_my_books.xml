@@ -30,32 +30,29 @@
             android:layout_height="wrap_content"
             android:text="@string/all"
             android:id="@+id/radioButtonAll"
-            android:checked="true"
-            android:onClick = "onRadioButtonClicked" />
+            android:checked="true" />
+
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/available"
             android:id="@+id/radioButtonAvailable"
-            android:checked="false"
-            android:onClick = "onRadioButtonClicked"/>
+            android:checked="false" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bidded"
             android:id="@+id/radioButtonBidded"
-            android:checked="false"
-            android:onClick = "onRadioButtonClicked"/>
+            android:checked="false" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/borrowed"
             android:id="@+id/radioButtonBorrowed"
-            android:checked="false"
-            android:onClick = "onRadioButtonClicked"/>
+            android:checked="false" />
     </RadioGroup>
 
     <ListView

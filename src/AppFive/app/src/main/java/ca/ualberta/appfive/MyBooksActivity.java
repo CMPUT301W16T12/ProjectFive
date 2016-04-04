@@ -24,8 +24,10 @@ import java.util.concurrent.ExecutionException;
  */
 public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
 
-    BookListAdapter bla;
+    private BookListAdapter bla;
     private RadioGroup radioButtonGroup;
+    private final ArrayList<Book> displayBooks = new ArrayList<Book>();
+    private final ArrayList<Book> tempBookArray = new ArrayList<Book>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +46,8 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
         //TODO: correct or not if I added this ES getbooktask, but not deleting adapter?
         // get the books by username from Elasticsearch
 
-
-        final ArrayList<Book> displayBooks;
-        final ArrayList<Book> tempBookArray;
-        displayBooks = ac.getMyBookArray();
-        tempBookArray = ac.getBookArray();
+        displayBooks.addAll(ac.getMyBookArray());
+        tempBookArray.addAll(ac.getMyBookArray());
 
         Button addBookButton = (Button) findViewById(R.id.addBookButton);
         radioButtonGroup = (RadioGroup) findViewById(R.id.radioDisplayGroup);
@@ -130,16 +129,36 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
                 RadioButton rb = (RadioButton) group.findViewById(checkedId);
                 switch (rb.getId()) {
                     case R.id.radioButtonAll:
-                        
+                        displayBooks.clear();
+                        displayBooks.addAll(tempBookArray);
+                        bla.notifyDataSetChanged();
                         break;
                     case R.id.radioButtonAvailable:
-                        for(Book book:displayBooks) {
-
+                        displayBooks.clear();
+                        for(Book book:tempBookArray) {
+                            if(book.getStatus().toString().contentEquals("AVAILABLE")){
+                                displayBooks.add(book);
+                            }
                         }
+                        bla.notifyDataSetChanged();
                         break;
                     case R.id.radioButtonBidded:
+                        displayBooks.clear();
+                        for(Book book:tempBookArray) {
+                            if(book.getStatus().toString().contentEquals("BIDDED")){
+                                displayBooks.add(book);
+                            }
+                        }
+                        bla.notifyDataSetChanged();
                         break;
                     case R.id.radioButtonBorrowed:
+                        displayBooks.clear();
+                        for(Book book:tempBookArray) {
+                            if(book.getStatus().toString().contentEquals("BORROWED")){
+                                displayBooks.add(book);
+                            }
+                        }
+                        bla.notifyDataSetChanged();
                         break;
                 }
             }
@@ -157,6 +176,12 @@ public class MyBooksActivity extends AppCompatActivity implements BView<BModel>{
 
     @Override
     public void update(BModel model) {
+        AppController ac = AppFiveApp.getAppController();
+        radioButtonGroup.check(R.id.radioButtonAll);
+        displayBooks.clear();
+        displayBooks.addAll(ac.getMyBookArray());
+        tempBookArray.clear();
+        tempBookArray.addAll(ac.getMyBookArray());
         bla.notifyDataSetChanged();
         //FileParser parser = new FileParser(this.getApplicationContext());
         //parser.saveInFile();
