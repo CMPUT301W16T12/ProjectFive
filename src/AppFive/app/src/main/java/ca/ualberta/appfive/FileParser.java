@@ -36,7 +36,7 @@ public class FileParser {
             FileOutputStream fos = context.openFileOutput(FILENAME, 0);
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
             Gson gson = new Gson();
-            gson.toJson(ac.getMyBookArray(), out);
+            gson.toJson(ac.getMyOfflineBooks(), out);
             out.flush();
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
@@ -60,14 +60,14 @@ public class FileParser {
             Gson gson = new Gson();
 
             Type listType = new TypeToken<ArrayList<Book>>() {}.getType();
-            ac.setMyBookArray((ArrayList<Book>) gson.fromJson(in, listType));
-            if (ac.getMyBookArray() == null){
-                ac.setMyBookArray(new ArrayList<Book>());
+            ac.setMyOfflineBooks((ArrayList<Book>) gson.fromJson(in, listType));
+            if (ac.getMyOfflineBooks() == null){
+                ac.setMyOfflineBooks(new ArrayList<Book>());
             }
 
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            ac.setMyBookArray(new ArrayList<Book>());
+            ac.setMyOfflineBooks(new ArrayList<Book>());
         } catch (IOException e) {
             // TODO Auto-generated catch block
             throw new RuntimeException();

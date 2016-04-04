@@ -64,6 +64,7 @@ public class ESController {
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
+                    return null;
                 }
 
             }
