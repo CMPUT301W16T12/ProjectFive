@@ -339,7 +339,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         final AppController ac = AppFiveApp.getAppController();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Your Bid");
+        builder.setTitle(R.string.your_bid);
 
         // Set up the input
         final EditText input = new EditText(this);
@@ -348,7 +348,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
         builder.setView(input);
 
         // Set up the buttons
-        builder.setPositiveButton("Bid", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.bid, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String rate = input.getText().toString();
@@ -357,7 +357,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
                     myBook.addBid(new Bid(ac.getUserName(), Float.parseFloat(rate)));
                     myBook.updateStatus();
                     // creating string notification
-                    String notificationText = UserProfile.getInstance().getUserName() + " has made a bid of $" + rate + "/hr  on your book, " + myBook.getTitle();
+                    String notificationText = UserProfile.getInstance().getUserName() + getString(R.string.hasmadeabidof) + rate + getString(R.string.onyourbook) + myBook.getTitle();
 
                     //getting user profile being sent to
                     ESController.GetUserProfileTask getUserProfileTask = new ESController.GetUserProfileTask();
@@ -380,7 +380,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
                 }
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -391,7 +391,7 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
     }
 
     private void showMap (double latitude, double longitude){
-        String uriString = String.format("geo:%f,%f?q=%f,%f,(%s)",latitude, longitude, latitude, longitude,"Pickup Location");
+        String uriString = String.format("geo:%f,%f?q=%f,%f,(%s)",latitude, longitude, latitude, longitude,getString(R.string.pickup_location));
         Uri gmmIntentUri = Uri.parse(uriString);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
