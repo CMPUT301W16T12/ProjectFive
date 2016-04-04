@@ -168,7 +168,6 @@ public class ESController {
         protected Void doInBackground(String... usernames) {
             verifyClient();
 
-            //TODO: look up exact matching query
             String search_string = "{\"query\":{\"match\":{\"userName\":\"" + usernames[0] + "\"}}}";
 
 
@@ -204,7 +203,7 @@ public class ESController {
         protected UserProfile doInBackground(String... usernames) {
             verifyClient();
 
-            //TODO: look up exact matching query
+
             String search_string = "{\"query\":{\"match\":{\"userName\":\"" + usernames[0] + "\"}}}";
 
 
@@ -270,7 +269,6 @@ public class ESController {
         @Override
         protected Boolean doInBackground(String... usernames) {
             verifyClient();
-            //TODO: look up exact matching query
             String search_string = "{\"query\":{\"match\":{\"userName\":\"" + usernames[0] + "\"}}}";
 
 

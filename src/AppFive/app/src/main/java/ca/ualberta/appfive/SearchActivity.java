@@ -57,7 +57,6 @@ public class SearchActivity extends AppCompatActivity implements BView<BModel>{
 //                } catch (ExecutionException e) {
 //                    e.printStackTrace();
 //                }
-                    //TODO: display the search result for the list of books
             }
         });
 

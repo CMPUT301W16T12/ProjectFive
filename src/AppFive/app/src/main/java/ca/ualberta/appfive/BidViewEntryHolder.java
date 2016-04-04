@@ -10,7 +10,6 @@ public class BidViewEntryHolder {
     private View entry;
     private TextView bidderText = null;
     private TextView rateText = null;
-    //TODO: Add other views to book list entry
 
     public BidViewEntryHolder(View entry) {
         this.entry = entry;

@@ -68,7 +68,6 @@ public class LoginActivity extends AppCompatActivity implements BView<BModel>{
      * Connects online, verifies user, gets user data
      * @param userName the entered username     */
     protected void loginToApp(String userName) {
-        //TODO: Connect to database and verify user, get user data
         AppController ac = AppFiveApp.getAppController();
         Boolean result = ac.isUserInDataBase(userName);
         //Toast.makeText(getApplicationContext(),result.toString(),Toast.LENGTH_SHORT).show();
