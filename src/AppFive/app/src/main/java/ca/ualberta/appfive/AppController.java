@@ -132,7 +132,7 @@ public class AppController {
      * @param list 0 if it is owned by the current user
      */
     public void editBook(int index, Book newBook, int list) {
-        af.editBook(index, newBook,list);
+        af.editBook(index, newBook, list);
     }
 
     // TODO: get from database using GetBookByUser then cache in af using setMyBookArray
@@ -243,7 +243,6 @@ public class AppController {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-
         }
         return Boolean.FALSE;
     }
@@ -255,6 +254,17 @@ public class AppController {
     public void getUserProfile(String userName) {
         ESController.GetUserTask getUserTask = new ESController.GetUserTask();
         getUserTask.execute(userName);
+    }
+
+    public void search (String search){
+        ESController.SearchTask searchTask = new ESController.SearchTask();
+        searchTask.execute(search);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        af.notifyViews();
     }
 
 }

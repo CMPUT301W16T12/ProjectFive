@@ -18,6 +18,7 @@ import java.util.concurrent.ExecutionException;
  * This activity allows user to search all existing books.
  */
 public class SearchActivity extends AppCompatActivity implements BView<BModel>{
+    private BookListAdapter bla;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,35 +30,21 @@ public class SearchActivity extends AppCompatActivity implements BView<BModel>{
         af.addView(this);
         final AppController ac = AppFiveApp.getAppController();
 
-        final EditText search = (EditText) findViewById(R.id.ETSearch);
-        final ListView listView = (ListView) findViewById(R.id.LVSearchList);
+        final EditText searchET = (EditText) findViewById(R.id.ETSearch);
+        final ListView searchLV = (ListView) findViewById(R.id.LVSearchList);
         final Button searchButton = (Button) findViewById(R.id.searchButton);
-        final String result;
-        final ArrayList<Book> books;
-        final List<Book> bookList;
+        //ac.setBookArray(new ArrayList<Book>());
+        bla = new BookListAdapter(this, ac.getBookArray());
+        searchLV.setAdapter(bla);
 
 
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ESController.GetBookTask getBookTask = new ESController.GetBookTask();
-
-
-                // get the books by keywords search from Elasticsearch
-                getBookTask.execute(search.getText().toString());
-
-//                // try adding result to book list
-//                try {
-//                    bookList = new ArrayList<Book>();
-//                    bookList.addAll(getBookTask.get());
-//                    myBooks = new List<Book>();
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                } catch (ExecutionException e) {
-//                    e.printStackTrace();
-//                }
-                    //TODO: display the search result for the list of books
+                String search = searchET.getText().toString();
+                ac.search(search);
+                //TODO: display the search result for the list of books (notify)
             }
         });
 
@@ -65,7 +52,7 @@ public class SearchActivity extends AppCompatActivity implements BView<BModel>{
 
     @Override
     public void update(BModel model) {
-
+        bla.notifyDataSetChanged();
     }
 
     @Override
