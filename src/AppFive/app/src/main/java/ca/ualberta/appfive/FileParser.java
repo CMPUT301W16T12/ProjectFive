@@ -39,10 +39,10 @@ public class FileParser {
             gson.toJson(ac.getMyBookArray(), out);
             out.flush();
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
+
             throw new RuntimeException();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+
             throw new RuntimeException();
         }
 
@@ -51,7 +51,7 @@ public class FileParser {
     /**
      * This method loads a book array from a file
      * @exception FileNotFoundException
-     * TODO: do we need this? or we can delete this??
+     *
      */
     public void loadFromFile() {
         try {
@@ -66,10 +66,8 @@ public class FileParser {
             }
 
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             ac.setMyBookArray(new ArrayList<Book>());
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             throw new RuntimeException();
         }
     }

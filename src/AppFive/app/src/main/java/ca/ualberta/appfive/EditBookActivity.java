@@ -61,7 +61,7 @@ public class EditBookActivity extends AppCompatActivity implements BView<BModel>
             editImage.setImageBitmap(thumbnail);
 
         } else {
-            title.setText("Add Book");
+            title.setText(R.string.add_book);
 
         }
         saveBookEdit.setOnClickListener(new View.OnClickListener() {

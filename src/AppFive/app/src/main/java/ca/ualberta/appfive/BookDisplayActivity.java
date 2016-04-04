@@ -125,7 +125,6 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
 
                 if(result == null){
                     // Could not connect to database
-                    // TODO: Offline behaviour, store task and do when online again
 
                 } else if(result){
                     // Successfully deleted book in database
@@ -334,7 +333,6 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
      * see reference from http://stackoverflow.com/questions/10903754/input-text-dialog-android by Aaron
      *
      */
-    //TODO: add notification to owner when receive bids
     private void recieveBid(final Book myBook, final int index) {
         final AppController ac = AppFiveApp.getAppController();
 
@@ -353,7 +351,6 @@ public class BookDisplayActivity extends AppCompatActivity implements BView<BMod
             public void onClick(DialogInterface dialog, int which) {
                 String rate = input.getText().toString();
                 if (!rate.trim().contentEquals("")) {
-                    // TODO: check if we need the parse float here
                     myBook.addBid(new Bid(ac.getUserName(), Float.parseFloat(rate)));
                     myBook.updateStatus();
                     // creating string notification

@@ -135,7 +135,6 @@ public class AppController {
         af.editBook(index, newBook,list);
     }
 
-    // TODO: get from database using GetBookByUser then cache in af using setMyBookArray
     public ArrayList<Book> getMyBookArray(){
         return af.getMyBookArray();
     }

@@ -5,8 +5,6 @@
     android:id="@+id/book_entry_layout"
     android:rowCount="4">
 
-    <!--TODO: Add picture-->
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
