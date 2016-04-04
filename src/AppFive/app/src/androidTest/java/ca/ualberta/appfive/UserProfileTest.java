@@ -16,7 +16,6 @@ public class UserProfileTest extends ActivityInstrumentationTestCase2 {
     }
 
     public void testUpdateUserData(){
-        //UserProfile.getInstance().updateUserData("abc", "1234");
         assertEquals(UserProfile.getInstance().getUserName(), "abc");
     }
 

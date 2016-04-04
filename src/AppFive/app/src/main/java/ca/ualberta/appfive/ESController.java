@@ -74,7 +74,6 @@ public class ESController {
     }
 
 
-
     /**
      * For updating an edited book. Pass in the edited book on task creation.
      * Call get to get a Boolean. This will be true if it went through,
@@ -154,7 +153,7 @@ public class ESController {
                     //UserProfile.getInstance().setUserId(searchResult.);
 
                 } else {
-                    Log.i("TODO", "doInBackground: Failed in searching tweets");
+                    Log.i("TODO", "doInBackground: Failed in searching books");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -196,7 +195,7 @@ public class ESController {
                     //UserProfile.getInstance().setUserId(searchResult.);
 
                 } else {
-                    Log.i("TODO", "doInBackground: Failed in searching tweets");
+                    Log.i("TODO", "doInBackground: Failed in searching books");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -427,6 +426,32 @@ public class ESController {
                     .index(teamdir)
                     .type(booktype)
                     .id(books[0].getId())
+                    .build();
+
+            try {
+                DocumentResult execute = client.execute(delete);
+                if (execute.isSucceeded()) {
+                    return Boolean.TRUE;
+                } else {
+                    return Boolean.FALSE;
+                }
+            } catch (IOException e) {
+                return null;
+            }
+
+        }
+    }
+    //Method DeleteUserTask strictly for test cases
+    public static class DeleteUserTask extends AsyncTask<UserProfile, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(UserProfile... users) {
+            verifyClient();
+
+            Delete delete = new Delete.Builder("")
+                    .index(teamdir)
+                    .type(booktype)
+                    .id(users[0].getUserId())
                     .build();
 
             try {
