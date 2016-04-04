@@ -119,7 +119,7 @@ public class AppFive extends BModel<BView>{
         if(list == 0) { //0 Means Books owned by user
             oldBook = getMyBook(index);
         } else {  //Book not owned by user
-            oldBook = getBook(index);
+            oldBook = getMyBook(index);
         }
         oldBook.setDescription(newBook.getDescription());
         oldBook.setGenre(newBook.getGenre());

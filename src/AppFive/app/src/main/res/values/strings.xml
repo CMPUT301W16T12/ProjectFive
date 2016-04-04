@@ -13,7 +13,7 @@
     <string name="title_activity_edit_profile">EditProfileActivity</string>
     <string name="title_activity_edit_book">EditBookActivity</string>
     <string name="title_activity_bids_display">BidsDisplayActivity</string>
-
+    <string name="api_key">AIzaSyDsqdX-542x2YR8i-d-qR3163mpmWHvOZk</string>
     // added users -- noun
 
     <string name="username"> Username</string>
@@ -45,6 +45,7 @@
     <string name="myBorrow">My Borrowing</string>
     <string name="thumbnail">*Thumbnail*</string>
     <string name="borrower">Borrower</string>
+    <string name="location">Pickup Location</string>
     // added action
 
     <string name="logIn">Log In</string>

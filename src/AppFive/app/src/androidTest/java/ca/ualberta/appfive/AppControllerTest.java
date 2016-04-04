@@ -67,7 +67,7 @@ public class AppControllerTest extends ActivityInstrumentationTestCase2 {
         Book testbook = new Book("title", "author", "genre", "description", thumbnail);
         Book newbook = new Book("newtitle", "newauthor", "newgenre", "newdescription", thumbnail);
         ac.addBook(testbook);
-        ac.editBook(0, newbook);
+        ac.editBook(0, newbook, 1);
         //Different book object is created in the process of edit book, thus testing for same content.
         assertEquals(ac.getMyBook(0).getTitle(), newbook.getTitle());
         ac.deleteBook(0);
