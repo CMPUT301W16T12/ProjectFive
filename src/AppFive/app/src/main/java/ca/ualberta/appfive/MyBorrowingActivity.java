@@ -10,11 +10,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 /**
  * My Borrwing Activity gets a list of the books user borrowed.
  */
 public class MyBorrowingActivity extends AppCompatActivity implements BView<BModel>{
     BookListAdapter bla;
+    final AppController ac = AppFiveApp.getAppController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +27,6 @@ public class MyBorrowingActivity extends AppCompatActivity implements BView<BMod
 
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);
-        final AppController ac = AppFiveApp.getAppController();
         bla = new BookListAdapter(this, ac.getBookArray());
 
         ListView borrowedListView = (ListView) findViewById(R.id.LVMyBorrowing);
@@ -55,6 +57,7 @@ public class MyBorrowingActivity extends AppCompatActivity implements BView<BMod
         super.onDestroy();
         AppFive fc = AppFiveApp.getAppFive();
         fc.deleteView(this);
+        ac.setBookArray(new ArrayList<Book>());
         //FileParser parser = new FileParser(this.getApplicationContext());
         //parser.saveInFile();
         fc.notifyViews();

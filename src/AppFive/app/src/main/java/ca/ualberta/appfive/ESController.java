@@ -73,37 +73,7 @@ public class ESController {
         }
     }
 
-    /**
-     * For getting books from database based on a search string. Pass in a search term.
-     * Call get to get the list of books.
-    */
-    public static class GetBookTask extends AsyncTask<String, Void, ArrayList<Book>> {
-        @Override
-        protected ArrayList<Book> doInBackground(String... searchStrings) {
-            verifyClient();
 
-            ArrayList<Book> books = new ArrayList<>();
-
-            // NOTE: Only first search term will be used
-            for (String searchStr: searchStrings) {
-                Search search = new Search.Builder(searchStr).addIndex(teamdir).addType(booktype).build();
-
-                try {
-                    SearchResult execute = client.execute(search);
-                    if (execute.isSucceeded()) {
-                        List<Book> retBooks = execute.getSourceAsObjectList(Book.class);
-                        books.addAll(retBooks);
-                        ac.setMyBookArray(books);
-                    } else {
-                        Log.i("TODO", "doInBackground: Failed in searching tweets");
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            return books;
-        }
-    }
 
     /**
      * For updating an edited book. Pass in the edited book on task creation.
@@ -192,6 +162,12 @@ public class ESController {
 
             return null;
         }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            AppFive af = AppFiveApp.getAppFive();
+            af.notifyViews();
+        }
     }
 
 
@@ -227,6 +203,12 @@ public class ESController {
             }
 
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(UserProfile books) {
+            AppFive af = AppFiveApp.getAppFive();
+            af.notifyViews();
         }
     }
 
@@ -325,6 +307,12 @@ public class ESController {
             }
             return null;
         }
+
+        @Override
+        protected void onPostExecute(ArrayList<Book> books) {
+            AppFive af = AppFiveApp.getAppFive();
+            af.notifyViews();
+        }
     }
 
     public static class GetBooksBorrowedbyUserTask extends AsyncTask<String, Void, ArrayList<Book>> {
@@ -359,9 +347,18 @@ public class ESController {
             }
             return null;
         }
+
+        @Override
+        protected void onPostExecute(ArrayList<Book> books) {
+            AppFive af = AppFiveApp.getAppFive();
+            af.notifyViews();
+        }
+
     }
+
+
+
     public static class GetBooksBidsbyUserTask extends AsyncTask<String, Void, ArrayList<Book>> {
-        ArrayList<Book> myBookList = new ArrayList<Book>();
 
         ArrayList<Book> BookList = new ArrayList<Book>();
 
@@ -394,6 +391,12 @@ public class ESController {
             }
             return null;
         }
+
+        @Override
+        protected void onPostExecute(ArrayList<Book> books) {
+            AppFive af = AppFiveApp.getAppFive();
+            af.notifyViews();
+        }
     }
 
     public static class DeleteBookTask extends AsyncTask<Book, Void, Boolean> {
@@ -421,5 +424,98 @@ public class ESController {
 
         }
     }
+
+
+    public static class SearchTask extends AsyncTask<String, Void, Void> {
+        ArrayList<Book> myBookList = new ArrayList<Book>();
+
+        @Override
+        protected Void doInBackground(String... items) {
+            verifyClient();
+
+            String search_string =  "{\"query\": {\"bool\": " +
+                                    "{ \"should\": [" +
+                                    "   {\"match\":{" +
+                                    "       \"title\":\"" + items[0] + "\"" +
+                                    "   }}," +
+                                    "   {\"match\":{" +
+                                    "       \"author\":\"" + items[0] + "\"" +
+                                    "    }}," +
+                                    "   {\"match\":{" +
+                                    "       \"description\":\"" + items[0] + "\"" +
+                                    "    }}," +
+                                    "   {\"match\":{" +
+                                    "       \"genre\":\"" + items[0] + "\"" +
+                                    "   }}]}" +
+ //                                   "{\"must_not\":[" +
+//                                    "   {\"match\":{" +
+//                                    "       \"status\":\"BORROWED\"}}," +
+//                                    "   {\"match\":{" +
+//                                    "       \"owner.userName\":\"" + UserProfile.getInstance().getUserName() + "\"}}" +
+//                                    "]}}}";
+                                    "}}";
+
+
+            Search search = new Search.Builder(search_string).addIndex(teamdir).addType(booktype).build();
+
+            try {
+                SearchResult execute = client.execute(search);
+                if (execute.isSucceeded()) {
+                    List<Book> bookList = execute.getSourceAsObjectList(Book.class);
+                    myBookList.addAll(bookList);
+                    ac.setBookArray(myBookList);
+                } else {
+                    return null;
+                }
+            } catch (IOException e) {
+                return null;
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            AppFive af = AppFiveApp.getAppFive();
+            af.notifyViews();
+        }
+    }
+
+
+    /*public static class PopulateSearchTask extends AsyncTask<String, Void, Void> {
+        ArrayList<Book> myBookList = new ArrayList<Book>();
+
+        @Override
+        protected Void doInBackground(String... items) {
+            verifyClient();
+
+            String search_string =  " {\n" +
+                                    " \"from\": 0,\n" +
+                                    " \"size\": 10000,\n" +
+                                    " \"query\":{\n" +
+                                    "  \t\"match\": {\"Status\" : \"\" }\n" +
+                                    "  }, \n" +
+                                    "  \"filter\":{ \n" +
+                                    "  \t\"not\": { \"term\": {\"owner.userName\" :\""+items[0]+"\"} }\n" +
+                                    "\t}\n" +
+                                    "}";
+
+
+            Search search = new Search.Builder(search_string).addIndex(teamdir).addType(booktype).build();
+
+            try {
+                SearchResult execute = client.execute(search);
+                if (execute.isSucceeded()) {
+                    List<Book> bookList = execute.getSourceAsObjectList(Book.class);
+                    myBookList.addAll(bookList);
+                    ac.setBookArray(myBookList);
+                } else {
+                    return null;
+                }
+            } catch (IOException e) {
+                return null;
+            }
+            return null;
+        }
+    }*/
 
 }

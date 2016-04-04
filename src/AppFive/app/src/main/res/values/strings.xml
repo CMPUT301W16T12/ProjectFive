@@ -83,4 +83,16 @@
     <string name="tvPhoneNumber">Phone Number</string>
     <string name="all">All</string>
     <string name="add_book">Add Book</string>
+    <string name="username_minlen">Username should be minimum 5 characters</string>
+    <string name="username_unavailable">Username not available, try again</string>
+    <string name="user_notexist">User does not exist, please register first.</string>
+    <string name="i_bid">I bid $</string>
+    <string name="per_hour">/hr</string>
+    <string name="location_set">Location for pickup set</string>
+    <string name="your_bid">Your Bid</string>
+    <string name="bid">Bid</string>
+    <string name="hasmadeabidof">" has made a bid of $"</string>
+    <string name="onyourbook">"/hr on your book, "</string>
+    <string name="cancel">Cancel</string>
+    <string name="pickup_location">Pickup Location</string>
 </resources>

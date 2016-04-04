@@ -10,12 +10,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 /**
  * This activity shows the books that the user has bidded on.
  */
 public class MyBiddedActivity extends AppCompatActivity implements BView<BModel> {
-    BookListAdapter bla;
-
+    private BookListAdapter bla;
+    private final AppController ac = AppFiveApp.getAppController();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +26,7 @@ public class MyBiddedActivity extends AppCompatActivity implements BView<BModel>
 
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);
-        final AppController ac = AppFiveApp.getAppController();
+
         bla = new BookListAdapter(this, ac.getBookArray());
 
         ListView mybidsListView = (ListView) findViewById(R.id.LVMyBids);
@@ -47,7 +49,6 @@ public class MyBiddedActivity extends AppCompatActivity implements BView<BModel>
     @Override
     public void update(BModel model) {
         bla.notifyDataSetChanged();
-
     }
 
     @Override
@@ -55,8 +56,7 @@ public class MyBiddedActivity extends AppCompatActivity implements BView<BModel>
         super.onDestroy();
         AppFive fc = AppFiveApp.getAppFive();
         fc.deleteView(this);
-        //FileParser parser = new FileParser(this.getApplicationContext());
-        //parser.saveInFile();
+        ac.setBookArray(new ArrayList<Book>());
         fc.notifyViews();
     }
 

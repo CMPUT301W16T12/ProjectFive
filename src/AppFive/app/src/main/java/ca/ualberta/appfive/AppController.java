@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutionException;
  */
 public class AppController {
 
-    private AppFive af = null;
+    private AppFive af;
 
     public AppController(AppFive appFive) {this.af = appFive;}
 
@@ -197,14 +197,7 @@ public class AppController {
     public void getMyBorrowedFromDB(String userName){
         ESController.GetBooksBorrowedbyUserTask getBooksBorrowedbyUserTask = new ESController.GetBooksBorrowedbyUserTask();
         getBooksBorrowedbyUserTask.execute(userName);
-        try {
-            // Wait for the task to execute
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        // Notify views that the model has changed
-        af.notifyViews();
+        //wait for query to return
     }
 
     /**
@@ -214,15 +207,20 @@ public class AppController {
     public void getMyBidsFromDB(String userName){
         ESController.GetBooksBidsbyUserTask getBooksBidsbyUserTask = new ESController.GetBooksBidsbyUserTask();
         getBooksBidsbyUserTask.execute(userName);
+        //wait for query to return
+    }
+
+   /* public void populateSearchFromDB(String userName){
+        ESController.PopulateSearchTask populateSearchTask = new ESController.PopulateSearchTask();
+        populateSearchTask.execute(UserProfile.getInstance().getUserName());
+
+        //wait for query to return
         try {
-            // Wait for task to finish executing
             Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // Notify the views that the model has changed
-        af.notifyViews();
-    }
+    }*/
 
     /**
      * This method sets the user profile object to have no data
@@ -249,7 +247,6 @@ public class AppController {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-
         }
         return Boolean.FALSE;
     }
@@ -282,7 +279,10 @@ public class AppController {
     }
 
 
-
+    public void search (String search){
+        ESController.SearchTask searchTask = new ESController.SearchTask();
+        searchTask.execute(search);
+    }
 
 }
 

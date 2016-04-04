@@ -1,11 +1,13 @@
 package ca.ualberta.appfive;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -18,6 +20,8 @@ import java.util.concurrent.ExecutionException;
  * This activity allows user to search all existing books.
  */
 public class SearchActivity extends AppCompatActivity implements BView<BModel>{
+    private BookListAdapter bla;
+    private final AppController ac = AppFiveApp.getAppController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,36 +31,32 @@ public class SearchActivity extends AppCompatActivity implements BView<BModel>{
 
         AppFive af = AppFiveApp.getAppFive();
         af.addView(this);
-        final AppController ac = AppFiveApp.getAppController();
 
-        final EditText search = (EditText) findViewById(R.id.ETSearch);
-        final ListView listView = (ListView) findViewById(R.id.LVSearchList);
+        final EditText searchET = (EditText) findViewById(R.id.ETSearch);
+        final ListView searchLV = (ListView) findViewById(R.id.LVSearchList);
         final Button searchButton = (Button) findViewById(R.id.searchButton);
-        final String result;
-        final ArrayList<Book> books;
-        final List<Book> bookList;
+        //ac.setBookArray(new ArrayList<Book>());
+        bla = new BookListAdapter(this, ac.getBookArray());
+        searchLV.setAdapter(bla);
 
 
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ESController.GetBookTask getBookTask = new ESController.GetBookTask();
+                String search = searchET.getText().toString();
+                ac.search(search);
+            }
+        });
 
 
-                // get the books by keywords search from Elasticsearch
-                getBookTask.execute(search.getText().toString());
-
-//                // try adding result to book list
-//                try {
-//                    bookList = new ArrayList<Book>();
-//                    bookList.addAll(getBookTask.get());
-//                    myBooks = new List<Book>();
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                } catch (ExecutionException e) {
-//                    e.printStackTrace();
-//                }
+        searchLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(SearchActivity.this, BookDisplayActivity.class);
+                intent.putExtra("INDEX",position);
+                intent.putExtra("MODE", BookDisplayActivity.DISPLAY_BIDED_MODE);
+                startActivity(intent);
             }
         });
 
@@ -64,7 +64,7 @@ public class SearchActivity extends AppCompatActivity implements BView<BModel>{
 
     @Override
     public void update(BModel model) {
-
+        bla.notifyDataSetChanged();
     }
 
     @Override
@@ -72,8 +72,7 @@ public class SearchActivity extends AppCompatActivity implements BView<BModel>{
         super.onDestroy();
         AppFive fc = AppFiveApp.getAppFive();
         fc.deleteView(this);
-        //FileParser parser = new FileParser(this.getApplicationContext());
-        //parser.saveInFile();
+        ac.setBookArray(new ArrayList<Book>());
         fc.notifyViews();
     }
 }

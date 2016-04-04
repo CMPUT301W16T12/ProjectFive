@@ -70,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
 
                     // when username field is empty
                     Toast.makeText(getApplicationContext(),
-                            "Username should be minimum 5 characters", Toast.LENGTH_SHORT).show();
+                            R.string.username_minlen, Toast.LENGTH_SHORT).show();
                 }
 
                 // saving registration as JSON in rest api elastic search database
@@ -82,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity implements BView<BModel>
 
 
                 if (result){
-                    Toast.makeText(getApplicationContext(), "Username not available, try again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.username_unavailable, Toast.LENGTH_SHORT).show();
                 }else {
                     ac.setUserName(userName);
                     ac.setFirstName(firstName);
